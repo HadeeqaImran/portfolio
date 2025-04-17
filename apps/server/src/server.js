@@ -1,6 +1,5 @@
 const connectToDatabase = require('./config/database');
 const app = require('./index');
-const User = require('./models/User'); // Import the User model
 
 (async () => {
     await connectToDatabase();
