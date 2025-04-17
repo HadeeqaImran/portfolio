@@ -1,14 +1,13 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import routes from './routes/index.js';
+const connectToDatabase = require('./config/database');
+const app = require('./index');
+const User = require('./models/User'); // Import the User model
 
-dotenv.config();
-const app = express();
+(async () => {
+    await connectToDatabase();
+    console.log('Connected to database');
+    const port = 3000;
 
-app.use(cors());
-app.use(express.json());
-app.use('/api', routes);
-
-export default app;
+    app.listen(port, () => {
+        console.log(`Server is running on http://localhost:${port}`);
+    });
+})();
