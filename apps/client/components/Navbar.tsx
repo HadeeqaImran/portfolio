@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-zinc-900 dark:text-white">
-          DevPortfolio
+          Portfolio
         </Link>
 
         {/* Desktop Nav */}
