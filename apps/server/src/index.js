@@ -2,9 +2,6 @@
 const express = require('express');
 const app = express();
 const { swaggerUi, swaggerSpec } = require('./config/swagger'); // Import Swagger UI and spec
-const userRoutes = require('./routes/user');
-const authRoutes = require('./routes/auth');
-const orderRoutes = require('./routes/order');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
