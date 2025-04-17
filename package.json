@@ -1,17 +1,26 @@
 {
-  "name": "my-portfolio",
-  "version": "1.0.0",
-  "main": "index.js",
-  "workspaces": ["apps/*", "packages/*"],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run dev --workspace=apps/client\" \"npm run dev --workspace=apps/server\""
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "concurrently": "^9.1.2"
-  }
+    "name": "my-portfolio",
+    "version": "1.0.0",
+    "main": "index.js",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "concurrently \"npm run dev --workspace=apps/client\" \"npm run dev --workspace=apps/server\"",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "concurrently": "^9.1.2"
+    },
+    "dependencies": {
+        "eslint-define-config": "^2.1.0"
+    }
 }
