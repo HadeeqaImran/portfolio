@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
+    "dev": "NODE_ENV=development nodemon src/server.js",
+    "prod": "NODE_ENV=production nodemon src/server.js"
+    
   },
   "keywords": [],
   "author": "",
