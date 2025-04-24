@@ -1,70 +1,56 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { fetchProjects } from '../api/project'; // Assuming you have this path to your API functions
+import Project from '../../types/Project'; // Adjust the import path as necessary
 
-const projects = [
-  {
-    title: 'Jarvis CRM',
-    year: '2024',
-    description: 'An all-in-one CRM with task automation, push notifications, deep linking, and analytics.',
-    image: '/projects/jarvis-crm.png',
-    link: '/projects/jarvis-crm',
-    github: '',
-    video: ''
-  },
-  {
-    title: 'Admin Dashboard for Portfolio',
-    year: '2024',
-    description: 'A secure admin panel with image upload to AWS S3, authentication, and full CMS for portfolio management.',
-    image: '/projects/admin-dashboard.png',
-    link: '/projects/admin-dashboard',
-    github: '',
-    video: ''
-  },
-  {
-    title: 'MERN Portfolio',
-    year: '2023',
-    description: 'A full-stack monorepo portfolio with Next.js, admin dashboard, AWS S3 integration, and themes.',
-    image: '/projects/mern-portfolio.png',
-    link: '/projects/mern-portfolio',
-    github: '',
-    video: ''
-  },
-  {
-    title: 'DateMD',
-    year: '2024',
-    description: 'A blockchain augmented hospital management system.',
-    image: '/Users/faisalurrehman/Downloads/datemd.png',
-    link: '/projects/ecommerce-api',
-    github: 'https://github.com/HadeeqaImran/DateMD',
-    video: ''
-  },
-  {
-    title: 'Ecommerce API',
-    year: '2022',
-    description: 'Robust backend API using Node.js, Express, and MongoDB for a scalable e-commerce platform.',
-    image: '/projects/ecommerce-api.png',
-    link: '/projects/ecommerce-api',
-    github: '',
-    video: ''
-  },
-];
+interface GroupedProjects {
+    [year: string]: Project[]; // Group projects by year
+}
 
-// Group projects by year
-const groupedProjects = projects.reduce((acc: Record<string, typeof projects>, project) => {
-  acc[project.year] = acc[project.year] || [];
-  acc[project.year].push(project);
-  return acc;
-}, {});
+const ProjectsPage = () => {
+  const [projects, setProjects] = useState<GroupedProjects>({});
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-export default function ProjectsPage() {
+  // Fetch projects from the API using the defined fetchProjects function
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchProjects();
+        const data: Project[] = response.data;
+        const groupedProjects = data.reduce((acc: Record<string, Project[]>, project) => {
+          acc[project.year] = acc[project.year] || [];
+          acc[project.year].push(project);
+          return acc;
+        }, {} as Record<string, Project[]>);
+        setProjects(groupedProjects);
+      } catch (err) {
+        setError('Failed to load projects');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-10">Loading projects...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-10 text-red-500">{error}</div>;
+  }
+
   return (
     <main className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-center mb-12">🗂️ Projects Timeline</h1>
 
       <div className="relative border-l border-zinc-300 dark:border-zinc-700 space-y-12">
-        {Object.entries(groupedProjects)
+        {Object.entries(projects)
           .sort(([a], [b]) => Number(b) - Number(a)) // Descending year order
           .map(([year, yearProjects]) => (
             <div key={year} className="relative pl-8 space-y-8">
@@ -78,13 +64,14 @@ export default function ProjectsPage() {
                   className="p-4 rounded-xl shadow-md bg-white dark:bg-zinc-900 transition hover:shadow-lg"
                 >
                   <div className="flex flex-col md:flex-row gap-4">
+                  <div className="w-[150px] h-[100px] flex-shrink-0 relative">
                     <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={150}
-                      height={100}
-                      className="rounded-lg object-cover shadow-sm border"
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="rounded-lg object-cover shadow-sm border"
                     />
+                  </div>
                     <div>
                       <h2 className="text-xl font-semibold">{project.title}</h2>
                       <p className="text-sm text-zinc-600 dark:text-zinc-300 mb-2">
@@ -92,18 +79,20 @@ export default function ProjectsPage() {
                       </p>
                       <div className='flex-col gap-2'>
                         <Link
-                            href={project.link}
-                            className="text-blue-600 hover:underline text-sm"
+                          href={project.link}
+                          className="text-blue-600 hover:underline text-sm"
                         >
-                            🔍 View Details
+                          🔍 View Details
                         </Link>
-                        <Link
+                        {project.github && (
+                          <Link
                             href={project.github}
                             className="text-blue-600 hover:underline text-sm"
-                        >
+                          >
                             Visit Github Repo
-                        </Link>
-                     </div>
+                          </Link>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -113,4 +102,6 @@ export default function ProjectsPage() {
       </div>
     </main>
   );
-}
+};
+
+export default ProjectsPage;

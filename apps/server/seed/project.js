@@ -30,6 +30,15 @@ const projects = [
     github: 'https://github.com/myusername/blog',
     video: '/videos/blog-demo.mp4',
   },
+  {
+    title: 'DateMD',
+    year: '2024',
+    description: 'A block augmented hospital management system that allows users to book appointments with doctors, manage their health records, and receive reminders for upcoming appointments.',
+    image: '/projects/blog.png',
+    link: 'https://myblog.com',
+    github: 'https://github.com/myusername/blog',
+    video: '/videos/blog-demo.mp4',
+  },
 ];
 
 // Function to get a random set of technologies for each project
