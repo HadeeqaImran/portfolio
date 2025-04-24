@@ -1,41 +1,3 @@
-// import Link from 'next/link';
-// import Image from 'next/image';
-
-// const projects = [
-//   {
-//     slug: 'portfolio-site',
-//     title: 'Personal Portfolio Website',
-//     description: 'A portfolio site built with Next.js, hosted on Vercel.',
-//     image: '/projects/portfolio.png',
-//   },
-//   {
-//     slug: 'crm-dashboard',
-//     title: 'CRM Dashboard',
-//     description: 'Full-featured CRM dashboard with charts, filters, and user management.',
-//     image: '/projects/crm.png',
-//   },
-// ];
-
-// export default function ProjectsPage() {
-//   return (
-//     <main className="max-w-5xl mx-auto px-4 py-10">
-//       <h1 className="text-3xl font-bold mb-6 text-center">🚀 Projects</h1>
-//       <div className="grid md:grid-cols-2 gap-6">
-//         {projects.map((proj) => (
-//           <Link key={proj.slug} href={`/projects/${proj.slug}`} className="block border rounded shadow-sm hover:shadow-md transition">
-//             <Image src={proj.image} alt={proj.title} width={800} height={600} className="rounded-t w-full h-48 object-cover" />
-//             <div className="p-4">
-//               <h2 className="text-lg font-semibold">{proj.title}</h2>
-//               <p className="text-sm text-zinc-600 dark:text-zinc-400">{proj.description}</p>
-//             </div>
-//           </Link>
-//         ))}
-//       </div>
-//     </main>
-//   );
-// }
-
-
 'use client';
 
 import Image from 'next/image';
@@ -48,6 +10,8 @@ const projects = [
     description: 'An all-in-one CRM with task automation, push notifications, deep linking, and analytics.',
     image: '/projects/jarvis-crm.png',
     link: '/projects/jarvis-crm',
+    github: '',
+    video: ''
   },
   {
     title: 'Admin Dashboard for Portfolio',
@@ -55,6 +19,8 @@ const projects = [
     description: 'A secure admin panel with image upload to AWS S3, authentication, and full CMS for portfolio management.',
     image: '/projects/admin-dashboard.png',
     link: '/projects/admin-dashboard',
+    github: '',
+    video: ''
   },
   {
     title: 'MERN Portfolio',
@@ -62,6 +28,17 @@ const projects = [
     description: 'A full-stack monorepo portfolio with Next.js, admin dashboard, AWS S3 integration, and themes.',
     image: '/projects/mern-portfolio.png',
     link: '/projects/mern-portfolio',
+    github: '',
+    video: ''
+  },
+  {
+    title: 'DateMD',
+    year: '2024',
+    description: 'A blockchain augmented hospital management system.',
+    image: '/Users/faisalurrehman/Downloads/datemd.png',
+    link: '/projects/ecommerce-api',
+    github: 'https://github.com/HadeeqaImran/DateMD',
+    video: ''
   },
   {
     title: 'Ecommerce API',
@@ -69,13 +46,8 @@ const projects = [
     description: 'Robust backend API using Node.js, Express, and MongoDB for a scalable e-commerce platform.',
     image: '/projects/ecommerce-api.png',
     link: '/projects/ecommerce-api',
-  },
-  {
-    title: 'Ecommerce API',
-    year: '2022',
-    description: 'Robust backend API using Node.js, Express, and MongoDB for a scalable e-commerce platform.',
-    image: '/projects/ecommerce-api.png',
-    link: '/projects/ecommerce-api',
+    github: '',
+    video: ''
   },
 ];
 
@@ -118,12 +90,20 @@ export default function ProjectsPage() {
                       <p className="text-sm text-zinc-600 dark:text-zinc-300 mb-2">
                         {project.description}
                       </p>
-                      <Link
-                        href={project.link}
-                        className="text-blue-600 hover:underline text-sm"
-                      >
-                        🔍 View Details
-                      </Link>
+                      <div className='flex-col gap-2'>
+                        <Link
+                            href={project.link}
+                            className="text-blue-600 hover:underline text-sm"
+                        >
+                            🔍 View Details
+                        </Link>
+                        <Link
+                            href={project.github}
+                            className="text-blue-600 hover:underline text-sm"
+                        >
+                            Visit Github Repo
+                        </Link>
+                     </div>
                     </div>
                   </div>
                 </div>
