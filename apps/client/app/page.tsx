@@ -7,12 +7,12 @@ export default function Home() {
       <section className="w-full max-w-4xl text-center">
         {/* Profile Image */}
         <div className="flex justify-center mb-6">
-          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
+          <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
             <Image
-              src="/profile.jpg" // Make sure to put your image in /public
+              src="https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/headshot.png" // Make sure to put your image in /public
               alt="Your profile photo"
-              width={128}
-              height={128}
+              width={200}
+              height={200}
               className="object-cover w-full h-full"
             />
           </div>
