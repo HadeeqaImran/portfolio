@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const { swaggerUi, swaggerSpec } = require('./config/swagger'); // Import Swagger UI and spec
 const cookieParser = require('cookie-parser');
-
+const projectRoutes = require('./routes/project');
 const dotenv = require('dotenv');
 
 const env = process.env.NODE_ENV || 'development';
@@ -15,6 +15,7 @@ app.use(cookieParser());
 // Serve the Swagger API docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use('/api/projects', projectRoutes)
 // Simple route
 app.get('/', (req, res) => {
     res.send('Hello World!');
