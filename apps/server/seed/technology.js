@@ -81,7 +81,7 @@ const technologies = [
 
 async function seedTechnologies() {
     try {
-        // await Technology.deleteMany();
+        await Technology.deleteMany();
         await Technology.insertMany(technologies);
         console.log('Technologies seeded successfully.');
     } catch (error) {
