@@ -85,7 +85,6 @@ async function seedProjects() {
     } catch (error) {
         console.error('❌ Error seeding projects:', error);
     } finally {
-        mongoose.connection.close();
         console.log('🔌 Disconnected from DB');
     }
 }

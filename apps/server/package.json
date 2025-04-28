@@ -5,8 +5,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "NODE_ENV=development nodemon src/server.js",
-        "prod": "NODE_ENV=production nodemon src/server.js",
-        "seed": "node seed/index.js"
+        "prod": "npm install && NODE_ENV=production nodemon src/server.js",
+        "seed:dev": "NODE_ENV=development node /seed/index.js",
+        "seed:production": "NODE_ENV=production node seed/index.js"
     },
     "keywords": [],
     "author": "",
