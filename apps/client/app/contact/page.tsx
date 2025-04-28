@@ -23,16 +23,22 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("Sending...");
 
-    // Simulated async API call
-    await new Promise((res) => setTimeout(res, 1000));
-    setStatus("Message sent!");
+    const templateParams = {
+      from_email: form.email,
+      to_email: "hadeeqaimran786@gmail.com", // Recipient's email
+      subject: form.subject,
+      message: form.message,
+    };
 
-    // Reset form
-    setForm({ email: "", subject: "", message: "" });
+    try {
+      // Replace with your actual service ID, template ID, and user ID
+      setStatus("Email sent successfully!");
+    } catch (error) {
+      setStatus("Error sending email, please try again.");
+      console.error("Email sending failed:", error);
+    }
   };
-
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-4xl font-bold text-center mb-6 text-primary">
