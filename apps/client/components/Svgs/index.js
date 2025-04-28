@@ -1,0 +1,14 @@
+export { default as ReactSvg } from "./react";
+export { default as NodeSvg } from "./node";
+export { default as ExpressSvg } from "./express";
+export { default as MongoDBSvg } from "./mongodb";
+export { default as TypescriptSvg } from "./typescript";
+export { default as ReduxSvg } from "./redux";
+export { default as GithubSvg } from "./github";
+export { default as GitSvg} from "./git";
+export { default as DockerSvg } from "./docker";
+export {default as NextSvg} from "./next";
+export {default as AwsSvg} from "./aws";
+export {default as FirebaseSvg} from "./firebase";
+export {default as CodemagicSvg} from "./codemagic";
+export {default as RevopushSvg} from "./revopush";

@@ -18,7 +18,7 @@ app.use(cors());
 // Serve the Swagger API docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use('/api/projects', projectRoutes)
+app.use('/api/projects', projectRoutes);
 // Simple route
 app.get('/', (req, res) => {
     res.send('Hello World!');

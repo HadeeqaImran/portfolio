@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Create Axios instance
 const client = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: "http://localhost:3000/api",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   timeout: 10000,
 });

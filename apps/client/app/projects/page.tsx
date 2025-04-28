@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { fetchProjects } from '../api/project'; // Assuming you have this path to your API functions
-import Project from '../../types/Project'; // Adjust the import path as necessary
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { fetchProjects } from "../api/project"; // Assuming you have this path to your API functions
+import Project from "../../types/Project"; // Adjust the import path as necessary
+import { ArrowDownCircle } from "lucide-react"; // Arrow at bottom
 
 interface GroupedProjects {
-    [year: string]: Project[]; // Group projects by year
+  [year: string]: Project[]; // Group projects by year
 }
 
 const ProjectsPage = () => {
@@ -21,14 +22,17 @@ const ProjectsPage = () => {
       try {
         const response = await fetchProjects();
         const data: Project[] = response.data;
-        const groupedProjects = data.reduce((acc: Record<string, Project[]>, project) => {
-          acc[project.year] = acc[project.year] || [];
-          acc[project.year].push(project);
-          return acc;
-        }, {} as Record<string, Project[]>);
+        const groupedProjects = data.reduce(
+          (acc: Record<string, Project[]>, project) => {
+            acc[project.year] = acc[project.year] || [];
+            acc[project.year].push(project);
+            return acc;
+          },
+          {} as Record<string, Project[]>,
+        );
         setProjects(groupedProjects);
       } catch (err) {
-        setError('Failed to load projects');
+        setError("Failed to load projects");
       } finally {
         setLoading(false);
       }
@@ -47,7 +51,7 @@ const ProjectsPage = () => {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center mb-12">🗂️ Projects Timeline</h1>
+      <h1 className="text-4xl font-bold text-center mb-12">Projects</h1>
 
       <div className="relative border-l border-zinc-300 dark:border-zinc-700 space-y-12">
         {Object.entries(projects)
@@ -55,39 +59,43 @@ const ProjectsPage = () => {
           .map(([year, yearProjects]) => (
             <div key={year} className="relative pl-8 space-y-8">
               {/* Timeline Dot and Year Label */}
-              <div className="absolute left-[-6px] top-1.5 w-3 h-3 bg-blue-600 rounded-full ring-2 ring-white dark:ring-zinc-900" />
-              <span className="text-sm text-zinc-500 dark:text-zinc-400">{year}</span>
+              <div className="absolute left-[-6px] top-1.5 w-3 h-3 bg-blue-400 rounded-full ring-2 ring-white dark:ring-zinc-900" />
+              <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                {year}
+              </span>
 
               {yearProjects.map((project, index) => (
                 <div
                   key={index}
                   className="p-4 rounded-xl shadow-md bg-white dark:bg-zinc-900 transition hover:shadow-lg"
                 >
-                  <div className="flex flex-col md:flex-row gap-4">
-                  <div className="w-[150px] h-[100px] flex-shrink-0 relative">
-                    <Image
+                  <div className="flex flex-col md:flex-row gap-4 items-center ">
+                    <div className="w-[200px] h-[150px] flex-shrink-0 relative">
+                      <Image
                         src={project.image}
                         alt={project.title}
                         fill
                         className="rounded-lg object-cover shadow-sm border"
-                    />
-                  </div>
+                      />
+                    </div>
                     <div>
                       <h2 className="text-xl font-semibold">{project.title}</h2>
                       <p className="text-sm text-zinc-600 dark:text-zinc-300 mb-2">
                         {project.description}
                       </p>
-                      <div className='flex-col gap-2'>
-                        <Link
-                          href={project.link}
-                          className="text-blue-600 hover:underline text-sm"
-                        >
-                          🔍 View Details
-                        </Link>
+                      <div className="flex-col gap-2">
+                        <div>
+                          <Link
+                            href={`/projects/${project._id}`}
+                            className="text-blue-400 hover:underline text-sm"
+                          >
+                            View Details
+                          </Link>
+                        </div>
                         {project.github && (
                           <Link
                             href={project.github}
-                            className="text-blue-600 hover:underline text-sm"
+                            className="text-blue-400 hover:underline text-sm"
                           >
                             Visit Github Repo
                           </Link>
@@ -99,6 +107,14 @@ const ProjectsPage = () => {
               ))}
             </div>
           ))}
+      </div>
+      <div className="flex justify-center mt-16">
+        <Link href="/education">
+          <ArrowDownCircle
+            size={48}
+            className="text-blue-600 hover:text-blue-700 animate-bounce"
+          />
+        </Link>
       </div>
     </main>
   );
