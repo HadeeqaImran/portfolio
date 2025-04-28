@@ -12,7 +12,7 @@ import {
   GithubSvg,
   GitSvg,
   RevopushSvg,
-  AwsSvg
+  AwsSvg,
 } from "@/components/Svgs";
 
 export default function Home() {
@@ -76,7 +76,7 @@ export default function Home() {
       name: "Github",
       score: 9,
       icon: <GithubSvg width={40} height={40} />,
-      color: "#181717", // GitHub Black
+      color: "#444444", // GitHub Black
     },
     {
       name: "AWS",
@@ -166,9 +166,7 @@ export default function Home() {
                 </svg>
                 {/* Skill Icon */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="p-2 rounded-full">
-                    {skill.icon}
-                  </div>
+                  <div className="p-2 rounded-full">{skill.icon}</div>
                   <span className="text-xs font-bold mt-1">
                     {skill.score}/10
                   </span>

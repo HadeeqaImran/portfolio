@@ -21,7 +21,10 @@ export default async function ProjectDetailsPage({
       <main className="max-w-4xl mx-auto px-4 py-10 space-y-8">
         {/* Back Button */}
         <div className="mb-6">
-          <Link href="/projects" className="flex items-center text-blue-500 hover:underline">
+          <Link
+            href="/projects"
+            className="flex items-center text-blue-500 hover:underline"
+          >
             <ArrowLeft className="mr-2" /> Back to Projects
           </Link>
         </div>
