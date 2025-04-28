@@ -5,13 +5,17 @@ import { nameToSvgConverter } from "../../../utils/nameToSvgConverter";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default async function ProjectDetailsPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+
+interface ProjectDetailsPageProps {
+    params: Promise<{
+        id: string
+    }>
+}
+
+export default async function ProjectDetailsPage({params}: ProjectDetailsPageProps) {
+  const { id } = await params;
   try {
-    const response = await fetchProjectById(params.id);
+    const response = await fetchProjectById(id);
     console.log("response", response);
     const project = response.data;
 
