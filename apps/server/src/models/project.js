@@ -15,10 +15,12 @@ const projectSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        image: {
-            type: String,
-            required: true,
-        },
+        images: [
+            {
+                type: String,
+                required: true,
+            },
+        ],
         link: {
             type: String,
             required: false,
@@ -33,8 +35,8 @@ const projectSchema = new mongoose.Schema(
         },
         technologies: [
             {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: 'Technology',
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Technology',
             },
         ],
     },

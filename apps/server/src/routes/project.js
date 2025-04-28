@@ -21,12 +21,12 @@ const Technology = require('../models/technology');
  *         description: List of projects
  */
 router.get('/', async (req, res) => {
-  try {
-    const projects = await Project.find().sort({ createdAt: -1 });
-    res.status(200).json(projects);
-  } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
-  }
+    try {
+        const projects = await Project.find().sort({ createdAt: -1 });
+        res.status(200).json(projects);
+    } catch (err) {
+        res.status(500).json({ message: 'Server error', error: err.message });
+    }
 });
 
 /**
@@ -68,12 +68,12 @@ router.get('/', async (req, res) => {
  *         description: Validation error
  */
 router.post('/', async (req, res) => {
-  try {
-    const newProject = await Project.create(req.body);
-    res.status(201).json(newProject);
-  } catch (err) {
-    res.status(400).json({ message: 'Invalid data', error: err.message });
-  }
+    try {
+        const newProject = await Project.create(req.body);
+        res.status(201).json(newProject);
+    } catch (err) {
+        res.status(400).json({ message: 'Invalid data', error: err.message });
+    }
 });
 
 /**
@@ -96,15 +96,17 @@ router.post('/', async (req, res) => {
  */
 router.get('/:id', async (req, res) => {
     try {
-      const project = await Project.findById(req.params.id).populate('technologies');
-      console.log("project", project)
-      if (!project) return res.status(404).json({ message: 'Project not found' });
-      res.status(200).json(project);
+        const project = await Project.findById(req.params.id).populate(
+            'technologies'
+        );
+        console.log('project', project);
+        if (!project)
+            return res.status(404).json({ message: 'Project not found' });
+        res.status(200).json(project);
     } catch (err) {
-      res.status(500).json({ message: 'Server error', error: err.message });
+        res.status(500).json({ message: 'Server error', error: err.message });
     }
-  });
-  
+});
 
 /**
  * @swagger
@@ -131,16 +133,21 @@ router.get('/:id', async (req, res) => {
  *         description: Project not found
  */
 router.put('/:id', async (req, res) => {
-  try {
-    const project = await Project.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!project) return res.status(404).json({ message: 'Project not found' });
-    res.status(200).json(project);
-  } catch (err) {
-    res.status(400).json({ message: 'Update failed', error: err.message });
-  }
+    try {
+        const project = await Project.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true,
+            }
+        );
+        if (!project)
+            return res.status(404).json({ message: 'Project not found' });
+        res.status(200).json(project);
+    } catch (err) {
+        res.status(400).json({ message: 'Update failed', error: err.message });
+    }
 });
 
 /**
@@ -162,13 +169,14 @@ router.put('/:id', async (req, res) => {
  *         description: Project not found
  */
 router.delete('/:id', async (req, res) => {
-  try {
-    const project = await Project.findByIdAndDelete(req.params.id);
-    if (!project) return res.status(404).json({ message: 'Project not found' });
-    res.status(200).json({ message: 'Project deleted successfully' });
-  } catch (err) {
-    res.status(500).json({ message: 'Delete failed', error: err.message });
-  }
+    try {
+        const project = await Project.findByIdAndDelete(req.params.id);
+        if (!project)
+            return res.status(404).json({ message: 'Project not found' });
+        res.status(200).json({ message: 'Project deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ message: 'Delete failed', error: err.message });
+    }
 });
 
 module.exports = router;
