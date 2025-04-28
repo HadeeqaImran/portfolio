@@ -1,8 +1,12 @@
 import axios from "axios";
 
+// https://portfolio-2445.onrender.com
+
+// http://localhost:3000/api
+
 // Create Axios instance
 const client = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://portfolio-2445.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
