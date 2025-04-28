@@ -13,6 +13,8 @@ import {
   GitSvg,
   RevopushSvg,
   AwsSvg,
+  TailwindSvg,
+  VercelSvg,
 } from "@/components/Svgs";
 
 export default function Home() {
@@ -22,73 +24,85 @@ export default function Home() {
       score: 9,
       icon: <ReactSvg width={40} height={40} />,
       color: "#61DBFB",
-    }, // React Blue
+    }, 
     {
       name: "React.js",
       score: 9,
       icon: <ReactSvg width={40} height={40} />,
       color: "#61DBFB",
-    }, // React Blue
+    }, 
     {
       name: "Node.js",
       score: 8,
       icon: <NodeSvg width={40} height={40} />,
       color: "#68A063",
-    }, // Node Green
+    },
     {
       name: "MongoDB",
       score: 8,
       icon: <MongoDBSvg width={40} height={40} />,
       color: "#4DB33D",
-    }, // MongoDB Green
+    },
     {
       name: "Express",
       score: 8,
       icon: <ExpressSvg width={40} height={40} />,
       color: "#000000",
-    }, // Express Black
+    }, 
     {
       name: "TypeScript",
       score: 7,
       icon: <TypescriptSvg width={35} height={35} />,
       color: "#3178C6",
-    }, // TS Blue
+    }, 
 
     {
       name: "Codemagic",
       score: 8,
       icon: <CodemagicSvg width={40} height={40} />,
-      color: "#F96E26", // Codemagic Yellow
+      color: "#F96E26",
     },
     {
       name: "Revopush",
       score: 7,
       icon: <RevopushSvg width={35} height={35} />,
-      color: "#3858f8", // Purplish (custom, assuming Revopush color; adjust if needed)
+      color: "#3858f8",
     },
     {
       name: "Git",
       score: 9,
       icon: <GitSvg width={40} height={40} />,
-      color: "#F1502F", // Git Orange
+      color: "#F1502F", 
     },
     {
       name: "Github",
       score: 9,
       icon: <GithubSvg width={40} height={40} />,
-      color: "#444444", // GitHub Black
+      color: "#444444", 
     },
     {
       name: "AWS",
       score: 8,
       icon: <AwsSvg width={40} height={40} />,
-      color: "#FF9900", // AWS Orange
+      color: "#FF9900", 
     },
     {
       name: "Docker",
       score: 8,
       icon: <DockerSvg width={40} height={40} />,
-      color: "#2496ED", // Docker Blue
+      color: "#2496ED", 
+    },
+    {
+      name: "Tailwind CSS",
+      score: 8,
+      icon: <TailwindSvg width={40} height={40}/>,
+      color: "#45A8B3", 
+    },
+    {
+      name: "Vercel",
+      score: 8,
+      icon: <VercelSvg width={40} height={40}/>,
+      color: "#222222", 
     },
   ];
 

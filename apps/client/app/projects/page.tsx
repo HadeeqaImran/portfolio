@@ -75,7 +75,7 @@ const ProjectsPage = () => {
                         src={project.titleImage}
                         alt={project.title}
                         fill
-                        className="rounded-lg object-contain shadow-sm border  bg-zinc-200"
+                        className="rounded-lg object-contain shadow-sm border  bg-[#CCCCCC]"
                       />
                     </div>
                     <div>

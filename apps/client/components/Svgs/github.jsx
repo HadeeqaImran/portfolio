@@ -5,10 +5,10 @@ const GithubSvg = ({ height = 64, width = 64 }) => (
     height={height}
     viewBox="0 0 20 20"
   >
-    <g id="Page-1" fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
+    <g id="Page-1" fill="#111111" fillRule="evenodd" stroke="none" strokeWidth="1">
       <g
         id="Dribbble-Light-Preview"
-        fill="#000"
+        fill="#333333"
         transform="translate(-140 -7559)"
       >
         <g id="icons" transform="translate(56 160)">

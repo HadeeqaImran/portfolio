@@ -63,6 +63,11 @@ const technologies = [
         svgPath: 'M12 0C5.373 0 0 5.373 0 12c0 5.302...',
     },
     {
+      name: 'GIT',
+      displayName: 'Git',
+      svgPath: 'M12 0C5.373 0 0 5.373 0 12c0 5.302...',
+    },
+    {
         name: 'DOCKER',
         displayName: 'Docker',
         svgPath: 'M0 0h24v24H0z',

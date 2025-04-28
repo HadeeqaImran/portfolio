@@ -1,5 +1,5 @@
 import { Code } from "lucide-react";
-import { ReactSvg, NodeSvg, ExpressSvg, MongoDBSvg, NextSvg, DockerSvg, CodemagicSvg, AwsSvg, FirebaseSvg, TypescriptSvg, ReduxSvg, RevopushSvg } from "../components/Svgs";
+import { GithubSvg, ReactSvg, NodeSvg, ExpressSvg, MongoDBSvg, NextSvg, DockerSvg, CodemagicSvg, AwsSvg, FirebaseSvg, TypescriptSvg, ReduxSvg, RevopushSvg, TailwindSvg, GitSvg } from "../components/Svgs";
 
 export const nameToSvgConverter = (name) => {
   switch (name) {
@@ -18,11 +18,11 @@ export const nameToSvgConverter = (name) => {
     case "REDUX":
       return <ReduxSvg />;
     case "TAILWIND":
-      return "M0 0h24v24H0z";
+      return <TailwindSvg />;
     case "NEXTJS":
       return <NextSvg />;
     case "GITHUB":
-      return "M12 0C5.373 0 0 5.373 0 12c0 5.302...";
+      return <GithubSvg />;
     case "DOCKER":
       return <DockerSvg />;
     case "KUBERNETES":
@@ -41,6 +41,8 @@ export const nameToSvgConverter = (name) => {
         return <TypescriptSvg />;
     case "GIT":
         return <GitSvg />;
+    case "VERCEL":
+        return <VercelSvg />;
     default:
       return "";
   }

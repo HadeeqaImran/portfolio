@@ -12,3 +12,5 @@ export { default as AwsSvg } from "./aws";
 export { default as FirebaseSvg } from "./firebase";
 export { default as CodemagicSvg } from "./codemagic";
 export { default as RevopushSvg } from "./revopush";
+export { default as TailwindSvg } from "./tailwind";
+export {default as VercelSvg} from "./vercel";
