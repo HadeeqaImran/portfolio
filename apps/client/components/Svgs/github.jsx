@@ -1,4 +1,4 @@
-const GithubSvg = ({height=64, width=64}) => (
+const GithubSvg = ({ height = 64, width = 64 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
