@@ -6,11 +6,14 @@ const dotenv = require('dotenv');
 
 const runAllSeeders = async () => {
     try {
-        const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+        const envFile =
+            process.env.NODE_ENV === 'production'
+                ? '.env.production'
+                : '.env.development';
         dotenv.config({ path: envFile });
 
-        console.log("envFile", envFile);
-        console.log("MONGO_DB_URL", process.env.MONGO_DB_URL);
+        console.log('envFile', envFile);
+        console.log('MONGO_DB_URL', process.env.MONGO_DB_URL);
 
         await connectToDatabase();
         console.log('Connected to DB');
@@ -28,4 +31,3 @@ const runAllSeeders = async () => {
 };
 
 runAllSeeders();
- 
