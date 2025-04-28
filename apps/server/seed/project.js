@@ -17,7 +17,7 @@ const projects = [
         link: 'https://myportfolio.com',
         github: 'https://github.com/myusername/portfolio',
         video: '/videos/portfolio-demo.mp4',
-        technologies: ['REACT', 'MONGODB', 'NODE', 'EXPRESS'],
+        technologies: ['REACT', 'NODE', 'EXPRESS', 'TAILWIND', 'VERCEL', 'MONGODB', 'GITHUB', 'GIT'],
     },
     {
         title: 'Jarvis CRM',
@@ -41,7 +41,7 @@ const projects = [
         link: '',
         github: 'https://github.com/myusername/ecommerce',
         video: 'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/Jarvis/Screen+Recording+2025-04-28+at+6.00.14%E2%80%AFpm.mov',
-        technologies: ['REACTNATIVE', 'CODEMAGIC', 'REVOPUSH', 'REDUX'],
+        technologies: ['REACTNATIVE', 'CODEMAGIC', 'REVOPUSH', 'REDUX', 'FIREBASE', 'GITHUB', 'GIT'],
     },
     {
         title: 'Fit by Charro',

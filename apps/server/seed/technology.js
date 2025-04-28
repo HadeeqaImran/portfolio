@@ -92,6 +92,11 @@ const technologies = [
       displayName: 'Redux',
       svgPath: 'M0 0h24v24H0z',
     },
+    {
+      name: 'NEXT',
+      displayName: 'Next JS',
+      svgPath: 'M0 0h24v24H0z',
+    },
     
 ];
 

@@ -1,4 +1,5 @@
-import { ReactSvg, NodeSvg, ExpressSvg, MongoDBSvg } from "../components/Svgs";
+import { Code } from "lucide-react";
+import { ReactSvg, NodeSvg, ExpressSvg, MongoDBSvg, NextSvg, DockerSvg, CodemagicSvg, AwsSvg, FirebaseSvg, TypescriptSvg, ReduxSvg, RevopushSvg } from "../components/Svgs";
 
 export const nameToSvgConverter = (name) => {
   switch (name) {
@@ -15,17 +16,31 @@ export const nameToSvgConverter = (name) => {
     case "POSTGRESQL":
       return "M0 0h24v24H0z";
     case "REDUX":
+      return <ReduxSvg />;
+    case "TAILWIND":
       return "M0 0h24v24H0z";
     case "NEXTJS":
-      return "M0 0h24v24H0z";
+      return <NextSvg />;
     case "GITHUB":
       return "M12 0C5.373 0 0 5.373 0 12c0 5.302...";
     case "DOCKER":
-      return "M0 0h24v24H0z";
+      return <DockerSvg />;
     case "KUBERNETES":
       return "M0 0h24v24H0z";
     case "REACTNATIVE":
-      return "M0 0h24v24H0z";
+      return <ReactSvg />;
+    case "CODEMAGIC":
+        return <CodemagicSvg />;
+    case "REVOPUSH":
+        return <RevopushSvg height={64} width={64}/>;
+    case "AWS":
+        return <AwsSvg />;
+    case "FIREBASE":
+        return <FirebaseSvg />;
+    case "TYPESCRIPT":
+        return <TypescriptSvg />;
+    case "GIT":
+        return <GitSvg />;
     default:
       return "";
   }
