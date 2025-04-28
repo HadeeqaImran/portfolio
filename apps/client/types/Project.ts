@@ -10,5 +10,6 @@ export default interface Project {
   technologies: string[]; // List of technology IDs associated with the project
   createdAt: string; // Timestamp of when the project was created
   updatedAt: string; // Timestamp of the last update to the project
+  titleImage: string;
   __v: number; // Internal version key (for MongoDB)
 }

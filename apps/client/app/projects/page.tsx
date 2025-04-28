@@ -72,10 +72,10 @@ const ProjectsPage = () => {
                   <div className="flex flex-col md:flex-row gap-4 items-center ">
                     <div className="w-[200px] h-[150px] flex-shrink-0 relative">
                       <Image
-                        src={project.image}
+                        src={project.titleImage}
                         alt={project.title}
                         fill
-                        className="rounded-lg object-cover shadow-sm border"
+                        className="rounded-lg object-contain shadow-sm border  bg-zinc-200"
                       />
                     </div>
                     <div>

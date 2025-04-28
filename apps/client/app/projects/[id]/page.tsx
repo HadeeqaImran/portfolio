@@ -38,23 +38,20 @@ export default async function ProjectDetailsPage({params}: ProjectDetailsPagePro
         </p>
 
         {/* Images */}
-        {project.images.length > 0 && (
-          <>
-            <h2 className="text-xl font-semibold mb-2">Project Screens</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {project.images.map((img: string, i: number) => (
-                <Image
-                  key={i}
-                  src={img}
-                  alt={`Screenshot ${i + 1}`}
-                  width={600}
-                  height={400}
-                  className="rounded"
-                />
-              ))}
-            </div>
-          </>
-        )}
+        <h2 className="text-xl font-semibold mb-2">Project Screenshots</h2>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+        {project.images.map((img: string, i: number) => (
+          <div key={i} className="w-full h-auto">
+            <Image
+              src={img}
+              alt={`Screenshot ${i + 1}`}
+              width={600}
+              height={400}
+              className="rounded object-cover w-full h-auto"
+            />
+          </div>
+        ))}
+      </div>
 
         {/* Video */}
         {project.video && (

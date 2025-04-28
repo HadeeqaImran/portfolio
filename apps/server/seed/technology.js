@@ -77,6 +77,22 @@ const technologies = [
         displayName: 'React Native',
         svgPath: 'M0 0h24v24H0z',
     },
+    {
+      name: 'CODEMAGIC',
+      displayName: 'Codemagic',
+      svgPath: 'M0 0h24v24H0z',
+    },
+    {
+      name: 'REVOPUSH',
+      displayName: 'Revopush',
+      svgPath: 'M0 0h24v24H0z',
+    },
+    {
+      name: 'REDUX',
+      displayName: 'Redux',
+      svgPath: 'M0 0h24v24H0z',
+    },
+    
 ];
 
 async function seedTechnologies() {
