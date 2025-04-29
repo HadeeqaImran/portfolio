@@ -5,7 +5,7 @@ import axios from "axios";
 
 // Create Axios instance
 const client = axios.create({
-  baseURL: "https://portfolio-2445.onrender.com/api",
+  baseURL: "http://128.199.20.27/api",
   headers: {
     "Content-Type": "application/json",
   },
