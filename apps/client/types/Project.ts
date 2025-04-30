@@ -3,6 +3,7 @@ export default interface Project {
   title: string; // The title of the project
   year: string; // The year the project was created or launched
   description: string; // A short description of the project
+  images: string[];
   image: string; // Path to an image associated with the project
   link: string; // URL to the project or application
   github: string; // URL to the GitHub repository for the project
