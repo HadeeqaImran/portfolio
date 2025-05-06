@@ -4,7 +4,8 @@ import { fetchProjectById } from "../../api/project";
 import { nameToSvgConverter } from "../../../utils/nameToSvgConverter";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-
+import { Projects } from "@/app/api/projects";
+import { Technologies } from "@/app/api/technologies";
 
 interface ProjectDetailsPageProps {
     params: Promise<{
@@ -15,10 +16,9 @@ interface ProjectDetailsPageProps {
 export default async function ProjectDetailsPage({params}: ProjectDetailsPageProps) {
   const { id } = await params;
   try {
-    const response = await fetchProjectById(id);
-    console.log("response", response);
-    const project = response.data;
-
+    // const response = await fetchProjectById(id);
+    // console.log("response", response);
+    const project = Projects.find((project) => project._id === id);
     if (!project || !project._id) return notFound();
 
     return (
@@ -71,16 +71,20 @@ export default async function ProjectDetailsPage({params}: ProjectDetailsPagePro
               🛠 Technologies
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base text-zinc-700 dark:text-zinc-300">
-              {project.technologies.map((tech: any) => (
-                <li key={tech._id || tech} className="flex items-center gap-2">
-                  {tech.svgPath ? (
-                    nameToSvgConverter(tech.name)
+            {project.technologies.map((techName: string) => {
+              const techDetails = Technologies.find(t => t.name === techName);
+
+              return (
+                <li key={techName} className="flex items-center gap-2">
+                  {techDetails?.svgPath || techDetails?.svgIcon ? (
+                    techDetails.svgPath || techDetails.svgIcon
                   ) : (
-                    <span className="w-15 h-15 mr-2 bg-gray-500 rounded-full" />
+                    <span className="w-6 h-6 mr-2 bg-gray-300 rounded-full" />
                   )}
-                  {tech.displayName}
+                  <span>{techDetails?.displayName || techName}</span>
                 </li>
-              ))}
+              );
+            })}
             </ul>
           </div>
         )}

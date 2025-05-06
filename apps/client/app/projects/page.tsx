@@ -6,7 +6,7 @@ import Link from "next/link";
 import { fetchProjects } from "../api/project"; // Assuming you have this path to your API functions
 import Project from "../../types/Project"; // Adjust the import path as necessary
 import { ArrowDownCircle } from "lucide-react"; // Arrow at bottom
-
+import { Projects} from "../api/projects";
 
 interface GroupedProjects {
   [year: string]: Project[]; // Group projects by year
@@ -21,8 +21,7 @@ const ProjectsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchProjects();
-        const data: Project[] = response.data;
+        const data: Project[] = Projects;
         const groupedProjects = data.reduce(
           (acc: Record<string, Project[]>, project) => {
             acc[project.year] = acc[project.year] || [];
