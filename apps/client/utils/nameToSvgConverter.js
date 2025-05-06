@@ -1,5 +1,5 @@
 import { Code } from "lucide-react";
-import { GithubSvg, ReactSvg, NodeSvg, ExpressSvg, MongoDBSvg, NextSvg, DockerSvg, CodemagicSvg, AwsSvg, FirebaseSvg, TypescriptSvg, ReduxSvg, RevopushSvg, TailwindSvg, GitSvg, VercelSvg } from "../components/svgs";
+import { GithubSvg, ReactSvg, NodeSvg, ExpressSvg, MongoDBSvg, NextSvg, DockerSvg, CodemagicSvg, AwsSvg, FirebaseSvg, TypescriptSvg, ReduxSvg, RevopushSvg, TailwindSvg, GitSvg, VercelSvg } from "../assets/svgs";
 
 export const nameToSvgConverter = (name) => {
   switch (name) {

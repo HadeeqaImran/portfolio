@@ -1,5 +1,5 @@
 import React from 'react';
-import { AwsSvg, ExpressSvg, MongoDBSvg, NextSvg, NodeSvg, ReactSvg, ReduxSvg, TailwindSvg, VercelSvg, GitSvg, GithubSvg, DockerSvg, RevopushSvg, CodemagicSvg } from '../../components/svgs';
+import { AwsSvg, ExpressSvg, MongoDBSvg, NextSvg, NodeSvg, ReactSvg, ReduxSvg, TailwindSvg, VercelSvg, GitSvg, GithubSvg, DockerSvg, RevopushSvg, CodemagicSvg } from '../../assets/svgs';
 
 export const Technologies = [
     {

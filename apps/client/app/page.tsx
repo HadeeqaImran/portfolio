@@ -15,7 +15,7 @@ import {
   AwsSvg,
   TailwindSvg,
   VercelSvg,
-} from "@/components/svgs";
+} from "@/assets/svgs";
 
 export default function Home() {
   const skills = [
