@@ -1,23 +1,38 @@
 export const Projects = [
     {
         _id: "1",
-        title: 'Personal Portfolio Website',
+        title: 'AITube',
         year: '2025',
+        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/aitube/aitube_title.jpg",
         description:
-            'A sleek and modern portfolio site built with Next.js, Tailwind CSS, and hosted on Vercel.',
+            'A block augmented hospital management system that allows users to book appointments with doctors, manage their health records, and receive reminders for upcoming appointments.',
         images: [
             'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/date-md/Screenshot+2025-04-25+at+6.45.40%E2%80%AFpm.png',
             'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/date-md/Screenshot+2025-04-25+at+6.45.32%E2%80%AFpm.png',
             'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/date-md/Screenshot+2025-04-25+at+6.45.01%E2%80%AFpm.png',
         ],
-        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/project_placeholder.jpg",
+        link: '',
+        github: '',
+        video: 'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/project-demos/date_md_demo.mp4',
+        technologies: ['REACT', 'MONGODB', 'NODE', 'EXPRESS', 'GITHUB', 'GIT'],
+    },
+    {
+        _id: "2",
+        title: 'Personal Portfolio Website',
+        year: '2025',
+        description:
+            'A sleek and modern portfolio site built with Next.js, styled using Tailwind CSS, and deployed on the Vercel platform for fast and reliable hosting.',
+        images: [
+            'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/portfolio/title.png',
+        ],
+        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/portfolio/title.png",
         link: 'https://myportfolio.com',
         github: 'https://github.com/myusername/portfolio',
         video: '/videos/portfolio-demo.mp4',
         technologies: ['REACT', 'NODE', 'EXPRESS', 'TAILWIND', 'VERCEL', 'MONGODB', 'GITHUB', 'GIT'],
     },
     {
-        _id: "2",
+        _id: "3",
         title: 'Jarvis CRM',
         year: '2024',
         description:
@@ -37,28 +52,28 @@ export const Projects = [
         ],
         titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/Jarvis/ic_jarvis.png",
         link: '',
-        github: 'https://github.com/myusername/ecommerce',
+        github: '',
         video: 'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/Jarvis/Screen+Recording+2025-04-28+at+6.00.14%E2%80%AFpm.mov',
         technologies: ['REACTNATIVE', 'CODEMAGIC', 'REVOPUSH', 'REDUX', 'FIREBASE', 'GITHUB', 'GIT'],
     },
     {
-        _id: "3",
+        _id: "4",
         title: 'Fit by Charro',
         year: '2025',
-        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/project_placeholder.jpg",
+        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/fit_by_charro/title.jpg",
         description:
             'I worked on a web app for a fitness coach to enhance the experience for her subscribers. The app allows users to track their fitness progress, submit updates, and communicate directly with the trainer. This solution has helped improve user engagement and business growth.',
         images: ['/projects/portfolio1.png'],
         link: 'https://myblog.com',
-        github: 'https://github.com/myusername/blog',
+        github: '',
         video: '/videos/blog-demo.mp4',
-        technologies: ['REACT', 'MONGODB', 'NODE', 'EXPRESS'],
+        technologies: ['REACT', 'MONGODB', 'NODE', 'EXPRESS', 'GITHUB', 'GIT'],
     },
     {
-        _id: "4",
+        _id: "5",
         title: 'DateMD',
         year: '2024',
-        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/project_placeholder.jpg",
+        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/date-md/datemd_title.png",
         description:
             'A block augmented hospital management system that allows users to book appointments with doctors, manage their health records, and receive reminders for upcoming appointments.',
         images: [
@@ -69,6 +84,32 @@ export const Projects = [
         link: 'https://myblog.com',
         github: 'https://github.com/myusername/blog',
         video: 'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/project-demos/date_md_demo.mp4',
-        technologies: ['REACT', 'MONGODB', 'NODE', 'EXPRESS'],
+        technologies: ['REACT', 'MONGODB', 'NODE', 'EXPRESS', 'GITHUB', 'GIT'],
+    },
+    {
+        _id: "6",
+        title: 'Blogs App',
+        year: '2024',
+        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/blogs_title.png",
+        description:
+            'A blogs app made for the course NodeJS, Advance Concepts. It uses redis as in memory database, and uploads assets of blogs to AWS S3. It also uses OAuth for authentication and authorization.',
+        images: [],
+        link: 'https://myblog.com',
+        github: 'https://github.com/myusername/blog',
+        video: 'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/project-demos/date_md_demo.mp4',
+        technologies: ['REACT', 'MONGODB', 'NODE', 'EXPRESS', 'GITHUB', 'GIT'],
+    },
+    {
+        _id: "7",
+        title: 'Sympto Genius',
+        year: '2023',
+        titleImage: "https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/sympto-genius/sg-title.png",
+        description:
+            'A webssite that helps users get a prognosis of their symptoms. It uses a machine learning model (random forest) to predict the disease based on the symptoms provided by the user.',
+        images: [],
+        link: 'https://myblog.com',
+        github: '',
+        video: 'https://hadeeqa-portfolio.s3.eu-north-1.amazonaws.com/project-demos/date_md_demo.mp4',
+        technologies: ['HTML', 'TAILWIND', 'SCIKITLEARN', 'PYTORCH','GITHUB', 'GIT'],
     },
 ];

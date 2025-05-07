@@ -14,3 +14,6 @@ export { default as CodemagicSvg } from "./codemagic";
 export { default as RevopushSvg } from "./revopush";
 export { default as TailwindSvg } from "./tailwind";
 export {default as VercelSvg} from "./vercel";
+export {default as PytorchSvg} from "./pytorch";
+export {default as ScikitLearnSvg} from "./scikit-learn";
+export {default as HtmlSvg} from "./html";

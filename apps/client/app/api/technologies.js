@@ -1,5 +1,5 @@
 import React from 'react';
-import { AwsSvg, ExpressSvg, MongoDBSvg, NextSvg, NodeSvg, ReactSvg, ReduxSvg, TailwindSvg, VercelSvg, GitSvg, GithubSvg, DockerSvg, RevopushSvg, CodemagicSvg } from '../../assets/svgs';
+import { AwsSvg, ExpressSvg, MongoDBSvg, NextSvg, NodeSvg, ReactSvg, ReduxSvg, TailwindSvg, VercelSvg, GitSvg, GithubSvg, DockerSvg, RevopushSvg, CodemagicSvg, PytorchSvg, ScikitLearnSvg, HtmlSvg } from '../../assets/svgs';
 
 export const Technologies = [
     {
@@ -92,4 +92,19 @@ export const Technologies = [
       displayName: 'Revopush',
       svgPath: <RevopushSvg height={64} width={64}/>,
     },
+    {
+        name: 'PYTORCH',
+        displayName: 'Pytorch',
+        svgPath: <PytorchSvg height={30} width={30}/>,
+    },
+    {
+        name: 'SCIKITLEARN',
+        displayName: 'Scikit-learn',
+        svgPath: <ScikitLearnSvg height={64} width={64}/>,
+    },
+    {
+        name: 'HTML',
+        displayName: 'HMTL',
+        svgPath: <HtmlSvg height={64} width={64}/>,
+    }
 ];
