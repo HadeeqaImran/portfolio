@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
 
 const Projects = () => {
@@ -29,38 +30,114 @@ const Projects = () => {
     },
   ]
 
-  return (
-    <section id="projects" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Projects</h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
+  }
+
+  return (
+    <section id="projects" className="py-20 bg-gray-50 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Projects</h2>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 80 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="h-1 bg-primary-600 mx-auto"
+          ></motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+              variants={cardVariants}
+              whileHover={{
+                y: -10,
+                transition: { duration: 0.3 },
+              }}
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 group"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover"
                 />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className="absolute inset-0 bg-primary-600 bg-opacity-10 flex items-center justify-center"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex space-x-4"
+                  >
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white rounded-full hover:bg-primary-600 hover:text-white transition-colors duration-200"
+                    >
+                      <Github size={20} />
+                    </a>
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white rounded-full hover:bg-primary-600 hover:text-white transition-colors duration-200"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  </motion.div>
+                </motion.div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{project.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
+                  {project.title}
+                </h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
-                    <span
+                    <motion.span
                       key={tagIndex}
-                      className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full cursor-default"
                     >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
                 <div className="flex space-x-4">
@@ -84,9 +161,9 @@ const Projects = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,69 +1,137 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  }
+
+  const socialVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5 },
+    },
+  }
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-white">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-white relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+        <motion.div
+          className="text-center max-w-4xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6"
+          >
             Hi, I'm{' '}
-            <span className="text-gradient">Your Name</span>
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 mb-8">
-            Full Stack Developer | Designer | Problem Solver
-          </p>
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+            <span className="text-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">
+              Your Name
+            </span>
+          </motion.h1>
+          
+          <motion.p
+            variants={itemVariants}
+            className="text-xl sm:text-2xl text-gray-600 mb-8"
+          >
+            <span className="inline-block hover:text-primary-600 transition-colors duration-300">Full Stack Developer</span>
+            {' | '}
+            <span className="inline-block hover:text-primary-600 transition-colors duration-300">Designer</span>
+            {' | '}
+            <span className="inline-block hover:text-primary-600 transition-colors duration-300">Problem Solver</span>
+          </motion.p>
+          
+          <motion.p
+            variants={itemVariants}
+            className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto"
+          >
             I build beautiful, functional, and user-friendly web applications.
             Passionate about creating seamless digital experiences.
-          </p>
+          </motion.p>
 
-          <div className="flex justify-center space-x-4 mb-12">
-            <a
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center space-x-4 mb-12"
+          >
+            <motion.a
               href="#contact"
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(14, 165, 233, 0.3)' }}
+              whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 font-medium"
             >
               Get In Touch
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#projects"
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(14, 165, 233, 0.2)' }}
+              whileTap={{ scale: 0.95 }}
               className="px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-lg hover:bg-primary-50 transition-colors duration-200 font-medium"
             >
               View Work
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
-          <div className="flex justify-center space-x-6">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
-            >
-              <Github size={28} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
-            >
-              <Linkedin size={28} />
-            </a>
-            <a
-              href="mailto:your.email@example.com"
-              className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
-            >
-              <Mail size={28} />
-            </a>
-          </div>
-        </div>
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center space-x-6"
+          >
+            {[
+              { href: 'https://github.com', Icon: Github },
+              { href: 'https://linkedin.com', Icon: Linkedin },
+              { href: 'mailto:your.email@example.com', Icon: Mail },
+            ].map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={socialVariants}
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+              >
+                <social.Icon size={28} />
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            ease: 'easeInOut',
+          }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
           <a href="#about" className="text-gray-400 hover:text-primary-600 transition-colors duration-200">
             <ArrowDown size={32} />
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

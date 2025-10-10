@@ -9,6 +9,10 @@ A modern, responsive portfolio website built with React, Vite, and Tailwind CSS.
 - ⚡ Fast performance with Vite
 - 🎨 Styled with Tailwind CSS
 - 🎯 Smooth scrolling navigation
+- 🎭 **Interactive particle background animation**
+- 💫 **Smooth scroll-triggered animations with Framer Motion**
+- ✨ **Beautiful hover effects and transitions**
+- 🎬 **Staggered animations for engaging user experience**
 - 📧 Contact form
 - 🔗 Social media links
 
@@ -26,7 +30,9 @@ A modern, responsive portfolio website built with React, Vite, and Tailwind CSS.
 - React 18
 - Vite
 - Tailwind CSS
+- Framer Motion (for animations)
 - Lucide React (for icons)
+- Canvas API (for particle effects)
 
 ## Getting Started
 
@@ -83,6 +89,12 @@ npm run dev
 
 6. **Colors**:
    - Edit `tailwind.config.js` to change the color scheme
+   - Update particle colors in `src/components/ParticlesBackground.jsx` (search for `rgba(14, 165, 233,` to match your theme)
+
+7. **Animations**:
+   - Adjust animation speeds in component files
+   - Modify particle density by changing the divisor in `ParticlesBackground.jsx` (line ~69)
+   - Disable animations by removing Framer Motion props if needed
 
 ## Building for Production
 

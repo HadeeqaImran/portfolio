@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const Skills = () => {
   const skillCategories = [
@@ -16,33 +17,104 @@ const Skills = () => {
     },
   ]
 
-  return (
-    <section id="skills" className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills</h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  }
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+  const categoryVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  }
+
+  const skillVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.3 },
+    },
+  }
+
+  return (
+    <section id="skills" className="py-20 bg-white relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills</h2>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 80 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="h-1 bg-primary-600 mx-auto"
+          ></motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        >
           {skillCategories.map((category, index) => (
-            <div key={index} className="bg-gray-50 p-8 rounded-lg">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
+            <motion.div
+              key={index}
+              variants={categoryVariants}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 20px 40px rgba(14, 165, 233, 0.15)',
+                transition: { duration: 0.3 },
+              }}
+              className="bg-gray-50 p-8 rounded-lg"
+            >
+              <motion.h3
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="text-2xl font-semibold text-gray-900 mb-6 text-center"
+              >
                 {category.category}
-              </h3>
-              <div className="flex flex-wrap gap-3 justify-center">
+              </motion.h3>
+              <motion.div
+                variants={containerVariants}
+                className="flex flex-wrap gap-3 justify-center"
+              >
                 {category.skills.map((skill, skillIndex) => (
-                  <span
+                  <motion.span
                     key={skillIndex}
-                    className="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm hover:shadow-md hover:text-primary-600 transition-all duration-200"
+                    variants={skillVariants}
+                    whileHover={{
+                      scale: 1.1,
+                      boxShadow: '0 5px 15px rgba(14, 165, 233, 0.3)',
+                      y: -5,
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm hover:shadow-md hover:text-primary-600 transition-colors duration-200 cursor-default"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
