@@ -1,21 +1,61 @@
-import React from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
+import {
+  Code2,
+  Server,
+  Wrench,
+  Layers,
+  Database,
+  Workflow,
+  Palette,
+  Terminal,
+  Cloud,
+  Box,
+  Figma as FigmaIcon,
+  TestTube
+} from 'lucide-react'
 
 const Skills = () => {
   const { theme } = useTheme()
+  const [hoveredSkill, setHoveredSkill] = useState(null)
+
   const skillCategories = [
     {
       category: 'Frontend',
-      skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Redux', 'HTML/CSS'],
+      icon: Code2,
+      skills: [
+        { name: 'React', level: 95, icon: Layers },
+        { name: 'Next.js', level: 90, icon: Workflow },
+        { name: 'TypeScript', level: 85, icon: Code2 },
+        { name: 'Tailwind CSS', level: 95, icon: Palette },
+        { name: 'Redux', level: 80, icon: Database },
+        { name: 'HTML/CSS', level: 95, icon: Code2 },
+      ],
     },
     {
       category: 'Backend',
-      skills: ['Node.js', 'Express', 'Python', 'REST APIs', 'GraphQL', 'PostgreSQL'],
+      icon: Server,
+      skills: [
+        { name: 'Node.js', level: 90, icon: Server },
+        { name: 'Express', level: 85, icon: Workflow },
+        { name: 'Python', level: 80, icon: Terminal },
+        { name: 'REST APIs', level: 90, icon: Layers },
+        { name: 'GraphQL', level: 75, icon: Database },
+        { name: 'PostgreSQL', level: 80, icon: Database },
+      ],
     },
     {
-      category: 'Tools & Others',
-      skills: ['Git', 'Docker', 'AWS', 'Vercel', 'Figma', 'Jest'],
+      category: 'Tools & DevOps',
+      icon: Wrench,
+      skills: [
+        { name: 'Git', level: 90, icon: Workflow },
+        { name: 'Docker', level: 75, icon: Box },
+        { name: 'AWS', level: 70, icon: Cloud },
+        { name: 'Vercel', level: 85, icon: Cloud },
+        { name: 'Figma', level: 80, icon: FigmaIcon },
+        { name: 'Jest', level: 75, icon: TestTube },
+      ],
     },
   ]
 
@@ -34,22 +74,22 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.5, ease: 'easeOut' },
     },
   }
 
   const skillVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
-      scale: 1,
-      transition: { duration: 0.3 },
+      x: 0,
+      transition: { duration: 0.4 },
     },
   }
 
   return (
-    <section 
-      id="skills" 
+    <section
+      id="skills"
       className="py-20 bg-white/80 backdrop-blur-sm relative transition-colors duration-300"
       style={{
         backgroundColor: theme === 'dark'
@@ -72,7 +112,7 @@ const Skills = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="h-1 bg-primary mx-auto"
-          ></motion.div>
+          />
         </motion.div>
 
         <motion.div
@@ -80,61 +120,182 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={index}
-              variants={categoryVariants}
-              whileHover={{
-                y: -10,
-                boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
-                transition: { duration: 0.3 },
-              }}
-              className="bg-gray-100 p-8 rounded-lg transition-colors duration-300"
-              style={{
-                backgroundColor: theme === 'dark'
-                  ? `rgb(var(--card-bg))`
-                  : undefined,
-              }}
-            >
-              <motion.h3
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 text-center"
-              >
-                {category.category}
-              </motion.h3>
+          {skillCategories.map((category, categoryIndex) => {
+            const CategoryIcon = category.icon
+            return (
               <motion.div
-                variants={containerVariants}
-                className="flex flex-wrap gap-3 justify-center"
+                key={categoryIndex}
+                variants={categoryVariants}
+                whileHover={{
+                  y: -10,
+                  boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
+                  transition: { duration: 0.3 },
+                }}
+                className="bg-gray-100 rounded-lg hover:shadow-lg transition-all duration-300 p-8 group"
+                style={{
+                  backgroundColor: theme === 'dark'
+                    ? `rgb(var(--card-bg))`
+                    : undefined,
+                }}
               >
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skillIndex}
-                    variants={skillVariants}
-                    whileHover={{
-                      scale: 1.1,
-                      y: -5,
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-white text-gray-700 dark:text-gray-200 rounded-lg shadow-sm hover:shadow-md transition-colors duration-200 cursor-default"
-                    style={{
-                      backgroundColor: theme === 'dark'
-                        ? `rgb(var(--bg-dark-alt))`
-                        : undefined,
-                    }}
-                    onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
-                    onMouseLeave={(e) => e.target.style.color = ''}
+                {/* Category Header */}
+                <div className="flex items-center justify-center mb-8">
+                  <motion.div
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="mr-3"
+                    style={{ color: 'var(--color-primary)' }}
                   >
-                    {skill}
-                  </motion.span>
-                ))}
+                    <CategoryIcon size={32} />
+                  </motion.div>
+                  <h3
+                    className="text-2xl font-semibold text-gray-900 dark:text-white transition-colors duration-300"
+                    onMouseEnter={(e) => {
+                      const parent = e.target.closest('.group')
+                      if (parent) e.target.style.color = 'var(--color-primary-hover)'
+                    }}
+                    onMouseLeave={(e) => (e.target.style.color = '')}
+                  >
+                    {category.category}
+                  </h3>
+                </div>
+
+                {/* Skills List */}
+                <motion.div
+                  variants={containerVariants}
+                  className="space-y-6"
+                >
+                  {category.skills.map((skill, skillIndex) => {
+                    const SkillIcon = skill.icon
+                    const skillKey = `${categoryIndex}-${skillIndex}`
+                    const isHovered = hoveredSkill === skillKey
+
+                    return (
+                      <motion.div
+                        key={skillIndex}
+                        variants={skillVariants}
+                        onMouseEnter={() => setHoveredSkill(skillKey)}
+                        onMouseLeave={() => setHoveredSkill(null)}
+                        className="relative"
+                      >
+                        {/* Skill Name and Percentage */}
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <motion.div
+                              animate={{
+                                rotate: isHovered ? 360 : 0,
+                                scale: isHovered ? 1.2 : 1,
+                              }}
+                              transition={{ duration: 0.5 }}
+                              style={{
+                                color: isHovered
+                                  ? 'var(--color-primary-hover)'
+                                  : 'var(--color-primary)',
+                              }}
+                            >
+                              <SkillIcon size={18} />
+                            </motion.div>
+                            <span
+                              className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-200"
+                              style={{
+                                color: isHovered
+                                  ? 'var(--color-primary-hover)'
+                                  : undefined,
+                              }}
+                            >
+                              {skill.name}
+                            </span>
+                          </div>
+                          <motion.span
+                            animate={{
+                              scale: isHovered ? 1.15 : 1,
+                            }}
+                            className="text-xs font-semibold text-gray-500 dark:text-gray-400"
+                            style={{
+                              color: isHovered
+                                ? 'var(--color-primary-hover)'
+                                : undefined,
+                            }}
+                          >
+                            {skill.level}%
+                          </motion.span>
+                        </div>
+
+                        {/* Progress Bar */}
+                        <div className="relative h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                          <motion.div
+                            className="absolute inset-y-0 left-0 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true }}
+                            transition={{
+                              duration: 1,
+                              delay: skillIndex * 0.1,
+                              ease: 'easeOut',
+                            }}
+                            style={{
+                              backgroundColor: isHovered
+                                ? 'var(--color-primary-hover)'
+                                : 'var(--color-primary)',
+                            }}
+                          >
+                            {/* Shimmer Effect */}
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                              animate={{
+                                x: ['-100%', '200%'],
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatDelay: 1,
+                                ease: 'linear',
+                              }}
+                            />
+                          </motion.div>
+
+                          {/* Hover Indicator */}
+                          <motion.div
+                            className="absolute inset-y-0 left-0 rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{
+                              width: isHovered ? `${skill.level}%` : 0,
+                              opacity: isHovered ? 0.3 : 0,
+                            }}
+                            transition={{ duration: 0.3 }}
+                            style={{
+                              backgroundColor: 'var(--color-accent)',
+                            }}
+                          />
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            )
+          })}
+        </motion.div>
+
+        {/* Bottom Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <p
+            className="text-gray-600 dark:text-gray-400 transition-colors duration-300 cursor-default inline-block"
+            onMouseEnter={(e) =>
+              (e.target.style.color = 'var(--color-primary-hover)')
+            }
+            onMouseLeave={(e) => (e.target.style.color = '')}
+          >
+            Always learning and exploring new technologies
+          </p>
         </motion.div>
       </div>
     </section>
@@ -142,4 +303,3 @@ const Skills = () => {
 }
 
 export default Skills
-
