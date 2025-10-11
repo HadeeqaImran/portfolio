@@ -43,7 +43,7 @@ const Hero = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
           >
             Hi, I'm{' '}
             <span className="text-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">
@@ -53,18 +53,18 @@ const Hero = () => {
           
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl text-gray-600 mb-8"
+            className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8"
           >
-            <span className="inline-block hover:text-primary-600 transition-colors duration-300">Full Stack Developer</span>
+            <span className="inline-block hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-300">Full Stack Developer</span>
             {' | '}
-            <span className="inline-block hover:text-primary-600 transition-colors duration-300">Designer</span>
+            <span className="inline-block hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-300">Designer</span>
             {' | '}
-            <span className="inline-block hover:text-primary-600 transition-colors duration-300">Problem Solver</span>
+            <span className="inline-block hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-300">Problem Solver</span>
           </motion.p>
           
           <motion.p
             variants={itemVariants}
-            className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto"
           >
             I build beautiful, functional, and user-friendly web applications.
             Passionate about creating seamless digital experiences.
@@ -78,7 +78,7 @@ const Hero = () => {
               href="#contact"
               whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(14, 165, 233, 0.3)' }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 font-medium"
+              className="px-8 py-3 bg-primary-600 dark:bg-blue-600 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-blue-700 transition-colors duration-200 font-medium"
             >
               Get In Touch
             </motion.a>
@@ -86,7 +86,7 @@ const Hero = () => {
               href="#projects"
               whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(14, 165, 233, 0.2)' }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-lg hover:bg-primary-50 transition-colors duration-200 font-medium"
+              className="px-8 py-3 border-2 border-primary-600 dark:border-blue-400 text-primary-600 dark:text-blue-400 rounded-lg hover:bg-primary-50 dark:hover:bg-blue-950 transition-colors duration-200 font-medium"
             >
               View Work
             </motion.a>
@@ -109,7 +109,7 @@ const Hero = () => {
                 variants={socialVariants}
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200"
               >
                 <social.Icon size={28} />
               </motion.a>
@@ -128,7 +128,7 @@ const Hero = () => {
           }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <a href="#about" className="text-gray-400 hover:text-primary-600 transition-colors duration-200">
+          <a href="#about" className="text-gray-400 dark:text-gray-500 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200">
             <ArrowDown size={32} />
           </a>
         </motion.div>

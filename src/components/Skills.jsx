@@ -46,7 +46,7 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="py-20 bg-white relative">
+    <section id="skills" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,13 +55,13 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills</h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Skills</h2>
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary-600 mx-auto"
+            className="h-1 bg-primary-600 dark:bg-blue-500 mx-auto"
           ></motion.div>
         </motion.div>
 
@@ -81,14 +81,14 @@ const Skills = () => {
                 boxShadow: '0 20px 40px rgba(14, 165, 233, 0.15)',
                 transition: { duration: 0.3 },
               }}
-              className="bg-gray-50 p-8 rounded-lg"
+              className="bg-gray-50 dark:bg-slate-800 p-8 rounded-lg transition-colors duration-300"
             >
               <motion.h3
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="text-2xl font-semibold text-gray-900 mb-6 text-center"
+                className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 text-center"
               >
                 {category.category}
               </motion.h3>
@@ -106,7 +106,7 @@ const Skills = () => {
                       y: -5,
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm hover:shadow-md hover:text-primary-600 transition-colors duration-200 cursor-default"
+                    className="px-4 py-2 bg-white dark:bg-slate-900 text-gray-700 dark:text-gray-300 rounded-lg shadow-sm hover:shadow-md hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200 cursor-default"
                   >
                     {skill}
                   </motion.span>

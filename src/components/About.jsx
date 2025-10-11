@@ -50,7 +50,7 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="py-20 bg-white relative">
+    <section id="about" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,13 +59,13 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary-600 mx-auto"
+            className="h-1 bg-primary-600 dark:bg-blue-500 mx-auto"
           ></motion.div>
         </motion.div>
 
@@ -76,12 +76,12 @@ const About = () => {
           viewport={{ once: true, margin: '-100px' }}
           className="max-w-3xl mx-auto mb-16"
         >
-          <motion.p variants={itemVariants} className="text-lg text-gray-600 leading-relaxed mb-6">
+          <motion.p variants={itemVariants} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
             I'm a passionate full-stack developer with a love for creating elegant solutions
             to complex problems. With expertise in modern web technologies, I specialize in
             building responsive, user-friendly applications that make a difference.
           </motion.p>
-          <motion.p variants={itemVariants} className="text-lg text-gray-600 leading-relaxed">
+          <motion.p variants={itemVariants} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             When I'm not coding, you can find me exploring new technologies, contributing to
             open-source projects, or sharing knowledge with the developer community.
           </motion.p>
@@ -103,19 +103,19 @@ const About = () => {
                 boxShadow: '0 20px 40px rgba(14, 165, 233, 0.15)',
                 transition: { duration: 0.3 },
               }}
-              className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-shadow duration-300 group"
+              className="bg-gray-50 dark:bg-slate-800 p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
             >
               <motion.div
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
-                className="text-primary-600 mb-4 inline-block"
+                className="text-primary-600 dark:text-blue-400 mb-4 inline-block"
               >
                 {feature.icon}
               </motion.div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                 {feature.title}
               </h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>

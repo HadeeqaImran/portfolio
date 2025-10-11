@@ -50,7 +50,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 relative">
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-slate-950 relative transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,13 +59,13 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Projects</h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Projects</h2>
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary-600 mx-auto"
+            className="h-1 bg-primary-600 dark:bg-blue-500 mx-auto"
           ></motion.div>
         </motion.div>
 
@@ -84,7 +84,7 @@ const Projects = () => {
                 y: -10,
                 transition: { duration: 0.3 },
               }}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 group"
+              className="bg-white dark:bg-slate-900 rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group"
             >
               <div className="relative h-48 overflow-hidden">
                 <motion.img
@@ -97,7 +97,7 @@ const Projects = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-primary-600 bg-opacity-10 flex items-center justify-center"
+                  className="absolute inset-0 bg-primary-600 dark:bg-blue-600 bg-opacity-10 dark:bg-opacity-20 flex items-center justify-center"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -109,7 +109,7 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full hover:bg-primary-600 hover:text-white transition-colors duration-200"
+                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:bg-primary-600 dark:hover:bg-blue-600 hover:text-white transition-colors duration-200"
                     >
                       <Github size={20} />
                     </a>
@@ -117,7 +117,7 @@ const Projects = () => {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full hover:bg-primary-600 hover:text-white transition-colors duration-200"
+                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:bg-primary-600 dark:hover:bg-blue-600 hover:text-white transition-colors duration-200"
                     >
                       <ExternalLink size={20} />
                     </a>
@@ -125,16 +125,16 @@ const Projects = () => {
                 </motion.div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <motion.span
                       key={tagIndex}
                       whileHover={{ scale: 1.1, y: -2 }}
-                      className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full cursor-default"
+                      className="px-3 py-1 bg-primary-100 dark:bg-blue-950 text-primary-700 dark:text-blue-400 text-sm rounded-full cursor-default"
                     >
                       {tag}
                     </motion.span>
@@ -145,7 +145,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                    className="flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200"
                   >
                     <Github size={20} className="mr-1" />
                     Code
@@ -154,7 +154,7 @@ const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                    className="flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200"
                   >
                     <ExternalLink size={20} className="mr-1" />
                     Live
