@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 const Skills = () => {
+  const { theme } = useTheme()
   const skillCategories = [
     {
       category: 'Frontend',
@@ -46,7 +48,15 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="py-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm relative transition-colors duration-300">
+    <section 
+      id="skills" 
+      className="py-20 bg-white/80 backdrop-blur-sm relative transition-colors duration-300"
+      style={{
+        backgroundColor: theme === 'dark'
+          ? `rgba(var(--bg-dark), 0.8)`
+          : undefined,
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,7 +91,12 @@ const Skills = () => {
                 boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
                 transition: { duration: 0.3 },
               }}
-              className="bg-gray-50 dark:bg-slate-800 p-8 rounded-lg transition-colors duration-300"
+              className="bg-gray-50 p-8 rounded-lg transition-colors duration-300"
+              style={{
+                backgroundColor: theme === 'dark'
+                  ? `rgb(var(--card-bg))`
+                  : undefined,
+              }}
             >
               <motion.h3
                 initial={{ opacity: 0, y: -20 }}
@@ -106,7 +121,12 @@ const Skills = () => {
                       y: -5,
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-white dark:bg-slate-900 text-gray-700 dark:text-gray-300 rounded-lg shadow-sm hover:shadow-md transition-colors duration-200 cursor-default"
+                    className="px-4 py-2 bg-white text-gray-700 dark:text-gray-200 rounded-lg shadow-sm hover:shadow-md transition-colors duration-200 cursor-default"
+                    style={{
+                      backgroundColor: theme === 'dark'
+                        ? `rgb(var(--bg-dark-alt))`
+                        : undefined,
+                    }}
                     onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
                     onMouseLeave={(e) => e.target.style.color = ''}
                   >

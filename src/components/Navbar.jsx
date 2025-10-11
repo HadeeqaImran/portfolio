@@ -54,9 +54,18 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white dark:bg-slate-900 shadow-md py-4' 
-          : 'bg-white dark:bg-slate-900 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm py-6'
+          ? 'bg-white shadow-md py-4' 
+          : 'bg-white bg-opacity-90 backdrop-blur-sm py-6'
       }`}
+      style={
+        theme === 'dark'
+          ? {
+              backgroundColor: isScrolled
+                ? `rgb(var(--bg-dark))`
+                : `rgba(var(--bg-dark), 0.9)`,
+            }
+          : {}
+      }
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">

@@ -1,12 +1,21 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const { theme } = useTheme()
 
   return (
-    <footer className="bg-gray-900 dark:bg-slate-950 text-white py-12 relative transition-colors duration-300">
+    <footer 
+      className="bg-gray-900 text-white py-12 relative transition-colors duration-300"
+      style={{
+        backgroundColor: theme === 'dark'
+          ? `rgb(var(--bg-dark))`
+          : undefined,
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <motion.div

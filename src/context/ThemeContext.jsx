@@ -22,9 +22,12 @@ export const colorPalettes = {
       accent: '#38bdf8',
       gradient: 'from-blue-400 to-cyan-400',
       particleRgb: '100, 181, 246',
-      bgGradientStart: '15, 23, 42',     // slate-950
-      bgGradientMid: '30, 41, 59',       // slate-800
-      bgGradientEnd: '51, 65, 85',       // slate-700
+      bgGradientStart: '3, 19, 28',      // very dark blue
+      bgGradientMid: '5, 27, 40',        // very dark blue-mid
+      bgGradientEnd: '7, 35, 52',        // very dark blue-end
+      bgDark: '8, 20, 35',               // very dark blue for components
+      bgDarkAlt: '10, 25, 42',           // slightly lighter dark blue
+      cardBg: '15, 35, 55',              // dark blue for cards
     }
   },
   green: {
@@ -45,9 +48,12 @@ export const colorPalettes = {
       accent: '#10b981',
       gradient: 'from-emerald-400 to-green-400',
       particleRgb: '52, 211, 153',
-      bgGradientStart: '15, 23, 42',     // slate-950
-      bgGradientMid: '30, 41, 59',       // slate-800
-      bgGradientEnd: '51, 65, 85',       // slate-700
+      bgGradientStart: '2, 20, 15',      // very dark emerald
+      bgGradientMid: '3, 28, 21',        // very dark emerald-mid
+      bgGradientEnd: '4, 36, 27',        // very dark emerald-end
+      bgDark: '5, 22, 18',               // very dark emerald for components
+      bgDarkAlt: '6, 28, 22',            // slightly lighter dark emerald
+      cardBg: '8, 40, 30',               // dark emerald for cards
     }
   },
   purple: {
@@ -68,9 +74,12 @@ export const colorPalettes = {
       accent: '#8b5cf6',
       gradient: 'from-violet-400 to-purple-400',
       particleRgb: '167, 139, 250',
-      bgGradientStart: '15, 23, 42',     // slate-950
-      bgGradientMid: '30, 41, 59',       // slate-800
-      bgGradientEnd: '51, 65, 85',       // slate-700
+      bgGradientStart: '12, 5, 25',      // very dark violet
+      bgGradientMid: '18, 8, 35',        // very dark violet-mid
+      bgGradientEnd: '24, 10, 45',       // very dark violet-end
+      bgDark: '15, 8, 30',               // very dark violet for components
+      bgDarkAlt: '20, 10, 38',           // slightly lighter dark violet
+      cardBg: '28, 15, 55',              // dark violet for cards
     }
   },
   pink: {
@@ -91,9 +100,12 @@ export const colorPalettes = {
       accent: '#ec4899',
       gradient: 'from-pink-400 to-rose-400',
       particleRgb: '244, 114, 182',
-      bgGradientStart: '15, 23, 42',     // slate-950
-      bgGradientMid: '30, 41, 59',       // slate-800
-      bgGradientEnd: '51, 65, 85',       // slate-700
+      bgGradientStart: '22, 7, 28',      // very dark pink/fuchsia
+      bgGradientMid: '30, 10, 38',       // very dark pink-mid
+      bgGradientEnd: '38, 12, 48',       // very dark pink-end
+      bgDark: '25, 8, 32',               // very dark pink for components
+      bgDarkAlt: '32, 10, 40',           // slightly lighter dark pink
+      cardBg: '45, 15, 55',              // dark pink for cards
     }
   },
   yellow: {
@@ -114,9 +126,12 @@ export const colorPalettes = {
       accent: '#f59e0b',
       gradient: 'from-amber-400 to-yellow-400',
       particleRgb: '251, 191, 36',
-      bgGradientStart: '15, 23, 42',     // slate-950
-      bgGradientMid: '30, 41, 59',       // slate-800
-      bgGradientEnd: '51, 65, 85',       // slate-700
+      bgGradientStart: '20, 15, 2',      // very dark amber
+      bgGradientMid: '28, 20, 3',        // very dark amber-mid
+      bgGradientEnd: '35, 25, 4',        // very dark amber-end
+      bgDark: '22, 16, 3',               // very dark amber for components
+      bgDarkAlt: '30, 22, 5',            // slightly lighter dark amber
+      cardBg: '42, 30, 8',               // dark amber for cards
     }
   },
   brown: {
@@ -137,9 +152,12 @@ export const colorPalettes = {
       accent: '#fb923c',
       gradient: 'from-amber-600 to-orange-400',
       particleRgb: '217, 119, 6',
-      bgGradientStart: '15, 23, 42',     // slate-950
-      bgGradientMid: '30, 41, 59',       // slate-800
-      bgGradientEnd: '51, 65, 85',       // slate-700
+      bgGradientStart: '18, 8, 3',       // very dark orange/brown
+      bgGradientMid: '25, 12, 5',        // very dark orange-mid
+      bgGradientEnd: '32, 15, 6',        // very dark orange-end
+      bgDark: '20, 10, 4',               // very dark brown for components
+      bgDarkAlt: '28, 14, 6',            // slightly lighter dark brown
+      cardBg: '40, 20, 10',              // dark brown for cards
     }
   }
 }
@@ -193,6 +211,13 @@ export const ThemeProvider = ({ children }) => {
     root.style.setProperty('--bg-gradient-start', colors.bgGradientStart)
     root.style.setProperty('--bg-gradient-mid', colors.bgGradientMid)
     root.style.setProperty('--bg-gradient-end', colors.bgGradientEnd)
+    
+    // Dark mode component backgrounds (only set if in dark mode)
+    if (theme === 'dark' && colors.bgDark) {
+      root.style.setProperty('--bg-dark', colors.bgDark)
+      root.style.setProperty('--bg-dark-alt', colors.bgDarkAlt)
+      root.style.setProperty('--card-bg', colors.cardBg)
+    }
     
     // Save to localStorage
     localStorage.setItem('colorPalette', palette)

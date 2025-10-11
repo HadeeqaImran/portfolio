@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 const Projects = () => {
+  const { theme } = useTheme()
   const projects = [
     {
       title: 'Project One',
@@ -50,7 +52,15 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm relative transition-colors duration-300">
+    <section 
+      id="projects" 
+      className="py-20 bg-white/50 backdrop-blur-sm relative transition-colors duration-300"
+      style={{
+        backgroundColor: theme === 'dark'
+          ? `rgba(var(--bg-dark-alt), 0.5)`
+          : undefined,
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -84,7 +94,12 @@ const Projects = () => {
                 y: -10,
                 transition: { duration: 0.3 },
               }}
-              className="bg-white dark:bg-slate-900 rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group"
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group"
+              style={{
+                backgroundColor: theme === 'dark'
+                  ? `rgb(var(--card-bg))`
+                  : undefined,
+              }}
             >
               <div className="relative h-48 overflow-hidden">
                 <motion.img

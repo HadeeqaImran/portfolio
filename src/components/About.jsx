@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Code, Palette, Zap } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 const About = () => {
+  const { theme } = useTheme()
   const features = [
     {
       icon: <Code size={32} />,
@@ -50,7 +52,15 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="py-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm relative transition-colors duration-300">
+    <section 
+      id="about" 
+      className="py-20 bg-white/80 backdrop-blur-sm relative transition-colors duration-300"
+      style={{
+        backgroundColor: theme === 'dark'
+          ? `rgba(var(--bg-dark), 0.8)`
+          : undefined,
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -103,7 +113,12 @@ const About = () => {
                 boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
                 transition: { duration: 0.3 },
               }}
-              className="bg-gray-50 dark:bg-slate-800 p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
+              className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
+              style={{
+                backgroundColor: theme === 'dark'
+                  ? `rgb(var(--card-bg))`
+                  : undefined,
+              }}
             >
               <motion.div
                 whileHover={{ rotate: 360, scale: 1.1 }}

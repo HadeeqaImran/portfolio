@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 const Contact = () => {
+  const { theme } = useTheme()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -63,7 +65,15 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm relative transition-colors duration-300">
+    <section 
+      id="contact" 
+      className="py-20 bg-white/50 backdrop-blur-sm relative transition-colors duration-300"
+      style={{
+        backgroundColor: theme === 'dark'
+          ? `rgba(var(--bg-dark-alt), 0.5)`
+          : undefined,
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -164,7 +174,10 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
+                  style={{
+                    backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+                  }}
                 />
               </motion.div>
               <motion.div
@@ -183,7 +196,10 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
+                  style={{
+                    backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+                  }}
                 />
               </motion.div>
               <motion.div
@@ -202,7 +218,10 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200 resize-none"
+                  style={{
+                    backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+                  }}
                 ></textarea>
               </motion.div>
               <motion.button
