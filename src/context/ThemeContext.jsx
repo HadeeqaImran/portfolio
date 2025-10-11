@@ -240,6 +240,7 @@ export const ThemeProvider = ({ children }) => {
       palette, 
       changePalette, 
       getCurrentColors,
+      colorPalettes,
       availablePalettes: Object.keys(colorPalettes)
     }}>
       {children}

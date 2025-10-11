@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
+import ColorSlider from './ColorSlider'
 
 const Hero = () => {
   const containerVariants = {
@@ -152,6 +153,11 @@ const Hero = () => {
             <ArrowDown size={32} />
           </a>
         </motion.div>
+        
+        {/* Color Palette Slider */}
+        <div className="absolute bottom-8 right-3 sm:right-6 lg:right-8">
+          <ColorSlider />
+        </div>
       </div>
     </section>
   )

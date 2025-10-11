@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
-import ColorPaletteSelector from './ColorPaletteSelector'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -102,9 +101,6 @@ const Navbar = () => {
               </motion.a>
             ))}
             
-            {/* Color Palette Selector */}
-            <ColorPaletteSelector />
-            
             {/* Theme Toggle Button */}
             <motion.button
               whileHover={{ scale: 1.1, rotate: 180 }}
@@ -112,6 +108,9 @@ const Navbar = () => {
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200"
               aria-label="Toggle theme"
+              style={{
+                backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+              }}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
@@ -119,13 +118,15 @@ const Navbar = () => {
 
           {/* Mobile Menu Button and Theme Toggle */}
           <div className="md:hidden flex items-center space-x-3">
-            <ColorPaletteSelector />
             <motion.button
               whileHover={{ scale: 1.1, rotate: 180 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300"
               aria-label="Toggle theme"
+              style={{
+                backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+              }}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
