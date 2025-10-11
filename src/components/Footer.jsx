@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <footer 
-      className="bg-white dark:bg-slate-900 text-gray-900 dark:text-white py-12 relative transition-colors duration-300 border-t border-gray-200 dark:border-gray-700"
+      className="bg-white dark:bg-slate-900 text-gray-900 dark:text-white py-12 relative transition-colors duration-300"
       style={{
         backgroundColor: theme === 'dark'
           ? `rgb(var(--bg-dark))`

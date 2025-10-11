@@ -86,7 +86,6 @@ const ColorSlider = () => {
         className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-3 sm:p-4 lg:p-5 w-[200px] sm:w-[280px] lg:w-[320px]"
         style={{
           backgroundColor: theme === 'dark' ? `rgba(var(--bg-dark), 0.95)` : undefined,
-          borderColor: theme === 'dark' ? `rgba(var(--color-primary), 0.3)` : undefined,
         }}
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.2 }}
