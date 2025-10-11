@@ -9,7 +9,7 @@ A modern, responsive portfolio website built with React, Vite, and Tailwind CSS.
 - ⚡ Fast performance with Vite
 - 🎨 Styled with Tailwind CSS
 - 🎯 Smooth scrolling navigation
-- 🎭 **Interactive particle background animation**
+- 🎭 **Animated network graph background** - moving nodes that flee from your cursor with connected graph edges!
 - 💫 **Smooth scroll-triggered animations with Framer Motion**
 - ✨ **Beautiful hover effects and transitions**
 - 🎬 **Staggered animations for engaging user experience**

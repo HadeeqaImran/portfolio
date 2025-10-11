@@ -9,7 +9,7 @@ const ParticlesBackground = () => {
 
     const ctx = canvas.getContext('2d')
     let animationFrameId
-    let particles = []
+    let nodes = []
 
     // Set canvas size
     const setCanvasSize = () => {
@@ -18,61 +18,128 @@ const ParticlesBackground = () => {
     }
     setCanvasSize()
 
-    // Particle class
-    class Particle {
+    // Network Node class
+    class NetworkNode {
       constructor() {
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
-        this.size = Math.random() * 3 + 1
-        this.speedX = Math.random() * 0.5 - 0.25
-        this.speedY = Math.random() * 0.5 - 0.25
-        this.opacity = Math.random() * 0.5 + 0.2
+        this.baseX = this.x
+        this.baseY = this.y
+        this.size = Math.random() * 2.5 + 2.5 // Slightly larger nodes
+        this.baseSize = this.size
+        this.speedX = (Math.random() - 0.5) * 0.3
+        this.speedY = (Math.random() - 0.5) * 0.3
+        this.opacity = Math.random() * 0.2 + 0.25 // Lower dot opacity
+        this.velocityX = 0
+        this.velocityY = 0
+        this.density = Math.random() * 20 + 20
       }
 
-      update() {
-        this.x += this.speedX
-        this.y += this.speedY
+      update(mouse) {
+        // Calculate distance from mouse
+        const dx = mouse.x - this.x
+        const dy = mouse.y - this.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < mouse.radius) {
+          // Phobic behavior - run away from mouse
+          const force = (mouse.radius - distance) / mouse.radius
+          const angle = Math.atan2(this.y - mouse.y, this.x - mouse.x)
+          
+          // Apply fleeing force
+          this.velocityX = Math.cos(angle) * force * this.density * 0.4
+          this.velocityY = Math.sin(angle) * force * this.density * 0.4
+          
+          // Make node slightly bigger when fleeing
+          this.size = this.baseSize * 1.5
+        } else {
+          // Return to base position
+          this.velocityX *= 0.92
+          this.velocityY *= 0.92
+          
+          // Gentle pull back to base position
+          const returnForce = 0.015
+          this.velocityX += (this.baseX - this.x) * returnForce
+          this.velocityY += (this.baseY - this.y) * returnForce
+          
+          // Return to base size
+          this.size += (this.baseSize - this.size) * 0.08
+        }
+
+        // Apply velocity and base speed
+        this.x += this.velocityX + this.speedX
+        this.y += this.velocityY + this.speedY
+
+        // Update base position (for continuous movement)
+        this.baseX += this.speedX
+        this.baseY += this.speedY
 
         // Wrap around screen
-        if (this.x > canvas.width) this.x = 0
-        if (this.x < 0) this.x = canvas.width
-        if (this.y > canvas.height) this.y = 0
-        if (this.y < 0) this.y = canvas.height
+        if (this.baseX > canvas.width) {
+          this.baseX = 0
+          this.x = 0
+        }
+        if (this.baseX < 0) {
+          this.baseX = canvas.width
+          this.x = canvas.width
+        }
+        if (this.baseY > canvas.height) {
+          this.baseY = 0
+          this.y = 0
+        }
+        if (this.baseY < 0) {
+          this.baseY = canvas.height
+          this.y = canvas.height
+        }
       }
 
       draw() {
-        ctx.fillStyle = `rgba(14, 165, 233, ${this.opacity})`
+        // Draw node with glow effect
+        ctx.shadowBlur = 6
+        ctx.shadowColor = `rgba(14, 165, 233, ${this.opacity * 0.4})`
+        ctx.fillStyle = `rgba(14, 165, 233, ${this.opacity * 0.45})` // Lower dot opacity
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
         ctx.fill()
+        ctx.shadowBlur = 0
       }
     }
 
-    // Create particles
-    const createParticles = () => {
-      const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000)
-      for (let i = 0; i < numberOfParticles; i++) {
-        particles.push(new Particle())
+    // Create nodes
+    const createNodes = () => {
+      const numberOfNodes = Math.floor((canvas.width * canvas.height) / 15000) // Balanced quantity
+      for (let i = 0; i < numberOfNodes; i++) {
+        nodes.push(new NetworkNode())
       }
     }
-    createParticles()
+    createNodes()
 
-    // Connect particles
-    const connectParticles = () => {
-      const maxDistance = 120
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
+    // Connect nearby nodes with lines (graph edges)
+    const connectNodes = () => {
+      const maxDistance = 150
+      
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x
+          const dy = nodes[i].y - nodes[j].y
           const distance = Math.sqrt(dx * dx + dy * dy)
 
           if (distance < maxDistance) {
-            const opacity = (1 - distance / maxDistance) * 0.3
-            ctx.strokeStyle = `rgba(14, 165, 233, ${opacity})`
-            ctx.lineWidth = 1
+            const opacity = (1 - distance / maxDistance) * 0.2 // More visible lines
+            
+            // Create gradient for lines
+            const gradient = ctx.createLinearGradient(
+              nodes[i].x, nodes[i].y,
+              nodes[j].x, nodes[j].y
+            )
+            gradient.addColorStop(0, `rgba(14, 165, 233, ${opacity * nodes[i].opacity * 0.5})`) // More visible
+            gradient.addColorStop(1, `rgba(14, 165, 233, ${opacity * nodes[j].opacity * 0.5})`) // More visible
+            
+            ctx.strokeStyle = gradient
+            ctx.lineWidth = 1 // Slightly thicker for graph appearance
             ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
+            ctx.moveTo(nodes[i].x, nodes[i].y)
+            ctx.lineTo(nodes[j].x, nodes[j].y)
             ctx.stroke()
           }
         }
@@ -80,7 +147,11 @@ const ParticlesBackground = () => {
     }
 
     // Mouse interaction
-    let mouse = { x: null, y: null, radius: 150 }
+    let mouse = { 
+      x: null, 
+      y: null, 
+      radius: 150
+    }
 
     const handleMouseMove = (e) => {
       mouse.x = e.clientX
@@ -95,43 +166,37 @@ const ParticlesBackground = () => {
     canvas.addEventListener('mousemove', handleMouseMove)
     canvas.addEventListener('mouseleave', handleMouseLeave)
 
-    // Mouse particle interaction
-    const interactWithMouse = () => {
+    // Animation loop
+    const animate = () => {
+      // Create light gradient background matching the blue color scheme
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
+      gradient.addColorStop(0, 'rgba(240, 249, 255, 0.3)') // Very light blue (primary-50) - lighter
+      gradient.addColorStop(0.5, 'rgba(224, 242, 254, 0.25)') // Light blue (primary-100) - lighter
+      gradient.addColorStop(1, 'rgba(186, 230, 253, 0.2)') // Lighter blue (primary-200) - lighter
+      ctx.fillStyle = gradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+      // Draw connections first (behind nodes)
+      connectNodes()
+
+      // Update and draw nodes
+      nodes.forEach((node) => {
+        if (mouse.x && mouse.y) {
+          node.update(mouse)
+        } else {
+          node.update({ x: -1000, y: -1000, radius: 0 })
+        }
+        node.draw()
+      })
+
+      // Draw subtle mouse indicator
       if (mouse.x && mouse.y) {
-        particles.forEach((particle) => {
-          const dx = particle.x - mouse.x
-          const dy = particle.y - mouse.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < mouse.radius) {
-            const force = (mouse.radius - distance) / mouse.radius
-            const directionX = dx / distance
-            const directionY = dy / distance
-            particle.x += directionX * force * 2
-            particle.y += directionY * force * 2
-          }
-        })
-
-        // Draw mouse circle
-        ctx.strokeStyle = 'rgba(14, 165, 233, 0.1)'
-        ctx.lineWidth = 2
+        ctx.strokeStyle = 'rgba(14, 165, 233, 0.06)' // Slightly more visible
+        ctx.lineWidth = 1.5
         ctx.beginPath()
         ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2)
         ctx.stroke()
       }
-    }
-
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      particles.forEach((particle) => {
-        particle.update()
-        particle.draw()
-      })
-
-      connectParticles()
-      interactWithMouse()
 
       animationFrameId = requestAnimationFrame(animate)
     }
@@ -140,8 +205,8 @@ const ParticlesBackground = () => {
     // Handle resize
     const handleResize = () => {
       setCanvasSize()
-      particles = []
-      createParticles()
+      nodes = []
+      createNodes()
     }
 
     window.addEventListener('resize', handleResize)
@@ -159,7 +224,6 @@ const ParticlesBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.4 }}
     />
   )
 }
