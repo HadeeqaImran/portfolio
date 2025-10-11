@@ -159,8 +159,11 @@ const Projects = () => {
                     <motion.span
                       key={tagIndex}
                       whileHover={{ scale: 1.1, y: -2 }}
-                      className="px-3 py-1 bg-gray-100 dark:bg-slate-800 text-sm rounded-full cursor-default transition-colors duration-200"
-                      style={{ color: 'var(--color-primary)' }}
+                      className="px-3 py-1 bg-gray-100 text-sm rounded-full cursor-default transition-colors duration-200"
+                      style={{
+                        color: 'var(--color-primary)',
+                        backgroundColor: theme === 'dark' ? `rgb(var(--bg-dark))` : undefined
+                      }}
                     >
                       {tag}
                     </motion.span>
