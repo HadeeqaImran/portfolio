@@ -133,7 +133,7 @@ const Skills = () => {
                   boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
                   transition: { duration: 0.3 },
                 }}
-                className="bg-gray-100 rounded-lg hover:shadow-lg transition-all duration-300 p-8 group"
+                className="bg-white rounded-lg hover:shadow-lg transition-all duration-300 p-8 group"
                 style={{
                   backgroundColor: theme === 'dark'
                     ? `rgb(var(--card-bg))`
