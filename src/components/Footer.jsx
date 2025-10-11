@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
+import UpworkIcon from './UpworkIcon'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -37,9 +38,10 @@ const Footer = () => {
             className="flex space-x-6 mb-6 md:mb-0"
           >
             {[
-              { href: 'https://github.com', Icon: Github },
-              { href: 'https://linkedin.com', Icon: Linkedin },
-              { href: 'mailto:your.email@example.com', Icon: Mail },
+              { href: 'https://github.com/HadeeqaImran', Icon: Github },
+              { href: 'https://www.linkedin.com/in/hadeeqa-imran', Icon: Linkedin },
+              { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', Icon: UpworkIcon },
+              { href: 'mailto:hadeeqaimran786@gmail.com', Icon: Mail },
             ].map((social, index) => (
               <motion.a
                 key={index}

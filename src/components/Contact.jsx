@@ -29,19 +29,19 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       label: 'Email',
-      value: 'your.email@example.com',
-      href: 'mailto:your.email@example.com',
+      value: 'hadeeqaimran786@gmail.com',
+      href: 'mailto:hadeeqaimran786@gmail.com',
     },
     {
       icon: <Phone size={24} />,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+92 334 4418107',
+      href: 'tel:+923344418107',
     },
     {
       icon: <MapPin size={24} />,
       label: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Pakistan',
     },
   ]
 
@@ -174,9 +174,10 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
                   style={{
                     backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+                    borderColor: theme === 'dark' ? `rgb(var(--bg-dark))` : '#e5e7eb',
                   }}
                 />
               </motion.div>
@@ -196,9 +197,10 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
                   style={{
                     backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+                    borderColor: theme === 'dark' ? `rgb(var(--bg-dark))` : '#e5e7eb',
                   }}
                 />
               </motion.div>
@@ -218,9 +220,10 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 border bg-white text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200 resize-none"
                   style={{
                     backgroundColor: theme === 'dark' ? `rgb(var(--card-bg))` : undefined,
+                    borderColor: theme === 'dark' ? `rgb(var(--bg-dark))` : '#e5e7eb',
                   }}
                 ></textarea>
               </motion.div>

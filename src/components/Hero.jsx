@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
 import ColorSlider from './ColorSlider'
+import UpworkIcon from './UpworkIcon'
 
 const Hero = () => {
   const containerVariants = {
@@ -111,9 +112,10 @@ const Hero = () => {
             className="flex justify-center space-x-6"
           >
             {[
-              { href: 'https://github.com', Icon: Github },
-              { href: 'https://linkedin.com', Icon: Linkedin },
-              { href: 'mailto:your.email@example.com', Icon: Mail },
+              { href: 'https://github.com/HadeeqaImran', Icon: Github },
+              { href: 'https://www.linkedin.com/in/hadeeqa-imran', Icon: Linkedin },
+              { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', Icon: UpworkIcon },
+              { href: 'mailto:hadeeqaimran786@gmail.com', Icon: Mail },
             ].map((social, index) => (
               <motion.a
                 key={index}
