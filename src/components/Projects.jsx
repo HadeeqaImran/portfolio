@@ -101,10 +101,10 @@ const Projects = () => {
                   : undefined,
               }}
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden rounded-t-lg">
                 <motion.img
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
+                  whileHover={{ scale: 1.15 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
@@ -112,8 +112,12 @@ const Projects = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-opacity-10 dark:bg-opacity-20 flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--color-primary)' }}
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{
+                    background: theme === 'dark'
+                      ? `linear-gradient(135deg, rgba(var(--particle-rgb), 0.15), rgba(var(--particle-rgb), 0.2))`
+                      : `linear-gradient(135deg, rgba(var(--particle-rgb), 0.1), rgba(var(--particle-rgb), 0.15))`
+                  }}
                 >
                   <motion.div
                     initial={{ scale: 0 }}
