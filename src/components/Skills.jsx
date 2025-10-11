@@ -117,7 +117,6 @@ const Skills = () => {
                     variants={skillVariants}
                     whileHover={{
                       scale: 1.1,
-                      boxShadow: `0 5px 15px rgba(var(--particle-rgb), 0.3)`,
                       y: -5,
                     }}
                     whileTap={{ scale: 0.95 }}
