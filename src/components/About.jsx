@@ -113,7 +113,7 @@ const About = () => {
                 boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
                 transition: { duration: 0.3 },
               }}
-              className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
+              className="bg-gray-100 p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
               style={{
                 backgroundColor: theme === 'dark'
                   ? `rgb(var(--card-bg))`

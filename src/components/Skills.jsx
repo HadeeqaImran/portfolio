@@ -91,7 +91,7 @@ const Skills = () => {
                 boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
                 transition: { duration: 0.3 },
               }}
-              className="bg-gray-50 p-8 rounded-lg transition-colors duration-300"
+              className="bg-gray-100 p-8 rounded-lg transition-colors duration-300"
               style={{
                 backgroundColor: theme === 'dark'
                   ? `rgb(var(--card-bg))`
