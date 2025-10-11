@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <footer 
-      className="bg-gray-900 text-white py-12 relative transition-colors duration-300"
+      className="bg-white dark:bg-slate-900 text-gray-900 dark:text-white py-12 relative transition-colors duration-300 border-t border-gray-200 dark:border-gray-700"
       style={{
         backgroundColor: theme === 'dark'
           ? `rgb(var(--bg-dark))`
@@ -26,7 +26,7 @@ const Footer = () => {
             className="mb-6 md:mb-0"
           >
             <h3 className="text-2xl font-bold text-gradient mb-2">Portfolio</h3>
-            <p className="text-gray-400 dark:text-gray-500">Building digital experiences</p>
+            <p className="text-gray-600 dark:text-gray-400">Building digital experiences</p>
           </motion.div>
 
           <motion.div
@@ -48,7 +48,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, y: -5, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-gray-400 dark:text-gray-500 transition-colors duration-200"
+                className="text-gray-600 dark:text-gray-400 transition-colors duration-200"
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
                 onMouseLeave={(e) => e.currentTarget.style.color = ''}
               >
@@ -63,9 +63,9 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="border-t border-gray-800 dark:border-slate-800 mt-8 pt-8 text-center"
+          className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 text-center"
         >
-          <p className="text-gray-400 dark:text-gray-500 flex items-center justify-center">
+          <p className="text-gray-600 dark:text-gray-400 flex items-center justify-center">
             Made with{' '}
             <motion.span
               animate={{
