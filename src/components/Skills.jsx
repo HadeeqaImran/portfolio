@@ -25,36 +25,36 @@ const Skills = () => {
       category: 'Frontend',
       icon: Code2,
       skills: [
-        { name: 'React', level: 95, icon: Layers },
-        { name: 'Next.js', level: 90, icon: Workflow },
-        { name: 'TypeScript', level: 85, icon: Code2 },
-        { name: 'Tailwind CSS', level: 95, icon: Palette },
-        { name: 'Redux', level: 80, icon: Database },
-        { name: 'HTML/CSS', level: 95, icon: Code2 },
+        { name: 'React', level: 9.5, icon: Layers },
+        { name: 'Next.js', level: 9, icon: Workflow },
+        { name: 'TypeScript', level: 8.5, icon: Code2 },
+        { name: 'Tailwind CSS', level: 9.5, icon: Palette },
+        { name: 'Redux', level: 8, icon: Database },
+        { name: 'HTML/CSS', level: 9.5, icon: Code2 },
       ],
     },
     {
       category: 'Backend',
       icon: Server,
       skills: [
-        { name: 'Node.js', level: 90, icon: Server },
-        { name: 'Express', level: 85, icon: Workflow },
-        { name: 'Python', level: 80, icon: Terminal },
-        { name: 'REST APIs', level: 90, icon: Layers },
-        { name: 'GraphQL', level: 75, icon: Database },
-        { name: 'PostgreSQL', level: 80, icon: Database },
+        { name: 'Node.js', level: 9, icon: Server },
+        { name: 'Express', level: 8.5, icon: Workflow },
+        { name: 'Python', level: 8, icon: Terminal },
+        { name: 'REST APIs', level: 9, icon: Layers },
+        { name: 'GraphQL', level: 7.5, icon: Database },
+        { name: 'PostgreSQL', level: 8, icon: Database },
       ],
     },
     {
       category: 'Tools & DevOps',
       icon: Wrench,
       skills: [
-        { name: 'Git', level: 90, icon: Workflow },
-        { name: 'Docker', level: 75, icon: Box },
-        { name: 'AWS', level: 70, icon: Cloud },
-        { name: 'Vercel', level: 85, icon: Cloud },
-        { name: 'Figma', level: 80, icon: FigmaIcon },
-        { name: 'Jest', level: 75, icon: TestTube },
+        { name: 'Git', level: 9, icon: Workflow },
+        { name: 'Docker', level: 7.5, icon: Box },
+        { name: 'AWS', level: 7, icon: Cloud },
+        { name: 'Vercel', level: 8.5, icon: Cloud },
+        { name: 'Figma', level: 8, icon: FigmaIcon },
+        { name: 'Jest', level: 7.5, icon: TestTube },
       ],
     },
   ]
@@ -219,7 +219,7 @@ const Skills = () => {
                                 : undefined,
                             }}
                           >
-                            {skill.level}%
+                            {skill.level}/10
                           </motion.span>
                         </div>
 
@@ -228,7 +228,7 @@ const Skills = () => {
                           <motion.div
                             className="absolute inset-y-0 left-0 rounded-full"
                             initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
+                            whileInView={{ width: `${(skill.level / 10) * 100}%` }}
                             viewport={{ once: true }}
                             transition={{
                               duration: 1,
@@ -261,7 +261,7 @@ const Skills = () => {
                             className="absolute inset-y-0 left-0 rounded-full"
                             initial={{ width: 0 }}
                             animate={{
-                              width: isHovered ? `${skill.level}%` : 0,
+                              width: isHovered ? `${(skill.level / 10) * 100}%` : 0,
                               opacity: isHovered ? 0.3 : 0,
                             }}
                             transition={{ duration: 0.3 }}
