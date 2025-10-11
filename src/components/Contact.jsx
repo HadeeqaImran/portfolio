@@ -107,13 +107,9 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-              style={{ color: 'var(--color-primary)' }}
-            >
+            <div style={{ color: 'var(--color-primary)' }}>
               <Terminal size={36} />
-            </motion.div>
+            </div>
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
               Let's Connect
             </h2>
