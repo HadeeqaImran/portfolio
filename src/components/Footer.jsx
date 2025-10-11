@@ -39,7 +39,9 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, y: -5, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-gray-400 dark:text-gray-500 hover:text-primary-400 dark:hover:text-blue-400 transition-colors duration-200"
+                className="text-gray-400 dark:text-gray-500 transition-colors duration-200"
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = ''}
               >
                 <social.Icon size={24} />
               </motion.a>

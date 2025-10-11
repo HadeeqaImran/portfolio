@@ -50,7 +50,7 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300">
+    <section id="about" className="py-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm relative transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ const About = () => {
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary-600 dark:bg-blue-500 mx-auto"
+            className="h-1 bg-primary mx-auto"
           ></motion.div>
         </motion.div>
 
@@ -100,7 +100,7 @@ const About = () => {
               variants={cardVariants}
               whileHover={{
                 y: -10,
-                boxShadow: '0 20px 40px rgba(14, 165, 233, 0.15)',
+                boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
                 transition: { duration: 0.3 },
               }}
               className="bg-gray-50 dark:bg-slate-800 p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
@@ -108,11 +108,19 @@ const About = () => {
               <motion.div
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
-                className="text-primary-600 dark:text-blue-400 mb-4 inline-block"
+                className="mb-4 inline-block"
+                style={{ color: 'var(--color-primary)' }}
               >
                 {feature.icon}
               </motion.div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+              <h3 
+                className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300"
+                onMouseEnter={(e) => {
+                  const parent = e.target.closest('.group')
+                  if (parent) e.target.style.color = 'var(--color-primary-hover)'
+                }}
+                onMouseLeave={(e) => e.target.style.color = ''}
+              >
                 {feature.title}
               </h3>
               <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>

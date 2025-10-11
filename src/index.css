@@ -3,18 +3,60 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-primary: #0284c7;
+    --color-primary-hover: #0369a1;
+    --color-accent: #38bdf8;
+    --particle-rgb: 14, 165, 233;
+    --bg-gradient-start: 240, 249, 255;
+    --bg-gradient-mid: 224, 242, 254;
+    --bg-gradient-end: 186, 230, 253;
+  }
+
   html {
     scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-300;
+    @apply text-gray-900 dark:text-gray-100 transition-colors duration-300;
+    background: linear-gradient(
+      135deg,
+      rgb(var(--bg-gradient-start)) 0%,
+      rgb(var(--bg-gradient-mid)) 50%,
+      rgb(var(--bg-gradient-end)) 100%
+    );
+    min-height: 100vh;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400 dark:from-blue-400 dark:to-cyan-400;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-primary-hover:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .text-primary-hover:hover {
+    color: var(--color-primary-hover);
+  }
+
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+
+  .ring-primary {
+    --tw-ring-color: var(--color-primary);
   }
 }
 

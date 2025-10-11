@@ -95,12 +95,11 @@ const ParticlesBackground = () => {
         }
       }
 
-      draw(isDark) {
-        // Draw node with glow effect - theme aware colors
-        const nodeColor = isDark ? '100, 181, 246' : '14, 165, 233' // Blue for dark, cyan for light
+      draw(particleRgb) {
+        // Draw node with glow effect - using CSS variable colors
         ctx.shadowBlur = 6
-        ctx.shadowColor = `rgba(${nodeColor}, ${this.opacity * 0.4})`
-        ctx.fillStyle = `rgba(${nodeColor}, ${this.opacity * 0.45})` // Lower dot opacity
+        ctx.shadowColor = `rgba(${particleRgb}, ${this.opacity * 0.4})`
+        ctx.fillStyle = `rgba(${particleRgb}, ${this.opacity * 0.45})` // Lower dot opacity
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
         ctx.fill()
@@ -117,10 +116,9 @@ const ParticlesBackground = () => {
     }
     createNodes()
 
-    // Connect nearby nodes with lines (graph edges) - theme aware
-    const connectNodes = (isDark) => {
+    // Connect nearby nodes with lines (graph edges) - using CSS variable colors
+    const connectNodes = (particleRgb) => {
       const maxDistance = 150
-      const lineColor = isDark ? '100, 181, 246' : '14, 165, 233' // Blue for dark, cyan for light
       
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -136,8 +134,8 @@ const ParticlesBackground = () => {
               nodes[i].x, nodes[i].y,
               nodes[j].x, nodes[j].y
             )
-            gradient.addColorStop(0, `rgba(${lineColor}, ${opacity * nodes[i].opacity * 0.5})`) // More visible
-            gradient.addColorStop(1, `rgba(${lineColor}, ${opacity * nodes[j].opacity * 0.5})`) // More visible
+            gradient.addColorStop(0, `rgba(${particleRgb}, ${opacity * nodes[i].opacity * 0.5})`) // More visible
+            gradient.addColorStop(1, `rgba(${particleRgb}, ${opacity * nodes[j].opacity * 0.5})`) // More visible
             
             ctx.strokeStyle = gradient
             ctx.lineWidth = 1 // Slightly thicker for graph appearance
@@ -172,26 +170,24 @@ const ParticlesBackground = () => {
 
     // Animation loop
     const animate = () => {
-      const isDark = document.documentElement.classList.contains('dark')
+      // Get colors from CSS variables
+      const styles = getComputedStyle(document.documentElement)
+      const particleRgb = styles.getPropertyValue('--particle-rgb').trim()
+      const bgStart = styles.getPropertyValue('--bg-gradient-start').trim()
+      const bgMid = styles.getPropertyValue('--bg-gradient-mid').trim()
+      const bgEnd = styles.getPropertyValue('--bg-gradient-end').trim()
       
-      // Create gradient background matching the theme
+      // Create gradient background matching the body gradient
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
-      if (isDark) {
-        // Dark theme - deep blue shades
-        gradient.addColorStop(0, 'rgba(15, 23, 42, 0.5)') // slate-950 with opacity
-        gradient.addColorStop(0.5, 'rgba(30, 41, 59, 0.4)') // slate-800 with opacity
-        gradient.addColorStop(1, 'rgba(51, 65, 85, 0.3)') // slate-700 with opacity
-      } else {
-        // Light theme - light blue shades
-        gradient.addColorStop(0, 'rgba(240, 249, 255, 0.3)') // Very light blue (primary-50)
-        gradient.addColorStop(0.5, 'rgba(224, 242, 254, 0.25)') // Light blue (primary-100)
-        gradient.addColorStop(1, 'rgba(186, 230, 253, 0.2)') // Lighter blue (primary-200)
-      }
+      gradient.addColorStop(0, `rgba(${bgStart}, 0.3)`)
+      gradient.addColorStop(0.5, `rgba(${bgMid}, 0.25)`)
+      gradient.addColorStop(1, `rgba(${bgEnd}, 0.2)`)
+      
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Draw connections first (behind nodes)
-      connectNodes(isDark)
+      connectNodes(particleRgb)
 
       // Update and draw nodes
       nodes.forEach((node) => {
@@ -200,13 +196,12 @@ const ParticlesBackground = () => {
         } else {
           node.update({ x: -1000, y: -1000, radius: 0 })
         }
-        node.draw(isDark)
+        node.draw(particleRgb)
       })
 
       // Draw subtle mouse indicator
       if (mouse.x && mouse.y) {
-        const mouseColor = isDark ? '100, 181, 246' : '14, 165, 233'
-        ctx.strokeStyle = `rgba(${mouseColor}, 0.06)` // Slightly more visible
+        ctx.strokeStyle = `rgba(${particleRgb}, 0.06)` // Slightly more visible
         ctx.lineWidth = 1.5
         ctx.beginPath()
         ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2)

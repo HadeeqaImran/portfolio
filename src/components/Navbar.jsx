@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
+import ColorPaletteSelector from './ColorPaletteSelector'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -78,14 +79,22 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium relative group"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-hover transition-colors duration-200 font-medium relative group"
+                style={{ 
+                  '--tw-text-opacity': 1
+                }}
+                onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
+                onMouseLeave={(e) => e.target.style.color = ''}
               >
                 {link.label}
                 <motion.span
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300"
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"
                 />
               </motion.a>
             ))}
+            
+            {/* Color Palette Selector */}
+            <ColorPaletteSelector />
             
             {/* Theme Toggle Button */}
             <motion.button
@@ -100,7 +109,8 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center space-x-3">
+            <ColorPaletteSelector />
             <motion.button
               whileHover={{ scale: 1.1, rotate: 180 }}
               whileTap={{ scale: 0.9 }}
@@ -137,8 +147,10 @@ const Navbar = () => {
                     key={link.href}
                     variants={itemVariants}
                     href={link.href}
-                    className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium hover:translate-x-2 transition-transform"
+                    className="text-gray-700 dark:text-gray-300 hover:text-primary-hover transition-colors duration-200 font-medium hover:translate-x-2 transition-transform"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
+                    onMouseLeave={(e) => e.target.style.color = ''}
                   >
                     {link.label}
                   </motion.a>

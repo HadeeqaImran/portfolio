@@ -50,7 +50,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-slate-950 relative transition-colors duration-300">
+    <section id="projects" className="py-20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm relative transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ const Projects = () => {
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary-600 dark:bg-blue-500 mx-auto"
+            className="h-1 bg-primary mx-auto"
           ></motion.div>
         </motion.div>
 
@@ -97,7 +97,8 @@ const Projects = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 bg-primary-600 dark:bg-blue-600 bg-opacity-10 dark:bg-opacity-20 flex items-center justify-center"
+                  className="absolute inset-0 bg-opacity-10 dark:bg-opacity-20 flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--color-primary)' }}
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -105,27 +106,36 @@ const Projects = () => {
                     transition={{ duration: 0.3 }}
                     className="flex space-x-4"
                   >
-                    <a
+                    <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:bg-primary-600 dark:hover:bg-blue-600 hover:text-white transition-colors duration-200"
+                      whileHover={{ backgroundColor: 'var(--color-primary)' }}
+                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
                     >
                       <Github size={20} />
-                    </a>
-                    <a
+                    </motion.a>
+                    <motion.a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:bg-primary-600 dark:hover:bg-blue-600 hover:text-white transition-colors duration-200"
+                      whileHover={{ backgroundColor: 'var(--color-primary)' }}
+                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
                     >
                       <ExternalLink size={20} />
-                    </a>
+                    </motion.a>
                   </motion.div>
                 </motion.div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                <h3 
+                  className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300"
+                  onMouseEnter={(e) => {
+                    const parent = e.target.closest('.group')
+                    if (parent) e.target.style.color = 'var(--color-primary-hover)'
+                  }}
+                  onMouseLeave={(e) => e.target.style.color = ''}
+                >
                   {project.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{project.description}</p>
@@ -134,7 +144,8 @@ const Projects = () => {
                     <motion.span
                       key={tagIndex}
                       whileHover={{ scale: 1.1, y: -2 }}
-                      className="px-3 py-1 bg-primary-100 dark:bg-blue-950 text-primary-700 dark:text-blue-400 text-sm rounded-full cursor-default"
+                      className="px-3 py-1 bg-gray-100 dark:bg-slate-800 text-sm rounded-full cursor-default transition-colors duration-200"
+                      style={{ color: 'var(--color-primary)' }}
                     >
                       {tag}
                     </motion.span>
@@ -145,7 +156,9 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200"
+                    className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
                   >
                     <Github size={20} className="mr-1" />
                     Code
@@ -154,7 +167,9 @@ const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200"
+                    className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
                   >
                     <ExternalLink size={20} className="mr-1" />
                     Live

@@ -46,7 +46,7 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300">
+    <section id="skills" className="py-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm relative transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ const Skills = () => {
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary-600 dark:bg-blue-500 mx-auto"
+            className="h-1 bg-primary mx-auto"
           ></motion.div>
         </motion.div>
 
@@ -78,7 +78,7 @@ const Skills = () => {
               variants={categoryVariants}
               whileHover={{
                 y: -10,
-                boxShadow: '0 20px 40px rgba(14, 165, 233, 0.15)',
+                boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
                 transition: { duration: 0.3 },
               }}
               className="bg-gray-50 dark:bg-slate-800 p-8 rounded-lg transition-colors duration-300"
@@ -102,11 +102,13 @@ const Skills = () => {
                     variants={skillVariants}
                     whileHover={{
                       scale: 1.1,
-                      boxShadow: '0 5px 15px rgba(14, 165, 233, 0.3)',
+                      boxShadow: `0 5px 15px rgba(var(--particle-rgb), 0.3)`,
                       y: -5,
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-white dark:bg-slate-900 text-gray-700 dark:text-gray-300 rounded-lg shadow-sm hover:shadow-md hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200 cursor-default"
+                    className="px-4 py-2 bg-white dark:bg-slate-900 text-gray-700 dark:text-gray-300 rounded-lg shadow-sm hover:shadow-md transition-colors duration-200 cursor-default"
+                    onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
+                    onMouseLeave={(e) => e.target.style.color = ''}
                   >
                     {skill}
                   </motion.span>

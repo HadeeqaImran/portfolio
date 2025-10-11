@@ -63,7 +63,7 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-slate-950 relative transition-colors duration-300">
+    <section id="contact" className="py-20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm relative transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,7 @@ const Contact = () => {
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary-600 dark:bg-blue-500 mx-auto mb-4"
+            className="h-1 bg-primary mx-auto mb-4"
           ></motion.div>
           <motion.p
             initial={{ opacity: 0 }}
@@ -116,7 +116,8 @@ const Contact = () => {
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.2 }}
                     transition={{ duration: 0.5 }}
-                    className="text-primary-600 dark:text-blue-400 mr-4 mt-1"
+                    className="mr-4 mt-1"
+                    style={{ color: 'var(--color-primary)' }}
                   >
                     {info.icon}
                   </motion.div>
@@ -125,7 +126,9 @@ const Contact = () => {
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="text-gray-900 dark:text-gray-200 hover:text-primary-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        className="text-gray-900 dark:text-gray-200 transition-colors duration-200"
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
                       >
                         {info.value}
                       </a>
@@ -161,7 +164,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
                 />
               </motion.div>
               <motion.div
@@ -180,7 +183,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200"
                 />
               </motion.div>
               <motion.div
@@ -199,7 +202,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 rounded-lg ring-primary focus:ring-2 focus:border-transparent transition-all duration-200 resize-none"
                 ></textarea>
               </motion.div>
               <motion.button
@@ -210,7 +213,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="w-full px-8 py-3 bg-primary-600 dark:bg-blue-600 text-white rounded-lg hover:bg-primary-700 dark:hover:bg-blue-700 transition-colors duration-200 font-medium"
+                className="w-full px-8 py-3 bg-primary text-white rounded-lg bg-primary-hover transition-colors duration-200 font-medium"
               >
                 Send Message
               </motion.button>
