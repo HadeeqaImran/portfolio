@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, MapPin, Phone, Terminal, Send, Check, Zap } from 'lucide-react'
+import { Mail, MapPin, Phone, Terminal, Send, Check, Zap, Download } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 
 const Contact = () => {
@@ -65,6 +65,26 @@ const Contact = () => {
         setSubmitSuccess(false)
       }, 3000)
     }, 2000)
+  }
+
+  const handleDownloadCV = () => {
+    // Console feedback for CV download
+    setConsoleLines(prev => [
+      ...prev,
+      { text: '> Executing: downloadCV()', type: 'command' },
+      { text: '> Locating resume file...', type: 'info' },
+      { text: '> Initiating download...', type: 'info' },
+      { text: '> ✓ CV downloaded successfully!', type: 'success' },
+      { text: '> Ready for next command.', type: 'system' },
+    ])
+
+    // Create a link and trigger download
+    const link = document.createElement('a')
+    link.href = '/cv.pdf' // Place your CV as cv.pdf in the public folder
+    link.download = 'Hadeeq_Imran_CV.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   const contactInfo = [
@@ -208,6 +228,54 @@ const Contact = () => {
                 </motion.div>
               )
             })}
+
+            {/* Download CV Button */}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={handleDownloadCV}
+              className="w-full mt-6 group"
+            >
+              <div
+                className="flex items-center justify-center gap-3 p-4 rounded-lg border transition-all duration-200"
+                style={{
+                  backgroundColor: theme === 'dark' ? 'rgba(var(--card-bg), 0.5)' : '#ffffff',
+                  borderColor: theme === 'dark' ? '#374151' : '#e5e7eb',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--color-primary)'
+                  e.currentTarget.style.backgroundColor = theme === 'dark'
+                    ? 'rgba(var(--particle-rgb), 0.1)'
+                    : 'rgba(var(--particle-rgb), 0.05)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = theme === 'dark' ? '#374151' : '#e5e7eb'
+                  e.currentTarget.style.backgroundColor = theme === 'dark'
+                    ? 'rgba(var(--card-bg), 0.5)'
+                    : '#ffffff'
+                }}
+              >
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ color: 'var(--color-primary)' }}
+                >
+                  <Download size={24} />
+                </motion.div>
+                <div className="flex flex-col items-start">
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                    Download CV
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    View my full resume
+                  </p>
+                </div>
+              </div>
+            </motion.button>
 
             {/* Developer Console Output */}
             <motion.div
