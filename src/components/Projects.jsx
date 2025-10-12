@@ -1,34 +1,39 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, Smartphone } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 
 const Projects = () => {
   const { theme } = useTheme()
   const projects = [
     {
-      title: 'Project One',
+      title: 'AITube',
       description: 'A full-stack web application built with React and Node.js. Features include user authentication, real-time updates, and responsive design.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      tags: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
-    {
-      title: 'Project Two',
-      description: 'An e-commerce platform with payment integration, inventory management, and admin dashboard. Built for scalability and performance.',
       image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
-      tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      tags: ['React Native', 'Firebase', 'Redux', 'AWS', 'Codemagic', 'In-App Purchases', 'Stripe', 'AI Video Generation'],
+      // github: 'https://github.com',
+      android: 'https://play.google.com/store/apps/details?id=com.aitube',
+      // ios: 'https://apps.apple.com',
+      note: "iOS app coming soon",
     },
     {
-      title: 'Project Three',
-      description: 'A mobile-first social media application with real-time messaging, media sharing, and user profiles.',
+      title: 'Jarvis',
+      description: 'An AI-powered multi-tenant CRM suite for in-house accountability and client lifecycle management for Bayut, Dubizzle and OLX.',
       image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
-      tags: ['React Native', 'Firebase', 'Redux', 'Express'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      tags: ['React Native', 'Firebase', 'Redux', 'AWS', 'Codemagic'],
+      // github: 'https://github.com',
+      // live: 'https://example.com',
+      note: 'On private app and play store',
+    },
+    {
+      title: 'Fit by Charo',
+      description: 'A fitness and wellness platform offering personalized training programs, nutrition guidance, and coaching for women.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      tags: ['MERN', 'Next.js', 'AWS', 'Firebase', 'Redux', 'Docker'],
+      // github: 'https://github.com',
+      // android: 'https://play.google.com',
+      // ios: 'https://apps.apple.com',
+      live: 'https://fitbycharro.com/',
     },
   ]
 
@@ -101,10 +106,10 @@ const Projects = () => {
                   : undefined,
               }}
             >
-              <div className="relative h-48 overflow-hidden rounded-t-lg">
+              <div className="relative h-48 overflow-hidden">
                 <motion.img
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
@@ -112,12 +117,8 @@ const Projects = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{
-                    background: theme === 'dark'
-                      ? `linear-gradient(135deg, rgba(var(--particle-rgb), 0.15), rgba(var(--particle-rgb), 0.2))`
-                      : `linear-gradient(135deg, rgba(var(--particle-rgb), 0.1), rgba(var(--particle-rgb), 0.15))`
-                  }}
+                  className="absolute inset-0 bg-opacity-10 dark:bg-opacity-20 flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--color-primary)' }}
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -125,24 +126,50 @@ const Projects = () => {
                     transition={{ duration: 0.3 }}
                     className="flex space-x-4"
                   >
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ backgroundColor: 'var(--color-primary)' }}
-                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
-                    >
-                      <Github size={20} />
-                    </motion.a>
-                    <motion.a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ backgroundColor: 'var(--color-primary)' }}
-                      className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
-                    >
-                      <ExternalLink size={20} />
-                    </motion.a>
+                    {project.github && (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ backgroundColor: 'var(--color-primary)' }}
+                        className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
+                      >
+                        <Github size={20} />
+                      </motion.a>
+                    )}
+                    {project.live && (
+                      <motion.a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ backgroundColor: 'var(--color-primary)' }}
+                        className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
+                      >
+                        <ExternalLink size={20} />
+                      </motion.a>
+                    )}
+                    {project.android && (
+                      <motion.a
+                        href={project.android}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ backgroundColor: 'var(--color-primary)' }}
+                        className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
+                      >
+                        <Smartphone size={20} />
+                      </motion.a>
+                    )}
+                    {project.ios && (
+                      <motion.a
+                        href={project.ios}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ backgroundColor: 'var(--color-primary)' }}
+                        className="p-3 bg-white dark:bg-slate-800 dark:text-gray-300 rounded-full hover:text-white transition-colors duration-200"
+                      >
+                        <Smartphone size={20} />
+                      </motion.a>
+                    )}
                   </motion.div>
                 </motion.div>
               </div>
@@ -173,29 +200,66 @@ const Projects = () => {
                     </motion.span>
                   ))}
                 </div>
-                <div className="flex space-x-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
-                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                  >
-                    <Github size={20} className="mr-1" />
-                    Code
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
-                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = ''}
-                  >
-                    <ExternalLink size={20} className="mr-1" />
-                    Live
-                  </a>
+                <div className="flex items-end justify-between">
+                  <div className="flex flex-wrap gap-3">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                      >
+                        <Github size={20} className="mr-1" />
+                        Code
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                      >
+                        <ExternalLink size={20} className="mr-1" />
+                        Live
+                      </a>
+                    )}
+                    {project.android && (
+                      <a
+                        href={project.android}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                      >
+                        <Smartphone size={20} className="mr-1" />
+                        Android
+                      </a>
+                    )}
+                    {project.ios && (
+                      <a
+                        href={project.ios}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-gray-600 dark:text-gray-400 transition-colors duration-200"
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                      >
+                        <Smartphone size={20} className="mr-1" />
+                        iOS
+                      </a>
+                    )}
+                  </div>
+                  {project.note && (
+                    <div className="text-xs text-gray-500 dark:text-gray-400 italic ml-2">
+                      {project.note}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
