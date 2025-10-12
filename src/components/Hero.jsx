@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowDown, Sparkles, Briefcase } from 'lucide-react'
 import ColorSlider from './ColorSlider'
 import UpworkIcon from './UpworkIcon'
 
@@ -86,24 +86,60 @@ const Hero = () => {
 
           <motion.div
             variants={itemVariants}
-            className="flex justify-center space-x-4 mb-12"
+            className="flex flex-wrap justify-center gap-4 mb-12"
           >
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(var(--particle-rgb), 0.3)' }}
+              whileHover={{
+                scale: 1.08,
+                y: -3,
+                boxShadow: '0 20px 40px rgba(var(--particle-rgb), 0.4)'
+              }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-primary text-white rounded-lg bg-primary-hover transition-colors duration-200 font-medium"
+              className="relative px-8 py-4 rounded-xl font-semibold text-white overflow-hidden group"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+              }}
             >
-              Get In Touch
+              <motion.span
+                className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+              />
+              <span className="relative flex items-center gap-2">
+                <Sparkles size={20} className="group-hover:rotate-12 transition-transform duration-300" />
+                Get In Touch
+              </span>
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: `linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1))`,
+                }}
+              />
             </motion.a>
+
             <motion.a
               href="#projects"
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(var(--particle-rgb), 0.2)' }}
+              whileHover={{
+                scale: 1.08,
+                y: -3,
+                boxShadow: '0 20px 40px rgba(var(--particle-rgb), 0.3)'
+              }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border-2 border-primary text-primary rounded-lg hover:bg-gray-50 dark:hover:bg-slate-900 transition-colors duration-200 font-medium"
-              style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
+              className="relative px-8 py-4 rounded-xl font-semibold overflow-hidden group border-2 transition-all duration-300"
+              style={{
+                borderColor: 'var(--color-primary)',
+                color: 'var(--color-primary)',
+              }}
             >
-              View Work
+              <motion.span
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+                }}
+              />
+              <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300">
+                <Briefcase size={20} className="group-hover:-rotate-12 transition-transform duration-300" />
+                View Work
+              </span>
             </motion.a>
           </motion.div>
 
