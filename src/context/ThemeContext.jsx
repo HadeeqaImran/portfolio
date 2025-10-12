@@ -175,7 +175,7 @@ export const ThemeProvider = ({ children }) => {
     // Check localStorage first, then system preference
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) return savedTheme
-    
+
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark'
     }
@@ -186,6 +186,25 @@ export const ThemeProvider = ({ children }) => {
     const savedPalette = localStorage.getItem('colorPalette')
     return savedPalette || 'blue'
   })
+
+  // Listen for browser theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    const handleThemeChange = (e) => {
+      // Only auto-update if user hasn't manually set a theme preference
+      const savedTheme = localStorage.getItem('theme')
+      if (!savedTheme) {
+        setTheme(e.matches ? 'dark' : 'light')
+      }
+    }
+
+    // Add event listener for theme changes
+    mediaQuery.addEventListener('change', handleThemeChange)
+
+    // Cleanup
+    return () => mediaQuery.removeEventListener('change', handleThemeChange)
+  }, [])
 
   useEffect(() => {
     const root = window.document.documentElement

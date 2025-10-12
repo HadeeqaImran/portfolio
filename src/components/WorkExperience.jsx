@@ -211,7 +211,7 @@ const WorkExperience = () => {
                       ? 'rgba(255, 255, 255, 0.1)'
                       : 'rgba(0, 0, 0, 0.1)',
                   boxShadow: expandedCard === index
-                    ? `0 20px 60px rgba(var(--particle-rgb), 0.3), 0 0 0 2px var(--color-primary)`
+                    ? `0 20px 60px rgba(var(--particle-rgb), 0.1), 0 0 0 2px var(--color-primary)`
                     : `0 10px 30px rgba(0, 0, 0, ${theme === 'dark' ? '0.5' : '0.1'})`,
                 }}
                 onClick={() => setExpandedCard(expandedCard === index ? -1 : index)}
@@ -235,7 +235,7 @@ const WorkExperience = () => {
                       <div className="flex-1">
                         <motion.h3
                           className="text-2xl font-bold mb-2 transition-colors duration-300"
-                          style={{ color: 'var(--color-primary)' }}
+                          // style={{ color: 'var(--color-primary)' }}
                           whileHover={{ x: 5 }}
                           transition={{ duration: 0.2 }}
                         >
@@ -387,10 +387,9 @@ const WorkExperience = () => {
                             className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 cursor-default"
                             style={{
                               backgroundColor: theme === 'dark'
-                                ? 'rgba(var(--particle-rgb), 0.15)'
+                                ? `rgb(var(--bg-dark))`
                                 : 'rgba(var(--particle-rgb), 0.1)',
                               color: 'var(--color-primary)',
-                              border: `1px solid ${theme === 'dark' ? 'rgba(var(--particle-rgb), 0.3)' : 'rgba(var(--particle-rgb), 0.2)'}`,
                             }}
                           >
                             {tech}

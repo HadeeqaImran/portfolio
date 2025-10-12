@@ -81,7 +81,7 @@ const Footer = () => {
             >
               <Heart size={16} className="mx-2 text-red-500 fill-red-500" />
             </motion.span>{' '}
-            © {currentYear}. All rights reserved.
+             2025 Hadeeqa Imran ©. All rights reserved.
           </p>
         </motion.div>
       </div>
