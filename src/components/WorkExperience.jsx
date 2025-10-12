@@ -9,55 +9,69 @@ const WorkExperience = () => {
 
   const experiences = [
     {
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Corp',
-      location: 'San Francisco, CA',
-      period: '2022 - Present',
-      description: 'Leading development of modern web applications using React, Node.js, and cloud technologies. Mentoring junior developers and architecting scalable solutions.',
-      technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'Docker', 'PostgreSQL', 'GraphQL', 'Redis'],
+      title: 'Software Engineer',
+      company: 'PixelPK Technologies',
+      location: 'Lahore, Pakistan',
+      period: 'May, 2025 - Present',
+      description: 'Building AITube, a next-gen video streaming platform for AI-generated videos, from the ground up.',
+      technologies: ['React Native', 'TypeScript', 'AWS', 'Docker', 'Redis', 'CI/CD', 'REST APIs'],
       achievements: [
-        'Architected microservices infrastructure reducing deployment time by 60%',
-        'Led team of 5 developers in successful product launch',
-        'Implemented CI/CD pipeline improving release frequency'
+        'Solely engineered a high-performance mobile app optimized for smooth video playback and AI-driven content delivery.',
+        'Integrated secure authentication, push notifications, stripe and in-app purchases, CI/CD pipeline, and real-time data updates for a seamless user experience.',
+        'Collaborated with backend and design teams to launch the app on App Store and Google Play Store, ensuring scalability and maintainability.'
       ],
       socials: {
-        website: 'https://techcorp.com',
-        linkedin: 'https://linkedin.com/company/techcorp',
-        twitter: 'https://twitter.com/techcorp'
+        website: 'https://pixelpk.com',
+        linkedin: 'https://linkedin.com/company/pixelpk',
       }
     },
     {
-      title: 'Full Stack Developer',
-      company: 'Digital Solutions Inc',
-      location: 'New York, NY',
-      period: '2020 - 2022',
+      title: 'Software Engineer',
+      company: 'Dubizzle Labs',
+      location: 'Lahore, Pakistan',
+      period: 'May 2024 - May 2025',
       description: 'Developed and maintained multiple client-facing applications, focusing on performance optimization and user experience.',
-      technologies: ['React', 'Vue.js', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Jest'],
+      technologies: ['React Native', 'AWS', 'CI/CD', 'REST APIs'],
       achievements: [
-        'Built responsive e-commerce platform handling 10k+ daily users',
-        'Reduced page load time by 45% through optimization',
-        'Collaborated with design team on UX improvements'
+        'Built and optimized a high-performance cross-platform CRM in React Native, enhanced UI/UX, improved responsiveness, and integrated push notifications, CI/CD pipeline, codepush and REST APIs.',
+        'Refactored components for clean code, better performance and scalability.'
       ],
       socials: {
-        website: 'https://digitalsolutions.com',
-        linkedin: 'https://linkedin.com/company/digitalsolutions'
+        website: 'https://dubizzlelabs.com',
+        linkedin: 'https://linkedin.com/company/dubizzlelabs',
       }
     },
     {
-      title: 'Junior Developer',
-      company: 'StartUp Labs',
-      location: 'Austin, TX',
-      period: '2018 - 2020',
+      title: 'MERN Stack Developer',
+      company: 'PixelPK Technologies',
+      location: 'Lahore, Pakistan',
+      period: 'December, 2022 - May, 2024',
       description: 'Contributed to various web development projects, learning modern frameworks and best practices in agile environment.',
-      technologies: ['JavaScript', 'React', 'Node.js', 'Express', 'MySQL', 'Git', 'REST APIs'],
+      technologies: ['JavaScript', 'React', 'Node.js', 'Express', 'MongoDB', 'REST APIs', 'AWS', 'Docker'],
       achievements: [
+        'Built scalable MERN stack web apps with seamless frontend-backend integration',
         'Developed RESTful APIs using Node.js and Express',
-        'Created reusable React components for design system',
-        'Participated in code reviews and agile ceremonies'
+        'Refactored code for performance, and maintainability while aligning with business needs'
       ],
       socials: {
-        website: 'https://startuplabs.com',
-        twitter: 'https://twitter.com/startuplabs'
+        website: 'https://pixelpk.com',
+        linkedin: 'https://linkedin.com/company/pixelpk',
+      }
+    },
+    {
+      title: 'Software Engineering Intern',
+      company: 'Enxsys',
+      location: 'Lahore, Pakistan',
+      period: 'June, 2022 - November, 2022',
+      description: 'Worked on an industry-level AI and web development project using React.js, Python, Django, and OpenAI, focusing on performance, scalability, and intelligent automation.',
+      technologies: ['Python', 'Django', 'JavaScript', 'React', 'Git', 'REST APIs'],
+      achievements: [
+        'Developed and optimized a Siamese Graph Neural Network (GNN) for advanced pattern and change detection.',
+        'Improved frontend performance and user experience through responsive design and efficient state management in React.'
+      ],
+      socials: {
+        website: 'https://enxsys.com',
+        linkedin: 'https://linkedin.com/company/enxsys',
       }
     }
   ]
@@ -354,9 +368,9 @@ const WorkExperience = () => {
                   {/* Technologies */}
                   {experience.technologies && experience.technologies.length > 0 && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                      {/* <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
                         Technologies Used:
-                      </h4>
+                      </h4> */}
                       <div className="flex flex-wrap gap-2">
                         {experience.technologies.map((tech, techIndex) => (
                           <motion.span
