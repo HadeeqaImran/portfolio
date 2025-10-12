@@ -86,14 +86,28 @@ const About = () => {
           viewport={{ once: true, margin: '-100px' }}
           className="max-w-3xl mx-auto mb-16"
         >
-          <motion.p variants={itemVariants} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            I'm a passionate full-stack developer with a love for creating elegant solutions
-            to complex problems. With expertise in modern web technologies, I specialize in
-            building responsive, user-friendly applications that make a difference.
+          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            Hey there! I’m a Full-Stack Software Engineer with over 4 years of experience turning complex ideas into clean, elegant web and mobile applications, or as I like to call them, digital magic tricks.
           </motion.p>
-          <motion.p variants={itemVariants} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            When I'm not coding, you can find me exploring new technologies, contributing to
-            open-source projects, or sharing knowledge with the developer community.
+
+          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            I specialize in building scalable, high-performing solutions using React Native, Next.js, and the MERN stack, and I enjoy crafting both the pixel-perfect frontends you see and the powerful backends that make everything work seamlessly.
+          </motion.p>
+
+          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            Along the way, I’ve picked up a strong toolkit, from AI integration and cloud setups to CI/CD pipelines and API development, all to make sure my code doesn’t just work, but works beautifully.
+          </motion.p>
+
+          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            I hold a Bachelor’s in Computer Science from FAST University, where I graduated with a Gold Medal and Summa cum Laude (3.96/4.0 CGPA). I’m constantly learning, experimenting, and exploring new technologies to stay ahead of the curve.
+          </motion.p>
+
+          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            When I’m not buried in code, you’ll probably find me exploring new tech trends, contributing to open-source, or helping fellow developers level up their skills.
+          </motion.p>
+
+          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed">
+            Let’s just say: if it involves creativity, code, and a good challenge, I’m in!
           </motion.p>
         </motion.div>
 

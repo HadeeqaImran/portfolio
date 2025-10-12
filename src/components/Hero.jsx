@@ -49,7 +49,7 @@ const Hero = () => {
           >
             Hi, I'm{' '}
             <span className="text-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">
-              Your Name
+              Hadeeqa Imran
             </span>
           </motion.h1>
           
@@ -61,27 +61,32 @@ const Hero = () => {
               className="inline-block transition-colors duration-300 cursor-default"
               onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
               onMouseLeave={(e) => e.target.style.color = ''}
-            >Full Stack Developer</span>
-            {' | '}
+            >Full-Stack Engineer</span>
+            <span className="mx-3">|</span>
             <span 
               className="inline-block transition-colors duration-300 cursor-default"
               onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
               onMouseLeave={(e) => e.target.style.color = ''}
-            >Designer</span>
-            {' | '}
+            >React Native</span>
+            <span className="mx-3">|</span>
             <span 
               className="inline-block transition-colors duration-300 cursor-default"
               onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
               onMouseLeave={(e) => e.target.style.color = ''}
-            >Problem Solver</span>
+            >MERN & Next.js</span>
+            <span className="mx-3">|</span>
+            <span 
+                className="inline-block transition-colors duration-300 cursor-default"
+                onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
+                onMouseLeave={(e) => e.target.style.color = ''}
+            >Gold Medalist @ FAST-NU</span>
           </motion.p>
           
           <motion.p
             variants={itemVariants}
             className="text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto"
           >
-            I build beautiful, functional, and user-friendly web applications.
-            Passionate about creating seamless digital experiences.
+            Turning caffeine and code into elegant digital experiences that make technology feel effortless.
           </motion.p>
 
           <motion.div
