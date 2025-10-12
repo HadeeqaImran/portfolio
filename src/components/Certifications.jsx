@@ -8,29 +8,39 @@ const Certifications = () => {
 
   const certifications = [
     {
-      title: 'AWS Certified Solutions Architect',
-      issuer: 'Amazon Web Services',
-      date: '2023',
-      credentialId: 'ABC123456',
-      link: '#',
-      description: 'Expertise in designing distributed systems on AWS'
+      title: 'LLM Engineering: Master AI, Large Language Models & Agents',
+      issuer: 'Udemy',
+      date: 'June 10, 2025',
+      credentialId: 'UC-eb664df9-b7ab-4348-abfb-3ba972ae504e',
+      link: 'https://www.udemy.com/certificate/UC-eb664df9-b7ab-4348-abfb-3ba972ae504e/',
+      description: 'Explore the power of large language models by building intelligent agents, multi-modal tools, and high-performance AI systems from scratch.'
     },
     {
-      title: 'Meta Front-End Developer',
-      issuer: 'Meta',
-      date: '2023',
-      credentialId: 'DEF789012',
-      link: '#',
-      description: 'Professional certificate in modern front-end development'
+      title: 'Next JS: The Complete Developer\'s Guide',
+      issuer: 'Udemy',
+      date: 'March 25, 2025',
+      credentialId: 'UC-c63cce26-88a2-4b8f-9b41-ca4a8064be88',
+      link: 'https://www.udemy.com/certificate/UC-c63cce26-88a2-4b8f-9b41-ca4a8064be88/',
+      description: 'Craft blazing-fast, secure, and modern web experiences using the full power of Next.js and the latest React ecosystem.'
     },
     {
-      title: 'Google Cloud Professional',
-      issuer: 'Google Cloud',
-      date: '2022',
-      credentialId: 'GHI345678',
-      link: '#',
-      description: 'Cloud architecture and development on GCP'
+      title: 'Mastering TypeScript - 2024 Edition',
+      issuer: 'Udemy',
+      date: 'October 12, 2024',
+      credentialId: 'UC-9cac93e8-39b1-4a02-b9a2-ddcd91a9b274',
+      link: 'https://www.udemy.com/certificate/UC-9cac93e8-39b1-4a02-b9a2-ddcd91a9b274/',
+      description: 'Learn to write cleaner, safer, and smarter code by mastering TypeScript from syntax to React integration.'
+
     },
+    {
+      title: 'Node JS: Advanced Concepts',
+      issuer: 'Udemy',
+      date: 'March 22, 2025',
+      credentialId: 'UC-e002fee5-1272-478b-a449-61676461d98d',
+      link: 'https://www.udemy.com/certificate/UC-e002fee5-1272-478b-a449-61676461d98d/',
+      description: 'Engineer blazing-fast Node.js apps through event loop mastery, Redis caching, and cloud-powered scalability with AWS S3.'
+    },
+    
   ]
 
   const containerVariants = {
@@ -152,7 +162,7 @@ const Certifications = () => {
               </p>
 
               {/* Date & Credential */}
-              <div className="flex items-center gap-4 mb-4 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex-col items-center gap-4 mb-4 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center gap-1">
                   <Calendar size={14} />
                   <span>{cert.date}</span>
