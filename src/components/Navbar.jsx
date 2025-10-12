@@ -6,15 +6,34 @@ import { useTheme } from '../context/ThemeContext'
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+
+      // Update scrolled state for background change
+      setIsScrolled(currentScrollY > 20)
+
+      // Show navbar when scrolling up, hide when scrolling down
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        // Scrolling up or at top of page
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past threshold
+        setIsVisible(false)
+        // Close mobile menu when hiding navbar
+        setIsMobileMenuOpen(false)
+      }
+
+      setLastScrollY(currentScrollY)
     }
-    window.addEventListener('scroll', handleScroll)
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   const navLinks = [
     { href: '#home', label: 'Home' },
@@ -51,11 +70,16 @@ const Navbar = () => {
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      animate={{
+        y: isVisible ? 0 : -100,
+      }}
+      transition={{
+        duration: 0.3,
+        ease: 'easeInOut',
+      }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white shadow-md py-4' 
+        isScrolled
+          ? 'bg-white shadow-md py-4'
           : 'bg-white bg-opacity-90 backdrop-blur-sm py-6'
       }`}
       style={
