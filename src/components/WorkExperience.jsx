@@ -14,6 +14,7 @@ const WorkExperience = () => {
       location: 'San Francisco, CA',
       period: '2022 - Present',
       description: 'Leading development of modern web applications using React, Node.js, and cloud technologies. Mentoring junior developers and architecting scalable solutions.',
+      technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'Docker', 'PostgreSQL', 'GraphQL', 'Redis'],
       achievements: [
         'Architected microservices infrastructure reducing deployment time by 60%',
         'Led team of 5 developers in successful product launch',
@@ -31,6 +32,7 @@ const WorkExperience = () => {
       location: 'New York, NY',
       period: '2020 - 2022',
       description: 'Developed and maintained multiple client-facing applications, focusing on performance optimization and user experience.',
+      technologies: ['React', 'Vue.js', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Jest'],
       achievements: [
         'Built responsive e-commerce platform handling 10k+ daily users',
         'Reduced page load time by 45% through optimization',
@@ -47,6 +49,7 @@ const WorkExperience = () => {
       location: 'Austin, TX',
       period: '2018 - 2020',
       description: 'Contributed to various web development projects, learning modern frameworks and best practices in agile environment.',
+      technologies: ['JavaScript', 'React', 'Node.js', 'Express', 'MySQL', 'Git', 'REST APIs'],
       achievements: [
         'Developed RESTful APIs using Node.js and Express',
         'Created reusable React components for design system',
@@ -344,9 +347,44 @@ const WorkExperience = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                     {experience.description}
                   </p>
+
+                  {/* Technologies */}
+                  {experience.technologies && experience.technologies.length > 0 && (
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                        Technologies Used:
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {experience.technologies.map((tech, techIndex) => (
+                          <motion.span
+                            key={techIndex}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: techIndex * 0.05 }}
+                            whileHover={{
+                              scale: 1.1,
+                              y: -2,
+                              transition: { duration: 0.2 },
+                            }}
+                            className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 cursor-default"
+                            style={{
+                              backgroundColor: theme === 'dark'
+                                ? 'rgba(var(--particle-rgb), 0.15)'
+                                : 'rgba(var(--particle-rgb), 0.1)',
+                              color: 'var(--color-primary)',
+                              border: `1px solid ${theme === 'dark' ? 'rgba(var(--particle-rgb), 0.3)' : 'rgba(var(--particle-rgb), 0.2)'}`,
+                            }}
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Achievements - Expandable */}
                   <AnimatePresence initial={false}>
