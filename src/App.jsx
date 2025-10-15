@@ -13,10 +13,13 @@ import ParticlesBackground from './components/ParticlesBackground'
 function App() {
   return (
     <div className="min-h-screen relative">
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
       <ParticlesBackground />
       <div className="relative z-10">
         <Navbar />
-        <main>
+        <main id="main-content">
           <Hero />
           <About />
           <WorkExperience />
@@ -32,4 +35,3 @@ function App() {
 }
 
 export default App
-

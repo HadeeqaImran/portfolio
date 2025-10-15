@@ -26,8 +26,8 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="mb-6 md:mb-0"
           >
-            <h3 className="text-2xl font-bold text-gradient mb-2">Portfolio</h3>
-            <p className="text-gray-600 dark:text-gray-400">Building digital experiences</p>
+            <h3 className="text-2xl font-bold text-gradient mb-2">Hadeeqa Imran</h3>
+            <p className="text-gray-600 dark:text-gray-400">Full-Stack Software Engineer & React Native Specialist</p>
           </motion.div>
 
           <motion.div
@@ -38,10 +38,10 @@ const Footer = () => {
             className="flex space-x-6 mb-6 md:mb-0"
           >
             {[
-              { href: 'https://github.com/HadeeqaImran', Icon: Github },
-              { href: 'https://www.linkedin.com/in/hadeeqa-imran', Icon: Linkedin },
-              { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', Icon: UpworkIcon },
-              { href: 'mailto:hadeeqaimran786@gmail.com', Icon: Mail },
+              { href: 'https://github.com/HadeeqaImran', Icon: Github, label: 'GitHub profile for Hadeeqa Imran' },
+              { href: 'https://www.linkedin.com/in/hadeeqa-imran', Icon: Linkedin, label: 'LinkedIn profile for Hadeeqa Imran' },
+              { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', Icon: UpworkIcon, label: 'Upwork freelance profile for Hadeeqa Imran' },
+              { href: 'mailto:hadeeqaimran786@gmail.com', Icon: Mail, label: 'Email Hadeeqa Imran' },
             ].map((social, index) => (
               <motion.a
                 key={index}
@@ -53,6 +53,7 @@ const Footer = () => {
                 className="text-gray-600 dark:text-gray-400 transition-colors duration-200"
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
                 onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                aria-label={social.label}
               >
                 <social.Icon size={24} />
               </motion.a>
@@ -90,4 +91,3 @@ const Footer = () => {
 }
 
 export default Footer
-

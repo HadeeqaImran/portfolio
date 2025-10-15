@@ -97,10 +97,11 @@ const Navbar = () => {
           <motion.a
             href="#home"
             className="text-2xl font-bold text-gradient"
+            aria-label="Hadeeqa Imran home"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Portfolio
+            Hadeeqa Imran
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -201,4 +202,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-

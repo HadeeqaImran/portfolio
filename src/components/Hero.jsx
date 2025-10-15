@@ -61,19 +61,19 @@ const Hero = () => {
               className="inline-block transition-colors duration-300 cursor-default"
               onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
               onMouseLeave={(e) => e.target.style.color = ''}
-            >Full-Stack Engineer</span>
+            >Full-Stack Software Engineer in Lahore, Pakistan</span>
             <span className="mx-3">|</span>
             <span 
               className="inline-block transition-colors duration-300 cursor-default"
               onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
               onMouseLeave={(e) => e.target.style.color = ''}
-            >React Native</span>
+            >React Native & MERN Specialist</span>
             <span className="mx-3">|</span>
             <span 
               className="inline-block transition-colors duration-300 cursor-default"
               onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
               onMouseLeave={(e) => e.target.style.color = ''}
-            >MERN & Next.js</span>
+            >Next.js Product Builder</span>
             <span className="mx-3">|</span>
             <span 
                 className="inline-block transition-colors duration-300 cursor-default"
@@ -86,7 +86,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto"
           >
-            Turning caffeine and code into elegant digital experiences that make technology feel effortless.
+            Hadeeqa Imran partners with ambitious founders and product teams to ship high-performing mobile and web experiences powered by React Native, Next.js, and cloud-first architectures.
           </motion.p>
 
           <motion.div
@@ -153,10 +153,10 @@ const Hero = () => {
             className="flex justify-center space-x-6"
           >
             {[
-              { href: 'https://github.com/HadeeqaImran', Icon: Github },
-              { href: 'https://www.linkedin.com/in/hadeeqa-imran', Icon: Linkedin },
-              { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', Icon: UpworkIcon },
-              { href: 'mailto:hadeeqaimran786@gmail.com', Icon: Mail },
+              { href: 'https://github.com/HadeeqaImran', Icon: Github, label: 'GitHub profile for Hadeeqa Imran' },
+              { href: 'https://www.linkedin.com/in/hadeeqa-imran', Icon: Linkedin, label: 'LinkedIn profile for Hadeeqa Imran' },
+              { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', Icon: UpworkIcon, label: 'Upwork freelance profile for Hadeeqa Imran' },
+              { href: 'mailto:hadeeqaimran786@gmail.com', Icon: Mail, label: 'Email Hadeeqa Imran' },
             ].map((social, index) => (
               <motion.a
                 key={index}
@@ -169,6 +169,7 @@ const Hero = () => {
                 className="text-gray-600 dark:text-gray-400 transition-colors duration-200"
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
                 onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                aria-label={social.label}
               >
                 <social.Icon size={28} />
               </motion.a>

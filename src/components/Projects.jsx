@@ -82,6 +82,15 @@ const Projects = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="h-1 bg-primary mx-auto"
           ></motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+          >
+            Explore a sample of the React Native apps, B2B platforms, and custom software that Hadeeqa Imran has engineered for startups and international clients.
+          </motion.p>
         </motion.div>
 
         <motion.div
@@ -271,4 +280,3 @@ const Projects = () => {
 }
 
 export default Projects
-

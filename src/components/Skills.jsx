@@ -116,6 +116,15 @@ const Skills = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="h-1 bg-primary mx-auto"
           />
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+          >
+            These are the tools, frameworks, and workflows that Hadeeqa Imran relies on to deliver reliable products, from React Native frontends to cloud-backed APIs.
+          </motion.p>
         </motion.div>
 
         <motion.div

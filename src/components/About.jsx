@@ -87,7 +87,7 @@ const About = () => {
           className="max-w-3xl mx-auto mb-16"
         >
           <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            Hey there! I’m a Full-Stack Software Engineer with over 4 years of experience turning complex ideas into clean, elegant web and mobile applications, or as I like to call them, digital magic tricks.
+            Hey there! I’m Hadeeqa Imran, a Lahore-based Full-Stack Software Engineer with over 4 years of experience turning complex ideas into clean, elegant web and mobile applications, or as I like to call them, digital magic tricks.
           </motion.p>
 
           <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
@@ -107,7 +107,7 @@ const About = () => {
           </motion.p>
 
           <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed">
-            Let’s just say: if it involves creativity, code, and a good challenge, I’m in!
+            Let’s just say: if it involves creativity, code, and a good challenge, I’m in! If you landed here searching for “Hadeeqa Imran React Native developer,” you found the right problem-solver.
           </motion.p>
         </motion.div>
 
@@ -162,4 +162,3 @@ const About = () => {
 }
 
 export default About
-

@@ -103,7 +103,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Pakistan',
+      value: 'Lahore, Pakistan',
     },
   ]
 
@@ -131,7 +131,7 @@ const Contact = () => {
               <Terminal size={36} />
             </div>
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
-              Let's Connect
+              Let's Connect with Hadeeqa Imran
             </h2>
           </div>
           <motion.div
@@ -149,7 +149,7 @@ const Contact = () => {
             className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
           >
             <span className="font-mono" style={{ color: 'var(--color-primary)' }}>// </span>
-            Transforming ideas into elegant code solutions
+            Connect with Hadeeqa Imran to transform ambitious ideas into elegant, production-ready software.
           </motion.p>
         </motion.div>
 
