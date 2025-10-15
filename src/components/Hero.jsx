@@ -79,7 +79,7 @@ const Hero = () => {
                 className="inline-block transition-colors duration-300 cursor-default"
                 onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
                 onMouseLeave={(e) => e.target.style.color = ''}
-            >Gold Medalist @ FAST-NU</span>
+            >Gold Medalist @ FAST-NU </span>
           </motion.p>
           
           <motion.p
