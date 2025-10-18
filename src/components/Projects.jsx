@@ -13,8 +13,8 @@ const Projects = () => {
       tags: ['React Native', 'Firebase', 'Redux', 'AWS', 'Codemagic', 'In-App Purchases', 'Stripe', 'AI Video Generation'],
       // github: 'https://github.com',
       android: 'https://play.google.com/store/apps/details?id=com.aitube',
-      // ios: 'https://apps.apple.com',
-      note: "iOS app coming soon",
+      ios: 'https://play.google.com/store/apps/details?id=com.aitube&hl=en',
+      // note: "iOS app coming soon",
     },
     {
       title: 'Jarvis',
