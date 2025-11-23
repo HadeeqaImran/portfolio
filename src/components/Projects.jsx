@@ -35,6 +35,15 @@ const Projects = () => {
       // ios: 'https://apps.apple.com',
       live: 'https://fitbycharro.com/',
     },
+    {
+      title: 'Lawbot',
+      description: 'A platform for legal help in Pakistan, combining an AI chat assistant (English and Urdu) with a large, searchable database of laws.',
+      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
+      tags: ['MERN', 'Next.js', 'Redux', 'AWS', 'Docker', 'AI Chatbot'],
+      // github: 'https://github.com',
+      live: 'https://pakistanlawbot.com/',
+      note: 'iOS & Android apps coming soon",',
+    },
   ]
 
   const containerVariants = {
