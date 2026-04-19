@@ -7,6 +7,15 @@ const Projects = () => {
   const { theme } = useTheme()
   const projects = [
     {
+      title: 'Saela Sync',
+      description: 'An AI-powered health companion that delivers personalized, real-time insights through conversational support and biomarker-driven guidance.',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
+      tags: ['React Native', 'Firebase', 'Redux', 'AWS', 'Codemagic', 'In-App Purchases', 'Stripe', 'Prompt Engineering Microservice', "Python", "Flask", "AI Integration"],
+      // github: 'https://github.com',
+      android: 'https://play.google.com/store/apps/details?id=com.saelasync.app',
+      ios: 'https://apps.apple.com/il/app/saela-your-body-explained/id6755064853',
+    },
+    {
       title: 'AITube',
       description: 'A full-stack web application built with React and Node.js. Features include user authentication, real-time updates, and responsive design.',
       image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
@@ -36,13 +45,14 @@ const Projects = () => {
       live: 'https://fitbycharro.com/',
     },
     {
-      title: 'Lawbot',
+      title: 'Pakistan Lawbot',
       description: 'A platform for legal help in Pakistan, combining an AI chat assistant (English and Urdu) with a large, searchable database of laws.',
       image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
       tags: ['MERN', 'Next.js', 'Redux', 'AWS', 'Docker', 'AI Chatbot'],
       // github: 'https://github.com',
       live: 'https://pakistanlawbot.com/',
-      note: 'iOS & Android apps coming soon",',
+      android: "https://play.google.com/store/apps/details?id=com.pixelpk.lawbotnew",
+      note: 'iOS app coming soon",',
     },
   ]
 
