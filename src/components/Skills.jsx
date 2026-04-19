@@ -13,7 +13,8 @@ import {
   Cloud,
   Box,
   Figma as FigmaIcon,
-  TestTube
+  TestTube,
+  Code2Icon
 } from 'lucide-react'
 
 const Skills = () => {
@@ -58,6 +59,17 @@ const Skills = () => {
         // { name: 'Figma', level: 8, icon: FigmaIcon },
         { name: 'CI/CD', level: 7.5, icon: Workflow },
         { name: 'Jest', level: 7.5, icon: TestTube },
+      ],
+    },
+    {
+      category: 'AI / Prompt Engineering',
+      icon: Wrench,
+      skills: [
+        { name: 'Frontier Model Integration', level: 8, icon: Code2 },
+        { name: 'Prompt Engineering', level: 8, icon: Layers },
+        { name: 'AI Microservice for Businesses', level: 7.5, icon: Workflow },
+        { name: 'Voice Models Integration', level: 8, icon: Wrench },
+        { name: 'AI Workflows for Businesses', level: 7, icon: Code2 },
       ],
     },
   ]
