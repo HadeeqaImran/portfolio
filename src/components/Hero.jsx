@@ -1,207 +1,275 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowDown, Sparkles, Briefcase } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { ArrowDown, Briefcase, Github, Linkedin, Mail, Rocket, ShieldCheck } from 'lucide-react'
 import ColorSlider from './ColorSlider'
 import UpworkIcon from './UpworkIcon'
+import saelaSyncImage from '../assets/saela-sync.png'
+import aitubeImage from '../assets/aitube.png'
+import lawbotImage from '../assets/pakistan-lawbot.png'
 
-const Hero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  }
+const socialLinks = [
+  { href: 'https://github.com/HadeeqaImran', label: 'GitHub', Icon: Github },
+  { href: 'https://www.linkedin.com/in/hadeeqa-imran', label: 'LinkedIn', Icon: Linkedin },
+  { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', label: 'Upwork', Icon: UpworkIcon },
+  { href: 'mailto:hadeeqaimran786@gmail.com', label: 'Email', Icon: Mail },
+]
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
-    },
-  }
+const featuredProducts = [
+  {
+    title: 'Saela Sync',
+    type: 'AI health companion',
+    image: saelaSyncImage,
+  },
+  {
+    title: 'AITube',
+    type: 'AI video platform',
+    image: aitubeImage,
+  },
+  {
+    title: 'Pakistan Lawbot',
+    type: 'Legal AI assistant',
+    image: lawbotImage,
+  },
+]
 
-  const socialVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5 },
-    },
-  }
+const stats = [
+  { value: 4, suffix: '+', label: 'years shipping software' },
+  { value: 7, suffix: '', label: 'featured products' },
+  { value: 3.96, suffix: '', label: 'FAST-NU CGPA', decimals: 2 },
+]
+
+const roles = ['React Native', 'Next.js', 'MERN Stack', 'AI Integration', 'AWS Cloud']
+
+const AnimatedCounter = ({ value, suffix = '', decimals = 0 }) => {
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (latest) =>
+    decimals > 0 ? latest.toFixed(decimals) : Math.round(latest),
+  )
+  const [display, setDisplay] = useState(decimals > 0 ? '0.00' : '0')
+
+  useEffect(() => {
+    const unsubscribe = rounded.on('change', (v) => setDisplay(v))
+    return unsubscribe
+  }, [rounded])
+
+  useEffect(() => {
+    const controls = animate(count, value, {
+      duration: 2,
+      ease: 'easeOut',
+    })
+    return controls.stop
+  }, [count, value])
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <motion.div
-          className="text-center max-w-4xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
-          >
-            Hi, I'm{' '}
-            <span className="text-gradient inline-block hover:scale-110 transition-transform duration-300 cursor-default">
-              Hadeeqa Imran
-            </span>
-          </motion.h1>
-          
-          <motion.p
-            variants={itemVariants}
-            className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8"
-          >
-            <span 
-              className="inline-block transition-colors duration-300 cursor-default"
-              onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
-              onMouseLeave={(e) => e.target.style.color = ''}
-            >Full-Stack Engineer</span>
-            <span className="mx-3">|</span>
-            <span 
-              className="inline-block transition-colors duration-300 cursor-default"
-              onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
-              onMouseLeave={(e) => e.target.style.color = ''}
-            >React Native</span>
-            <span className="mx-3">|</span>
-            <span 
-              className="inline-block transition-colors duration-300 cursor-default"
-              onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
-              onMouseLeave={(e) => e.target.style.color = ''}
-            >MERN & Next.js</span>
-            <span className="mx-3">|</span>
-            <span 
-                className="inline-block transition-colors duration-300 cursor-default"
-                onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-hover)'}
-                onMouseLeave={(e) => e.target.style.color = ''}
-            >Gold Medalist @ FAST-NU </span>
-          </motion.p>
-          
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto"
-          >
-            Turning caffeine and code into elegant digital experiences that make technology feel effortless.
-          </motion.p>
+    <span>
+      {display}
+      {suffix}
+    </span>
+  )
+}
 
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-4 mb-12"
-          >
+const Typewriter = ({ words, typingSpeed = 100, deletingSpeed = 60, pauseTime = 2000 }) => {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const [currentText, setCurrentText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const word = words[currentWordIndex]
+    let timeout
+
+    if (!isDeleting && currentText === word) {
+      timeout = setTimeout(() => setIsDeleting(true), pauseTime)
+    } else if (isDeleting && currentText === '') {
+      setIsDeleting(false)
+      setCurrentWordIndex((prev) => (prev + 1) % words.length)
+    } else {
+      timeout = setTimeout(
+        () => {
+          setCurrentText(
+            isDeleting ? word.substring(0, currentText.length - 1) : word.substring(0, currentText.length + 1),
+          )
+        },
+        isDeleting ? deletingSpeed : typingSpeed,
+      )
+    }
+
+    return () => clearTimeout(timeout)
+  }, [currentText, currentWordIndex, isDeleting, words, typingSpeed, deletingSpeed, pauseTime])
+
+  return (
+    <span className="text-gradient">
+      {currentText}
+      <motion.span
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 0.8, repeat: Infinity }}
+        className="ml-0.5 inline-block w-[3px] align-middle"
+        style={{ height: '1em', background: 'var(--color-primary)' }}
+      />
+    </span>
+  )
+}
+
+const Hero = () => {
+  return (
+    <section id="home" className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pt-36">
+      <div className="container-shell">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="mx-auto max-w-5xl min-w-0 text-center"
+        >
+          <div className="mb-5 flex flex-wrap items-center justify-center gap-3">
+            <motion.span
+              className="chip chip-accent"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <ShieldCheck size={15} />
+              Gold Medalist @ FAST-NU
+            </motion.span>
+            <motion.span
+              className="chip"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.45 }}
+            >
+              <Rocket size={15} />
+              Building production mobile and web apps
+            </motion.span>
+          </div>
+
+          <h1 className="text-balance break-words text-4xl font-black leading-[0.96] text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">
+            Hadeeqa Imran
+          </h1>
+
+          <p className="text-pretty mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300 sm:text-xl">
+            Full-stack software engineer specializing in{' '}
+            <Typewriter words={roles} />
+          </p>
+
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-400">
+            From architecture through release — polished products with real users.
+          </p>
+
+          <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:max-w-none sm:flex-row">
             <motion.a
               href="#contact"
-              whileHover={{
-                scale: 1.08,
-                y: -3,
-                boxShadow: '0 20px 40px rgba(var(--particle-rgb), 0.4)'
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="relative px-8 py-4 rounded-xl font-semibold text-white overflow-hidden group"
-              style={{
-                background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
-              }}
+              className="primary-action w-full sm:w-auto"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <motion.span
-                className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-              />
-              <span className="relative flex items-center gap-2">
-                <Sparkles size={20} className="group-hover:rotate-12 transition-transform duration-300" />
-                Get In Touch
-              </span>
-              <motion.div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: `linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1))`,
-                }}
-              />
+              <Mail size={19} />
+              Work With Me
             </motion.a>
-
             <motion.a
               href="#projects"
-              whileHover={{
-                scale: 1.08,
-                y: -3,
-                boxShadow: '0 20px 40px rgba(var(--particle-rgb), 0.3)'
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="relative px-8 py-4 rounded-xl font-semibold overflow-hidden group border-2 transition-all duration-300"
-              style={{
-                borderColor: 'var(--color-primary)',
-                color: 'var(--color-primary)',
-              }}
+              className="secondary-action w-full sm:w-auto"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <motion.span
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
-                }}
-              />
-              <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-300">
-                <Briefcase size={20} className="group-hover:-rotate-12 transition-transform duration-300" />
-                View Work
-              </span>
+              <Briefcase size={19} />
+              View Selected Work
             </motion.a>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center space-x-6"
-          >
-            {[
-              { href: 'https://github.com/HadeeqaImran', Icon: Github },
-              { href: 'https://www.linkedin.com/in/hadeeqa-imran', Icon: Linkedin },
-              { href: 'https://www.upwork.com/freelancers/~01a82d848618e8d06c', Icon: UpworkIcon },
-              { href: 'mailto:hadeeqaimran786@gmail.com', Icon: Mail },
-            ].map((social, index) => (
+          <div className="mt-8 flex items-center justify-center gap-3">
+            {socialLinks.map(({ href, label, Icon }, i) => (
               <motion.a
-                key={index}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={socialVariants}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="text-gray-600 dark:text-gray-400 transition-colors duration-200"
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
-                onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                key={label}
+                href={href}
+                target={href.startsWith('mailto:') ? undefined : '_blank'}
+                rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                className="icon-button"
+                aria-label={label}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + i * 0.08 }}
+                whileHover={{ scale: 1.1, y: -2 }}
               >
-                <social.Icon size={28} />
+                <Icon size={21} />
               </motion.a>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut',
-          }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          transition={{ duration: 0.7, delay: 0.18, ease: 'easeOut' }}
+          className="mx-auto mt-14 grid max-w-6xl min-w-0 gap-4 lg:grid-cols-[1.25fr_0.75fr]"
         >
-          <a 
-            href="#about" 
-            className="text-gray-400 dark:text-gray-500 transition-colors duration-200"
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary-hover)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = ''}
-          >
-            <ArrowDown size={32} />
-          </a>
+          <div className="surface-card-strong min-w-0 overflow-hidden group">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3 sm:px-5" style={{ borderColor: 'var(--border-soft)' }}>
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Selected Launch</p>
+                <h2 className="mt-1 text-lg font-black text-slate-950 dark:text-white">Saela Sync</h2>
+              </div>
+              <span className="chip chip-accent">React Native + AI</span>
+            </div>
+            <div className="relative aspect-[16/8.4] overflow-hidden bg-slate-950">
+              <img
+                src={saelaSyncImage}
+                alt="Saela Sync product screenshot"
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                loading="eager"
+                fetchPriority="high"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/82 to-transparent p-5 text-left">
+                <p className="max-w-2xl text-sm font-semibold leading-6 text-white/90">
+                  AI-powered health guidance with real-time support, subscriptions, secure auth, and production mobile release workflows.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid min-w-0 gap-4">
+            <div className="surface-card-strong min-w-0 p-5">
+              <div className="grid grid-cols-3 gap-4">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="min-w-0 text-center">
+                    <div className="text-2xl font-black text-slate-950 dark:text-white">
+                      <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals || 0} />
+                    </div>
+                    <div className="mt-1 text-xs font-semibold leading-5 text-slate-500 dark:text-slate-400">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden min-w-0 grid-cols-1 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-2">
+              {featuredProducts.slice(1).map((product) => (
+                <div key={product.title} className="surface-card min-w-0 overflow-hidden group">
+                  <div className="aspect-[16/11] overflow-hidden bg-slate-900">
+                    <img src={product.image} alt={`${product.title} product screenshot`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]" loading="lazy" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-sm font-black text-slate-950 dark:text-white">{product.title}</h3>
+                    <p className="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-400">{product.type}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <ColorSlider />
+          </div>
         </motion.div>
-        
-        {/* Color Palette Slider */}
-        <div className="absolute bottom-8 right-3 sm:right-6 lg:right-8">
-          <ColorSlider />
-        </div>
       </div>
+
+      <a
+        href="#about"
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-slate-500 transition hover:text-[var(--color-primary-hover)] dark:text-slate-400 md:block"
+        aria-label="Scroll to about section"
+      >
+        <motion.span
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          className="block"
+        >
+          <ArrowDown size={28} />
+        </motion.span>
+      </a>
     </section>
   )
 }

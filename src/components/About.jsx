@@ -1,165 +1,148 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Code, Palette, Zap } from 'lucide-react'
-import { useTheme } from '../context/ThemeContext'
+import { Code, GraduationCap, Palette, Trophy, Zap } from 'lucide-react'
+
+const features = [
+  {
+    icon: Code,
+    title: 'Clean Engineering',
+    description: 'I favor maintainable architecture, clear ownership boundaries, and code that a team can keep evolving.',
+  },
+  {
+    icon: Palette,
+    title: 'Product Taste',
+    description: 'I care about the small interface decisions that make complex workflows feel obvious and polished.',
+  },
+  {
+    icon: Zap,
+    title: 'Release Velocity',
+    description: 'From CI/CD to store launches, I build with performance, QA, and iteration speed in mind.',
+  },
+]
+
+const highlights = [
+  { value: '4+', label: 'years of full-stack work' },
+  { value: '3.96/4.0', label: 'CGPA, Summa cum Laude' },
+  { value: 'AI + Mobile', label: 'current product focus' },
+]
 
 const About = () => {
-  const { theme } = useTheme()
-  const features = [
-    {
-      icon: <Code size={32} />,
-      title: 'Clean Code',
-      description: 'Writing maintainable, scalable, and efficient code is my priority.',
-    },
-    {
-      icon: <Palette size={32} />,
-      title: 'Beautiful Design',
-      description: 'Creating visually appealing interfaces with great user experience.',
-    },
-    {
-      icon: <Zap size={32} />,
-      title: 'Fast Performance',
-      description: 'Optimizing applications for speed and performance.',
-    },
-  ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
-    },
-  }
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  }
-
   return (
-    <section 
-      id="about" 
-      className="py-20 bg-white/80 backdrop-blur-sm relative transition-colors duration-300"
-      style={{
-        backgroundColor: theme === 'dark'
-          ? `rgba(var(--bg-dark), 0.8)`
-          : undefined,
-      }}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="section-shell section-muted">
+      <div className="container-shell">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.55 }}
+          className="section-header"
         >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
+          <span className="section-eyebrow">
+            <GraduationCap size={16} />
+            About
+          </span>
+          <h2 className="section-title">A builder with product instincts and backend depth.</h2>
+          <div className="accent-rule" />
+          <p className="section-copy">
+            I turn ambitious ideas into reliable software, from React Native interfaces to the APIs, cloud workflows, and AI integrations behind them.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="mx-auto mb-8 max-w-4xl"
+        >
+          <div className="surface-card-strong p-5 sm:p-6">
+            <div className="grid grid-cols-3 divide-x" style={{ borderColor: 'var(--border-soft)' }}>
+              {highlights.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  className="px-4 text-center first:pl-0 last:pr-0"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  style={{ borderColor: 'var(--border-soft)' }}
+                >
+                  <div className="text-2xl font-black text-slate-950 dark:text-white sm:text-3xl">{item.value}</div>
+                  <p className="mt-2 text-xs font-semibold leading-5 text-slate-500 dark:text-slate-400 sm:text-sm">{item.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-primary mx-auto"
-          ></motion.div>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="max-w-3xl mx-auto mb-16"
-        >
-          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            Hey there! I’m a Full-Stack Software Engineer with over 4 years of experience turning complex ideas into clean, elegant web and mobile applications, or as I like to call them, digital magic tricks.
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            I specialize in building scalable, high-performing solutions using React Native, Next.js, and the MERN stack, and I enjoy crafting both the pixel-perfect frontends you see and the powerful backends that make everything work seamlessly.
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            Along the way, I’ve picked up a strong toolkit, from AI integration and cloud setups to CI/CD pipelines and API development, all to make sure my code doesn’t just work, but works beautifully.
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            I hold a Bachelor’s in Computer Science from FAST University, where I graduated with a Gold Medal and Summa cum Laude (3.96/4.0 CGPA). I’m constantly learning, experimenting, and exploring new technologies to stay ahead of the curve.
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-            When I’m not buried in code, you’ll probably find me exploring new tech trends, contributing to open-source, or helping fellow developers level up their skills.
-          </motion.p>
-
-          <motion.p variants={itemVariants} className="text-md text-gray-600 dark:text-gray-300 leading-relaxed">
-            Let’s just say: if it involves creativity, code, and a good challenge, I’m in!
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
-        >
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{
-                y: -10,
-                boxShadow: `0 20px 40px rgba(var(--particle-rgb), 0.15)`,
-                transition: { duration: 0.3 },
-              }}
-              className="bg-white p-8 rounded-lg hover:shadow-lg transition-all duration-300 group"
-              style={{
-                backgroundColor: theme === 'dark'
-                  ? `rgb(var(--card-bg))`
-                  : undefined,
-              }}
-            >
-              <motion.div
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.6 }}
-                className="mb-4 inline-block"
-                style={{ color: 'var(--color-primary)' }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+            className="surface-card-strong p-6 sm:p-8 lg:p-10"
+          >
+            <div className="mb-8 flex flex-wrap gap-3">
+              <motion.span
+                className="chip chip-accent"
+                whileHover={{ scale: 1.05 }}
               >
-                {feature.icon}
-              </motion.div>
-              <h3 
-                className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300"
-                onMouseEnter={(e) => {
-                  const parent = e.target.closest('.group')
-                  if (parent) e.target.style.color = 'var(--color-primary-hover)'
-                }}
-                onMouseLeave={(e) => e.target.style.color = ''}
-              >
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+                <Trophy size={15} />
+                Gold Medalist
+              </motion.span>
+              <span className="chip">FAST University</span>
+              <span className="chip">Lahore, Pakistan</span>
+            </div>
+
+            <div className="space-y-5 text-base leading-8 text-slate-600 dark:text-slate-300">
+              <p>
+                I am a full-stack software engineer with over 4 years of experience building web and mobile applications for real users, real launches, and real business constraints.
+              </p>
+              <p>
+                My strongest work sits at the intersection of React Native, Next.js, MERN architecture, and AI integration. I enjoy shaping the front-end experience and the backend systems that make it fast, secure, and scalable.
+              </p>
+              <p>
+                I graduated from FAST University with a Gold Medal and Summa cum Laude distinction, earning a 3.96/4.0 CGPA. That academic rigor still shows up in how I debug, document, and ship.
+              </p>
+              <p>
+                Outside delivery work, I keep exploring frontier models, cloud patterns, and developer workflows so the products I build stay current without chasing trends blindly.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid gap-4">
+            {features.map((feature, index) => {
+              const Icon = feature.icon
+
+              return (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.55, delay: index * 0.08 }}
+                  className="surface-card group p-5 transition hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="flex gap-4">
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition duration-200 group-hover:scale-110"
+                      style={{ background: 'rgba(var(--particle-rgb), 0.1)', color: 'var(--color-primary)' }}
+                    >
+                      <Icon size={22} />
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-black text-slate-950 dark:text-white">{feature.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{feature.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
       </div>
     </section>
   )
 }
 
 export default About
-

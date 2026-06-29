@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTheme } from '../context/ThemeContext'
 
 const ParticlesBackground = () => {
@@ -7,236 +7,135 @@ const ParticlesBackground = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas) return undefined
 
     const ctx = canvas.getContext('2d')
-    let animationFrameId
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let animationFrameId = 0
+    let width = 0
+    let height = 0
     let nodes = []
+    const mouse = { x: -1000, y: -1000, radius: 150 }
 
-    // Set canvas size
-    const setCanvasSize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    setCanvasSize()
-
-    // Network Node class
-    class NetworkNode {
-      constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.baseX = this.x
-        this.baseY = this.y
-        this.size = Math.random() * 2.5 + 2.5 // Slightly larger nodes
-        this.baseSize = this.size
-        this.speedX = (Math.random() - 0.5) * 0.3
-        this.speedY = (Math.random() - 0.5) * 0.3
-        this.opacity = Math.random() * 0.2 + 0.25 // Lower dot opacity
-        this.velocityX = 0
-        this.velocityY = 0
-        this.density = Math.random() * 20 + 20
-      }
-
-      update(mouse) {
-        // Calculate distance from mouse
-        const dx = mouse.x - this.x
-        const dy = mouse.y - this.y
-        const distance = Math.sqrt(dx * dx + dy * dy)
-
-        if (distance < mouse.radius) {
-          // Phobic behavior - run away from mouse
-          const force = (mouse.radius - distance) / mouse.radius
-          const angle = Math.atan2(this.y - mouse.y, this.x - mouse.x)
-          
-          // Apply fleeing force
-          this.velocityX = Math.cos(angle) * force * this.density * 0.4
-          this.velocityY = Math.sin(angle) * force * this.density * 0.4
-          
-          // Make node slightly bigger when fleeing
-          this.size = this.baseSize * 1.5
-        } else {
-          // Return to base position
-          this.velocityX *= 0.92
-          this.velocityY *= 0.92
-          
-          // Gentle pull back to base position
-          const returnForce = 0.015
-          this.velocityX += (this.baseX - this.x) * returnForce
-          this.velocityY += (this.baseY - this.y) * returnForce
-          
-          // Return to base size
-          this.size += (this.baseSize - this.size) * 0.08
-        }
-
-        // Apply velocity and base speed
-        this.x += this.velocityX + this.speedX
-        this.y += this.velocityY + this.speedY
-
-        // Update base position (for continuous movement)
-        this.baseX += this.speedX
-        this.baseY += this.speedY
-
-        // Wrap around screen
-        if (this.baseX > canvas.width) {
-          this.baseX = 0
-          this.x = 0
-        }
-        if (this.baseX < 0) {
-          this.baseX = canvas.width
-          this.x = canvas.width
-        }
-        if (this.baseY > canvas.height) {
-          this.baseY = 0
-          this.y = 0
-        }
-        if (this.baseY < 0) {
-          this.baseY = canvas.height
-          this.y = canvas.height
-        }
-      }
-
-      draw(particleRgb) {
-        // Draw node with glow effect - using CSS variable colors
-        ctx.shadowBlur = 6
-        ctx.shadowColor = `rgba(${particleRgb}, ${this.opacity * 0.4})`
-        ctx.fillStyle = `rgba(${particleRgb}, ${this.opacity * 0.45})` // Lower dot opacity
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fill()
-        ctx.shadowBlur = 0
-      }
-    }
-
-    // Create nodes
-    const createNodes = () => {
-      const numberOfNodes = Math.floor((canvas.width * canvas.height) / 15000) // Balanced quantity
-      for (let i = 0; i < numberOfNodes; i++) {
-        nodes.push(new NetworkNode())
-      }
-    }
-    createNodes()
-
-    // Connect nearby nodes with lines (graph edges) - using CSS variable colors
-    const connectNodes = (particleRgb) => {
-      const maxDistance = 150
-      
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x
-          const dy = nodes[i].y - nodes[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < maxDistance) {
-            const opacity = (1 - distance / maxDistance) * 0.2 // More visible lines
-            
-            // Create gradient for lines
-            const gradient = ctx.createLinearGradient(
-              nodes[i].x, nodes[i].y,
-              nodes[j].x, nodes[j].y
-            )
-            gradient.addColorStop(0, `rgba(${particleRgb}, ${opacity * nodes[i].opacity * 0.5})`) // More visible
-            gradient.addColorStop(1, `rgba(${particleRgb}, ${opacity * nodes[j].opacity * 0.5})`) // More visible
-            
-            ctx.strokeStyle = gradient
-            ctx.lineWidth = 1 // Slightly thicker for graph appearance
-            ctx.beginPath()
-            ctx.moveTo(nodes[i].x, nodes[i].y)
-            ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.stroke()
-          }
-        }
-      }
-    }
-
-    // Mouse interaction
-    let mouse = { 
-      x: null, 
-      y: null, 
-      radius: 150
-    }
-
-    const handleMouseMove = (e) => {
-      mouse.x = e.clientX
-      mouse.y = e.clientY
-    }
-
-    const handleMouseLeave = () => {
-      mouse.x = null
-      mouse.y = null
-    }
-
-    canvas.addEventListener('mousemove', handleMouseMove)
-    canvas.addEventListener('mouseleave', handleMouseLeave)
-
-    // Animation loop
-    const animate = () => {
-      // Get colors from CSS variables
+    const getParticleColor = () => {
       const styles = getComputedStyle(document.documentElement)
-      const particleRgb = styles.getPropertyValue('--particle-rgb').trim()
-      const bgStart = styles.getPropertyValue('--bg-gradient-start').trim()
-      const bgMid = styles.getPropertyValue('--bg-gradient-mid').trim()
-      const bgEnd = styles.getPropertyValue('--bg-gradient-end').trim()
-      
-      // Create gradient background matching the body gradient
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
-      gradient.addColorStop(0, `rgba(${bgStart}, 0.3)`)
-      gradient.addColorStop(0.5, `rgba(${bgMid}, 0.25)`)
-      gradient.addColorStop(1, `rgba(${bgEnd}, 0.2)`)
-      
-      ctx.fillStyle = gradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-      // Draw connections first (behind nodes)
-      connectNodes(particleRgb)
-
-      // Update and draw nodes
-      nodes.forEach((node) => {
-        if (mouse.x && mouse.y) {
-          node.update(mouse)
-        } else {
-          node.update({ x: -1000, y: -1000, radius: 0 })
-        }
-        node.draw(particleRgb)
-      })
-
-      // Draw subtle mouse indicator
-      if (mouse.x && mouse.y) {
-        ctx.strokeStyle = `rgba(${particleRgb}, 0.06)` // Slightly more visible
-        ctx.lineWidth = 1.5
-        ctx.beginPath()
-        ctx.arc(mouse.x, mouse.y, mouse.radius, 0, Math.PI * 2)
-        ctx.stroke()
-      }
-
-      animationFrameId = requestAnimationFrame(animate)
+      return styles.getPropertyValue('--particle-rgb').trim() || '14, 165, 233'
     }
-    animate()
 
-    // Handle resize
-    const handleResize = () => {
-      setCanvasSize()
-      nodes = []
+    const createNode = () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      size: Math.random() * 1.8 + 1,
+      alpha: Math.random() * 0.22 + 0.16,
+    })
+
+    const createNodes = () => {
+      const count = Math.min(86, Math.max(40, Math.floor((width * height) / 19000)))
+      nodes = Array.from({ length: count }, createNode)
+    }
+
+    const setCanvasSize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = Math.floor(width * dpr)
+      canvas.height = Math.floor(height * dpr)
+      canvas.style.width = `${width}px`
+      canvas.style.height = `${height}px`
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       createNodes()
     }
 
+    const updateNode = (node) => {
+      const dx = node.x - mouse.x
+      const dy = node.y - mouse.y
+      const distance = Math.sqrt(dx * dx + dy * dy)
+
+      if (distance < mouse.radius) {
+        const force = (mouse.radius - distance) / mouse.radius
+        const angle = Math.atan2(dy, dx)
+        node.x += Math.cos(angle) * force * 1.7
+        node.y += Math.sin(angle) * force * 1.7
+      }
+
+      node.x += node.vx
+      node.y += node.vy
+
+      if (node.x < -20) node.x = width + 20
+      if (node.x > width + 20) node.x = -20
+      if (node.y < -20) node.y = height + 20
+      if (node.y > height + 20) node.y = -20
+    }
+
+    const draw = () => {
+      const particleRgb = getParticleColor()
+      ctx.clearRect(0, 0, width, height)
+
+      for (let i = 0; i < nodes.length; i += 1) {
+        const node = nodes[i]
+        if (!reducedMotion) updateNode(node)
+
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          const other = nodes[j]
+          const dx = node.x - other.x
+          const dy = node.y - other.y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          if (distance < 135) {
+            const opacity = (1 - distance / 135) * 0.14
+            ctx.strokeStyle = `rgba(${particleRgb}, ${opacity})`
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo(node.x, node.y)
+            ctx.lineTo(other.x, other.y)
+            ctx.stroke()
+          }
+        }
+
+        ctx.fillStyle = `rgba(${particleRgb}, ${node.alpha})`
+        ctx.beginPath()
+        ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2)
+        ctx.fill()
+      }
+
+      if (!reducedMotion) {
+        animationFrameId = requestAnimationFrame(draw)
+      }
+    }
+
+    const handlePointerMove = (event) => {
+      mouse.x = event.clientX
+      mouse.y = event.clientY
+    }
+
+    const handlePointerLeave = () => {
+      mouse.x = -1000
+      mouse.y = -1000
+    }
+
+    const handleResize = () => {
+      cancelAnimationFrame(animationFrameId)
+      setCanvasSize()
+      draw()
+    }
+
+    setCanvasSize()
+    draw()
+    window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    window.addEventListener('pointerleave', handlePointerLeave)
     window.addEventListener('resize', handleResize)
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId)
+      window.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('pointerleave', handlePointerLeave)
       window.removeEventListener('resize', handleResize)
-      canvas.removeEventListener('mousemove', handleMouseMove)
-      canvas.removeEventListener('mouseleave', handleMouseLeave)
     }
   }, [theme])
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-    />
-  )
+  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-0 h-full w-full" aria-hidden="true" />
 }
 
 export default ParticlesBackground
-
