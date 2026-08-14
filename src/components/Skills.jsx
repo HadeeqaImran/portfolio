@@ -172,7 +172,7 @@ const Skills = () => {
                             >
                               <SkillIcon size={16} />
                             </span>
-                            <span className="truncate text-sm font-bold text-slate-700 dark:text-slate-200">{skill.name}</span>
+                            <span className="text-sm font-bold text-slate-700 dark:text-slate-200">{skill.name}</span>
                           </div>
                           <span className="text-xs font-black" style={{ color: 'var(--color-primary)' }}>
                             {skill.level}/10

@@ -90,6 +90,18 @@ const Navbar = ({ isProjectPage }) => {
     return hash
   }
 
+  const scrollToSection = (e, hash) => {
+    e.preventDefault()
+    const id = hash.replace('#', '')
+    const el = document.getElementById(id)
+    if (el) {
+      const navbarHeight = 80
+      const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight
+      window.scrollTo({ top, behavior: 'smooth' })
+      window.history.pushState(null, '', hash)
+    }
+  }
+
   const NavLink = ({ link }) => {
     const isActive = !isProjectPage && activeSection === link.href.replace('#', '')
 
@@ -107,6 +119,7 @@ const Navbar = ({ isProjectPage }) => {
     return (
       <a
         href={link.href}
+        onClick={(e) => scrollToSection(e, link.href)}
         className={`nav-link relative ${isActive ? 'text-[var(--color-primary)]' : ''}`}
       >
         {link.label}
@@ -142,7 +155,10 @@ const Navbar = ({ isProjectPage }) => {
         href={link.href}
         className={`nav-link text-center ${isActive ? 'text-[var(--color-primary)]' : ''}`}
         style={isActive ? { background: 'rgba(var(--particle-rgb), 0.09)' } : undefined}
-        onClick={() => setIsMobileMenuOpen(false)}
+        onClick={(e) => {
+          scrollToSection(e, link.href)
+          setIsMobileMenuOpen(false)
+        }}
       >
         {link.label}
       </a>
@@ -171,7 +187,7 @@ const Navbar = ({ isProjectPage }) => {
       </span>
     </Link>
   ) : (
-    <a href="#home" className="group flex min-w-0 items-center gap-3" aria-label="Hadeeqa Imran home">
+    <a href="#home" onClick={(e) => scrollToSection(e, '#home')} className="group flex min-w-0 items-center gap-3" aria-label="Hadeeqa Imran home">
       <span
         className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-black text-white shadow-lg transition-transform duration-200 group-hover:scale-105"
         style={{

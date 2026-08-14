@@ -62,7 +62,7 @@ const ProjectCard = ({ project }) => (
       <Link to={`/project/${project.slug}`}>
         <h3 className="text-xl font-black text-slate-950 transition hover:text-[var(--color-primary)] dark:text-white dark:hover:text-[var(--color-primary)]">{project.title}</h3>
       </Link>
-      <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
+      <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
       <div className="mt-5 flex flex-wrap gap-2">
         {project.tags.slice(0, 5).map((tag) => (
           <span key={tag} className="chip">
