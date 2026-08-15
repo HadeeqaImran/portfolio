@@ -52,7 +52,7 @@ const ProjectCard = ({ project }) => (
     transition={{ duration: 0.35 }}
     className="surface-card-strong flex h-full flex-col overflow-hidden group"
   >
-    <Link to={`/project/${project.slug}`} className="aspect-[16/9] overflow-hidden bg-slate-950 block">
+    <Link to={`/project/${project.slug}`} className="block aspect-video overflow-hidden bg-slate-950">
       <img src={project.image} alt={`${project.title} screenshot`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]" loading="lazy" />
     </Link>
     <div className="flex flex-1 flex-col p-5">
@@ -155,8 +155,8 @@ const Projects = () => {
               transition={{ duration: 0.4 }}
               className="surface-card-strong mb-6 overflow-hidden group"
             >
-              <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-                <Link to={`/project/${featuredProject.slug}`} className="relative min-h-[260px] overflow-hidden bg-slate-950 sm:min-h-[360px] block">
+              <div>
+                <Link to={`/project/${featuredProject.slug}`} className="relative block aspect-video overflow-hidden bg-slate-950">
                   <img src={featuredProject.image} alt={`${featuredProject.title} screenshot`} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" loading="lazy" />
                   <div className="absolute left-4 top-4">
                     <span className="chip chip-accent bg-white/90">Featured</span>

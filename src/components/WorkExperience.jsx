@@ -7,7 +7,7 @@ const experiences = [
     title: 'Software Engineer',
     company: 'PixelPK Technologies',
     location: 'Lahore, Pakistan',
-    period: 'May 2025 - Present',
+    period: 'May 2025 to Present',
     description: 'Building AITube, a next-gen video streaming platform for AI-generated videos, from the ground up.',
     technologies: ['React Native', 'TypeScript', 'AWS', 'Docker', 'Redis', 'CI/CD', 'REST APIs'],
     achievements: [
@@ -24,7 +24,7 @@ const experiences = [
     title: 'Software Engineer',
     company: 'Dubizzle Labs',
     location: 'Lahore, Pakistan',
-    period: 'May 2024 - May 2025',
+    period: 'May 2024 to May 2025',
     description: 'Developed and maintained multiple client-facing applications, focusing on performance optimization and user experience.',
     technologies: ['React Native', 'AWS', 'CI/CD', 'REST APIs'],
     achievements: [
@@ -40,7 +40,7 @@ const experiences = [
     title: 'MERN Stack Developer',
     company: 'PixelPK Technologies',
     location: 'Lahore, Pakistan',
-    period: 'December 2022 - May 2024',
+    period: 'December 2022 to May 2024',
     description: 'Contributed to web development projects in an agile environment, building modern frameworks and production habits.',
     technologies: ['JavaScript', 'React', 'Node.js', 'Express', 'MongoDB', 'REST APIs', 'AWS', 'Docker'],
     achievements: [
@@ -57,7 +57,7 @@ const experiences = [
     title: 'Software Engineering Intern',
     company: 'Enxsys',
     location: 'Lahore, Pakistan',
-    period: 'June 2022 - November 2022',
+    period: 'June 2022 to November 2022',
     description: 'Worked on an industry-level AI and web development project using React.js, Python, Django, and OpenAI.',
     technologies: ['Python', 'Django', 'JavaScript', 'React', 'Git', 'REST APIs'],
     achievements: [

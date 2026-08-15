@@ -114,12 +114,12 @@ const ProjectPage = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="surface-card-strong overflow-hidden"
+              className="surface-card-strong aspect-video overflow-hidden"
             >
               <img
                 src={project.image}
                 alt={`${project.title} screenshot`}
-                className="w-full object-cover"
+                className="h-full w-full object-cover"
                 loading="eager"
               />
             </motion.div>

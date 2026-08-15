@@ -19,7 +19,7 @@ const certifications = [
     description: 'Crafting fast, secure, modern web experiences with Next.js and the latest React ecosystem.',
   },
   {
-    title: 'Mastering TypeScript - 2024 Edition',
+    title: 'Mastering TypeScript, 2024 Edition',
     issuer: 'Udemy',
     date: 'October 12, 2024',
     credentialId: 'UC-9cac93e8-39b1-4a02-b9a2-ddcd91a9b274',

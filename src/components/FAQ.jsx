@@ -11,7 +11,7 @@ const faqs = [
   {
     question: 'Is Hadeeqa Imran the same as Hadiqa Imran?',
     answer:
-      'Yes — some people spell my name Hadiqa Imran, but it refers to the same engineer. You can find my work here, on LinkedIn, GitHub, and Upwork under the name Hadeeqa Imran.',
+      'Yes, some people spell my name Hadiqa Imran, but it refers to the same engineer. You can find my work here, on LinkedIn, GitHub, and Upwork under the name Hadeeqa Imran.',
   },
   {
     question: 'What services does Hadeeqa Imran provide?',

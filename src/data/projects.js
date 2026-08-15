@@ -18,7 +18,7 @@ const projects = [
     android: 'https://play.google.com/store/apps/details?id=com.saelasync.app',
     ios: 'https://apps.apple.com/il/app/saela-your-body-explained/id6755064853',
     role: 'Lead Mobile Engineer',
-    duration: '2024 - Present',
+    duration: '2024 to Present',
     overview: 'Saela Sync is a production health companion app that combines conversational AI with biomarker-driven insights to help users understand and improve their health. I architected and built the entire mobile application from concept to App Store and Google Play release.',
     highlights: [
       'Designed and implemented the complete React Native mobile application from ground up, including architecture, state management, and UI/UX.',
@@ -59,7 +59,7 @@ const projects = [
     android: 'https://play.google.com/store/apps/details?id=com.aitube',
     ios: 'https://apps.apple.com/us/app/aitube-videos/id6748401647',
     role: 'Sole Mobile Engineer',
-    duration: '2025 - Present',
+    duration: '2025 to Present',
     overview: 'AITube is a next-generation video streaming platform purpose-built for AI-generated video content. I solely engineered the entire mobile application, building a high-performance video playback experience with creator tools, monetization, and content discovery.',
     highlights: [
       'Solely engineered the complete React Native mobile application from architecture to app store release on both iOS and Android.',
@@ -101,7 +101,7 @@ const projects = [
     android: 'https://play.google.com/store/apps/details?id=com.pixelpk.lawbotnew',
     note: 'iOS app coming soon',
     role: 'Full-Stack Developer',
-    duration: '2023 - 2024',
+    duration: '2023 to 2024',
     overview: 'Pakistan Lawbot democratizes legal access in Pakistan by providing an AI-powered legal assistant that understands both English and Urdu. The platform combines a comprehensive searchable database of Pakistani laws with a conversational AI that can answer legal questions in natural language.',
     highlights: [
       'Built a bilingual AI chatbot capable of understanding and responding to legal queries in both English and Urdu.',
@@ -140,7 +140,7 @@ const projects = [
     tags: ['React Native', 'Firebase', 'Redux', 'AWS', 'Codemagic'],
     note: 'Proprietary CRM on private app stores',
     role: 'Mobile Engineer',
-    duration: '2024 - 2025',
+    duration: '2024 to 2025',
     overview: 'Jarvis is an enterprise-grade multi-tenant CRM used internally by teams across Bayut, Dubizzle, and OLX. It manages the full client lifecycle including lead tracking, accountability workflows, performance analytics, and team coordination across multiple property markets in the UAE.',
     highlights: [
       'Built and optimized a cross-platform React Native CRM application serving multiple business units with tenant-specific configurations.',
@@ -180,7 +180,7 @@ const projects = [
     ios: 'https://apps.apple.com/us/app/dubizzle/id892172848',
     live: 'https://www.dubizzle.com/',
     role: 'Software Engineer',
-    duration: '2024 - 2025',
+    duration: '2024 to 2025',
     overview: 'Dubizzle is one of the UAE\'s largest online classifieds platforms, serving millions of users for buying, selling, and renting across categories including property, cars, jobs, and general goods. I contributed to the mobile app development and optimization of the platform.',
     highlights: [
       'Contributed to the React Native mobile application serving millions of active users across the UAE.',
@@ -215,7 +215,7 @@ const projects = [
     android: 'https://play.google.com/store/apps/details?id=com.bayut.bayutapp&hl=en',
     ios: 'https://apps.apple.com/us/app/bayut-ksa-real-estate/id1504036401',
     role: 'Software Engineer',
-    duration: '2024 - 2025',
+    duration: '2024 to 2025',
     overview: 'Bayut is the UAE\'s leading real estate platform, helping millions of users find, buy, sell, and rent properties. The platform features property search with advanced filters, agent profiles, mortgage calculators, and market insights. I worked on the mobile application and contributed to platform features.',
     highlights: [
       'Worked on the React Native mobile application used by millions of property seekers across the UAE and KSA.',
@@ -249,7 +249,7 @@ const projects = [
     tags: ['MERN', 'Next.js', 'AWS', 'Firebase', 'Redux', 'Docker'],
     live: 'https://fitbycharro.com/',
     role: 'Full-Stack Developer',
-    duration: '2023 - 2024',
+    duration: '2023 to 2024',
     overview: 'Fit by Charo is a comprehensive fitness and wellness platform designed specifically for women. The platform delivers personalized training programs, nutrition plans, and coaching through a modern web experience. I built the full-stack platform from design to deployment.',
     highlights: [
       'Built the complete web platform using Next.js with server-side rendering for fast initial loads and SEO optimization.',

@@ -150,7 +150,7 @@ const Hero = () => {
           </p>
 
           <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-400">
-            From architecture through release — polished products with real users.
+            I build polished products for real users, from architecture through release.
           </p>
 
           <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-center justify-center gap-3 sm:max-w-none sm:flex-row">
@@ -208,7 +208,7 @@ const Hero = () => {
               </div>
               <span className="chip chip-accent">React Native + AI</span>
             </div>
-            <div className="relative aspect-[16/8.4] overflow-hidden bg-slate-950">
+            <div className="relative aspect-video overflow-hidden bg-slate-950">
               <img
                 src={saelaSyncImage}
                 alt="Saela Sync product screenshot"
@@ -241,7 +241,7 @@ const Hero = () => {
             <div className="hidden min-w-0 grid-cols-1 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-2">
               {featuredProducts.slice(1).map((product) => (
                 <div key={product.title} className="surface-card min-w-0 overflow-hidden group">
-                  <div className="aspect-[16/11] overflow-hidden bg-slate-900">
+                  <div className="aspect-video overflow-hidden bg-slate-900">
                     <img src={product.image} alt={`${product.title} product screenshot`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]" loading="lazy" />
                   </div>
                   <div className="p-4">
