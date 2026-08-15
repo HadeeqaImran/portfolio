@@ -182,7 +182,7 @@ const Navbar = ({ isProjectPage }) => {
         </span>
         <span className="hidden items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 sm:flex">
           <Sparkles size={13} style={{ color: 'var(--color-primary)' }} />
-          Full-stack engineer
+          AI Native Full Stack Engineer
         </span>
       </span>
     </Link>
@@ -203,7 +203,7 @@ const Navbar = ({ isProjectPage }) => {
         </span>
         <span className="hidden items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 sm:flex">
           <Sparkles size={13} style={{ color: 'var(--color-primary)' }} />
-          Full-stack engineer
+          AI Native Full Stack Engineer
         </span>
       </span>
     </a>

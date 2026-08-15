@@ -88,7 +88,7 @@ const ColorSlider = () => {
         />
       </div>
 
-      <div className="relative py-3">
+      <div className="relative mx-3.5 py-3">
         <div
           ref={sliderRef}
           role="slider"
@@ -115,17 +115,21 @@ const ColorSlider = () => {
           }}
         />
 
-        <motion.div
-          className="absolute top-1/2 h-7 w-7 cursor-grab rounded-full border-4 border-white shadow-xl active:cursor-grabbing dark:border-slate-950"
-          animate={{ left: `${sliderPosition}%`, scale: isDragging ? 1.08 : 1 }}
-          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-          style={{
-            transform: 'translate(-50%, -50%)',
-            background: `linear-gradient(135deg, ${colorPalettes[palette][theme].primary}, ${colorPalettes[palette][theme].accent})`,
-            boxShadow: `0 10px 26px rgba(var(--particle-rgb), 0.35)`,
-          }}
+        <div
+          className="pointer-events-none absolute top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2"
+          style={{ left: `${sliderPosition}%` }}
           aria-hidden="true"
-        />
+        >
+          <motion.div
+            className="h-full w-full rounded-full border-4 border-white shadow-xl dark:border-slate-950"
+            animate={{ scale: isDragging ? 1.08 : 1 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+            style={{
+              background: `linear-gradient(135deg, ${colorPalettes[palette][theme].primary}, ${colorPalettes[palette][theme].accent})`,
+              boxShadow: `0 10px 26px rgba(var(--particle-rgb), 0.35)`,
+            }}
+          />
+        </div>
       </div>
 
       <div className="mt-1 flex justify-between gap-1">
