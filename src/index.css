@@ -23,6 +23,7 @@
 
   html {
     scroll-behavior: smooth;
+    background-color: rgb(var(--bg-gradient-start));
   }
 
   html.dark {
@@ -31,6 +32,7 @@
     --surface-muted: rgba(var(--bg-dark-alt), 0.72);
     --border-soft: rgba(226, 232, 240, 0.12);
     --shadow-soft: 0 24px 90px rgba(0, 0, 0, 0.42);
+    color-scheme: dark;
   }
   
   body {
