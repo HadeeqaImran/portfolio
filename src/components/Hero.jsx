@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { ArrowDown, Briefcase, Github, Linkedin, Mail, Rocket, ShieldCheck } from 'lucide-react'
+import { ArrowDown, Brain, Briefcase, Github, Linkedin, Mail, Rocket, ShieldCheck } from 'lucide-react'
 import ColorSlider from './ColorSlider'
 import UpworkIcon from './UpworkIcon'
 import saelaSyncImage from '../assets/saela-sync.png'
@@ -126,17 +126,26 @@ const Hero = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <ShieldCheck size={15} />
-               Gold Medalist @ FAST-NU
+              <ShieldCheck size={15} style={{marginRight: 4}}/>
+               Gold medalist @ FAST-NU
             </motion.span>
             <motion.span
               className="chip"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.45 }}
+              transition={{ delay: 0.4 }}
             >
-              <Rocket size={15} />
-               Building production mobile and web apps
+              <Brain size={15} style={{marginRight: 4}}/>
+               Building AI & analytics systems
+            </motion.span>
+            <motion.span
+              className="chip"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Rocket size={15} style={{marginRight: 4}}/>
+               Shipping production mobile products end-to-end
             </motion.span>
           </div>
 
