@@ -38,7 +38,7 @@ const stats = [
   { value: 3.96, suffix: '', label: 'FAST-NU CGPA', decimals: 2 },
 ]
 
-const roles = ['React Native', 'Next.js', 'MERN Stack', 'AI Integration', 'AWS Cloud']
+const roles = ['React Native', 'Next.js', 'MERN Stack', 'AI Integrations', 'Analytics Infrastructure', 'AWS Cloud']
 
 const AnimatedCounter = ({ value, suffix = '', decimals = 0 }) => {
   const count = useMotionValue(0)
