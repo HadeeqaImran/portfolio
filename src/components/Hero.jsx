@@ -127,7 +127,7 @@ const Hero = () => {
               transition={{ delay: 0.3 }}
             >
               <ShieldCheck size={15} />
-              Gold Medalist @ FAST-NU
+               Gold Medalist @ FAST-NU
             </motion.span>
             <motion.span
               className="chip"
@@ -136,7 +136,7 @@ const Hero = () => {
               transition={{ delay: 0.45 }}
             >
               <Rocket size={15} />
-              Building production mobile and web apps
+               Building production mobile and web apps
             </motion.span>
           </div>
 

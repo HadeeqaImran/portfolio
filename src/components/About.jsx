@@ -20,7 +20,7 @@ const features = [
 ]
 
 const highlights = [
-  { value: '4+', label: 'years of full-stack work' },
+  { value: '5+', label: 'years of full-stack work' },
   { value: '3.96/4.0', label: 'CGPA, Summa cum Laude' },
   { value: 'AI + Mobile', label: 'current product focus' },
 ]
