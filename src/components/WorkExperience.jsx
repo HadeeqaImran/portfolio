@@ -53,22 +53,22 @@ const experiences = [
       linkedin: 'https://linkedin.com/company/pixelpk',
     },
   },
-  {
-    title: 'Software Engineering Intern',
-    company: 'Enxsys',
-    location: 'Lahore, Pakistan',
-    period: 'June 2022 to November 2022',
-    description: 'Worked on an industry-level AI and web development project using React.js, Python, Django, and OpenAI.',
-    technologies: ['Python', 'Django', 'JavaScript', 'React', 'Git', 'REST APIs'],
-    achievements: [
-      'Developed and optimized a Siamese Graph Neural Network for advanced pattern and change detection.',
-      'Improved frontend performance and user experience through responsive design and efficient state management in React.',
-    ],
-    socials: {
-      website: 'https://enxsys.com',
-      linkedin: 'https://linkedin.com/company/enxsys',
-    },
-  },
+  // {
+  //   title: 'Software Engineering Intern',
+  //   company: 'Enxsys',
+  //   location: 'Lahore, Pakistan',
+  //   period: 'June 2022 to November 2022',
+  //   description: 'Worked on an industry-level AI and web development project using React.js, Python, Django, and OpenAI.',
+  //   technologies: ['Python', 'Django', 'JavaScript', 'React', 'Git', 'REST APIs'],
+  //   achievements: [
+  //     'Developed and optimized a Siamese Graph Neural Network for advanced pattern and change detection.',
+  //     'Improved frontend performance and user experience through responsive design and efficient state management in React.',
+  //   ],
+  //   socials: {
+  //     website: 'https://enxsys.com',
+  //     linkedin: 'https://linkedin.com/company/enxsys',
+  //   },
+  // },
 ]
 
 const WorkExperience = () => {
