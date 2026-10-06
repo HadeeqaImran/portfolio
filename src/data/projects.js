@@ -9,7 +9,7 @@ import saelaSyncImage from '../assets/saela-sync.png'
 const projects = [
   {
     slug: 'saela-sync',
-    title: 'Saela Sync',
+    title: 'Saela',
     category: 'AI Health Companion',
     filterCategory: 'ai',
     description: 'An AI-powered health companion that delivers personalized, real-time insights through conversational support and biomarker-driven guidance.',
@@ -19,7 +19,7 @@ const projects = [
     ios: 'https://apps.apple.com/il/app/saela-your-body-explained/id6755064853',
     role: 'Lead Mobile Engineer',
     duration: '2024 to Present',
-    overview: 'Saela Sync is a production health companion app that combines conversational AI with biomarker-driven insights to help users understand and improve their health. I architected and built the entire mobile application from concept to App Store and Google Play release.',
+    overview: 'Saela is a production health companion app that combines conversational AI with biomarker-driven insights to help users understand and improve their health. I architected and built the entire mobile application from concept to App Store and Google Play release.',
     highlights: [
       'Designed and implemented the complete React Native mobile application from ground up, including architecture, state management, and UI/UX.',
       'Integrated OpenAI-powered conversational AI that provides personalized health guidance based on user biomarker data and health history.',

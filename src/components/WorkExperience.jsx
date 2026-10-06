@@ -4,6 +4,33 @@ import { Award, Briefcase, Calendar, ChevronDown, Globe, Linkedin, MapPin } from
 
 const experiences = [
   {
+  title: 'Full Stack AI Engineer',
+  company: 'Saela Technologies Inc.',
+  location: 'Remote',
+  period: 'December 2025 to Present',
+  description: 'Built and shipped AI-powered health technology across mobile, backend integrations, analytics, and intelligent user experiences.',
+  technologies: [
+    'TypeScript',
+    'React Native',
+    'Node.js',
+    'REST APIs',
+    'LLMs',
+    'Firebase',
+    'PostHog',
+    'RevenueCat',
+    'AWS',
+  ],
+  achievements: [
+    'Developed production AI-powered experiences that transformed user inputs, conversations, and behavioral signals into personalized health insights.',
+    'Built and maintained full-stack integrations across APIs, subscriptions, notifications, analytics, and mobile releases.',
+    'Designed product analytics infrastructure with Firebase and PostHog, including event tracking, user journeys, reporting pipelines, and dashboards.',
+  ],
+  socials: {
+    website: 'https://saela.com',
+    linkedin: 'https://linkedin.com/company/saela',
+  },
+},
+  {
     title: 'Software Engineer',
     company: 'PixelPK Technologies',
     location: 'Lahore, Pakistan',

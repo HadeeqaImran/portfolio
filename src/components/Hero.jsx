@@ -16,7 +16,7 @@ const socialLinks = [
 
 const featuredProducts = [
   {
-    title: 'Saela Sync',
+    title: 'Saela',
     type: 'AI health companion',
     image: saelaSyncImage,
   },
@@ -213,14 +213,14 @@ const Hero = () => {
             <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3 sm:px-5" style={{ borderColor: 'var(--border-soft)' }}>
               <div className="min-w-0">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Selected Launch</p>
-                <h2 className="mt-1 text-lg font-black text-slate-950 dark:text-white">Saela Sync</h2>
+                <h2 className="mt-1 text-lg font-black text-slate-950 dark:text-white">Saela</h2>
               </div>
               <span className="chip chip-accent">React Native + AI</span>
             </div>
             <div className="relative aspect-video overflow-hidden bg-slate-950">
               <img
                 src={saelaSyncImage}
-                alt="Saela Sync product screenshot"
+                alt="Saela product screenshot"
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
                 loading="eager"
                 fetchPriority="high"
